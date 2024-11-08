@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.application.fasrecon"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.application.fasrecon"
