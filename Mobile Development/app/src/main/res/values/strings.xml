@@ -11,4 +11,6 @@
     <string name="title_menu_3">Manage Outfit Easily</string>
     <string name="description_menu_3">description menu 3</string>
     <string name="skip">Skip</string>
+    <string name="login">Login</string>
+    <string name="signup">Signup</string>
 </resources>
