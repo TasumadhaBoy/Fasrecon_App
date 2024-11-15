@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".ui.onboardingpage.onboardingPageActivity">
 
     <TextView
@@ -17,19 +18,20 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@color/black"
+        android:letterSpacing="0.05"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
         android:id="@+id/image_menu_page1"
         android:layout_width="0dp"
-        android:layout_height="250dp"
+        android:layout_height="300dp"
         android:src="@drawable/onboarding_image_1"
         android:contentDescription="@string/onboarding_page_image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3" />
+        app:layout_constraintVertical_bias="0.25" />
 
     <TextView
         android:id="@+id/title_menu_page1"
@@ -62,13 +64,13 @@
     <ImageView
         android:id="@+id/image_menu_page2"
         android:layout_width="0dp"
-        android:layout_height="250dp"
+        android:layout_height="300dp"
         android:src="@drawable/onboarding_image_2"
         android:contentDescription="@string/onboarding_page_image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3" />
+        app:layout_constraintVertical_bias="0.25" />
 
     <TextView
         android:id="@+id/title_menu_page2"
@@ -101,13 +103,13 @@
     <ImageView
         android:id="@+id/image_menu_page3"
         android:layout_width="0dp"
-        android:layout_height="250dp"
+        android:layout_height="300dp"
         android:src="@drawable/onboarding_image_3"
         android:contentDescription="@string/onboarding_page_image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3" />
+        app:layout_constraintVertical_bias="0.25" />
 
     <TextView
         android:id="@+id/title_menu_page3"
@@ -169,5 +171,57 @@
             app:srcCompat="@drawable/ic_circle_full_24"
             app:tint="@color/circle2" />
     </LinearLayout>
+
+    <Button
+        style="@style/button_signup_onboarding_page"
+        android:id="@+id/btn_signup_onboarding_page"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_marginHorizontal="24dp"
+        android:text="@string/signup"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:letterSpacing="0.05"
+        android:alpha="0"
+        tools:alpha="100"
+        app:layout_constraintEnd_toEndOf="@id/guideline_vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline_horizontal"/>
+
+    <Button
+        style="@style/button_login_onboarding_page"
+        android:id="@+id/btn_login_onboarding_page"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_marginHorizontal="24dp"
+        android:text="@string/login"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:letterSpacing="0.05"
+        android:alpha="0"
+        tools:alpha="100"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guideline_vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline_horizontal"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_percent="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_percent="0.80"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
