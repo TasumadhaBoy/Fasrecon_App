@@ -3,4 +3,12 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_menu_1">Outfit Recommendation</string>
+    <string name="onboarding_page_image">Onboarding Page Image</string>
+    <string name="description_menu_1">description menu 1</string>
+    <string name="title_menu_2">Integrated Machine Learning</string>
+    <string name="description_menu_2">description menu 2</string>
+    <string name="title_menu_3">Manage Outfit Easily</string>
+    <string name="description_menu_3">description menu 3</string>
+    <string name="skip">Skip</string>
 </resources>
