@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
+    app:layoutDescription="@xml/activity_onboarding_page_scene"
     tools:context=".ui.onboardingpage.onboardingPageActivity">
 
     <TextView
@@ -14,35 +15,35 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:letterSpacing="0.05"
         android:text="@string/skip"
+        android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="@color/black"
-        android:letterSpacing="0.05"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/image_menu_page1"
         android:layout_width="0dp"
-        android:layout_height="300dp"
-        android:src="@drawable/onboarding_image_1"
+        android:layout_height="250dp"
         android:contentDescription="@string/onboarding_page_image"
+        android:src="@drawable/onboarding_image_1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintVertical_bias="0.2" />
 
     <TextView
         android:id="@+id/title_menu_page1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="28dp"
         android:gravity="center_horizontal"
         android:text="@string/title_menu_1"
+        android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="@id/image_menu_page1"
         app:layout_constraintStart_toStartOf="@id/image_menu_page1"
         app:layout_constraintTop_toBottomOf="@id/image_menu_page1" />
@@ -51,10 +52,11 @@
         android:id="@+id/desc_menu_page1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginHorizontal="64dp"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="12dp"
         android:gravity="center_horizontal"
         android:text="@string/description_menu_1"
+        android:textAlignment="center"
         android:textColor="@color/text_gray"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@id/title_menu_page1"
@@ -64,19 +66,19 @@
     <ImageView
         android:id="@+id/image_menu_page2"
         android:layout_width="0dp"
-        android:layout_height="300dp"
-        android:src="@drawable/onboarding_image_2"
+        android:layout_height="250dp"
         android:contentDescription="@string/onboarding_page_image"
+        android:src="@drawable/onboarding_image_2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintVertical_bias="0.2" />
 
     <TextView
         android:id="@+id/title_menu_page2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="28dp"
         android:gravity="center_horizontal"
         android:text="@string/title_menu_2"
         android:textColor="@color/black"
@@ -90,8 +92,8 @@
         android:id="@+id/desc_menu_page2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginHorizontal="64dp"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="12dp"
         android:gravity="center_horizontal"
         android:text="@string/description_menu_2"
         android:textColor="@color/text_gray"
@@ -103,19 +105,19 @@
     <ImageView
         android:id="@+id/image_menu_page3"
         android:layout_width="0dp"
-        android:layout_height="300dp"
-        android:src="@drawable/onboarding_image_3"
+        android:layout_height="250dp"
         android:contentDescription="@string/onboarding_page_image"
+        android:src="@drawable/onboarding_image_3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintVertical_bias="0.2" />
 
     <TextView
         android:id="@+id/title_menu_page3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="28dp"
         android:gravity="center_horizontal"
         android:text="@string/title_menu_3"
         android:textColor="@color/black"
@@ -129,8 +131,8 @@
         android:id="@+id/desc_menu_page3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginHorizontal="64dp"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="12dp"
         android:gravity="center_horizontal"
         android:text="@string/description_menu_3"
         android:textColor="@color/text_gray"
@@ -139,72 +141,69 @@
         app:layout_constraintStart_toStartOf="@id/title_menu_page3"
         app:layout_constraintTop_toBottomOf="@id/title_menu_page3" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        app:layout_constraintStart_toStartOf="@id/desc_menu_page1"
-        app:layout_constraintEnd_toEndOf="@id/desc_menu_page1"
-        app:layout_constraintTop_toBottomOf="@id/desc_menu_page1"
-        android:orientation="horizontal">
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/menu1"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="@id/menu2"
+        app:layout_constraintEnd_toStartOf="@id/menu2"
+        app:layout_constraintTop_toTopOf="@id/menu2"
+        app:srcCompat="@drawable/ic_circle_full_2"
+        app:altSrc="@drawable/ic_circle_full_1"
+         />
 
-        <androidx.constraintlayout.utils.widget.ImageFilterView
-            android:id="@+id/menu1"
-            android:layout_width="12dp"
-            android:layout_height="12dp"
-            app:srcCompat="@drawable/ic_circle_full_24"
-            app:tint="@color/primary_color" />
-
-        <androidx.constraintlayout.utils.widget.ImageFilterView
-            android:id="@+id/menu2"
-            android:layout_width="12dp"
-            android:layout_height="12dp"
-            android:layout_marginStart="20dp"
-            app:srcCompat="@drawable/ic_circle_full_24"
-            app:tint="@color/circle2" />
-
-        <androidx.constraintlayout.utils.widget.ImageFilterView
-            android:id="@+id/menu3"
-            android:layout_width="12dp"
-            android:layout_height="12dp"
-            android:layout_marginStart="20dp"
-            app:srcCompat="@drawable/ic_circle_full_24"
-            app:tint="@color/circle2" />
-    </LinearLayout>
-
-    <Button
-        style="@style/button_signup_onboarding_page"
-        android:id="@+id/btn_signup_onboarding_page"
-        android:layout_width="0dp"
-        android:layout_height="55dp"
-        android:layout_marginHorizontal="24dp"
-        android:text="@string/signup"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:letterSpacing="0.05"
-        android:alpha="0"
-        tools:alpha="100"
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/menu2"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="@id/guideline_vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guideline_horizontal"/>
+        app:layout_constraintStart_toStartOf="@id/guideline_vertical"
+        app:layout_constraintTop_toBottomOf="@id/desc_menu_page1"
+        app:srcCompat="@drawable/ic_circle_full_2"
+        app:altSrc="@drawable/ic_circle_full_1" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/menu3"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@id/menu2"
+        app:layout_constraintStart_toEndOf="@id/menu2"
+        app:layout_constraintTop_toTopOf="@id/menu2"
+        app:srcCompat="@drawable/ic_circle_full_2"
+        app:altSrc="@drawable/ic_circle_full_1" />
 
     <Button
-        style="@style/button_login_onboarding_page"
-        android:id="@+id/btn_login_onboarding_page"
+        android:id="@+id/btn_signup_onboarding_page"
+        style="@style/button_signup_onboarding_page"
         android:layout_width="0dp"
         android:layout_height="55dp"
-        android:layout_marginHorizontal="24dp"
-        android:text="@string/login"
-        android:textStyle="bold"
-        android:textSize="18sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
         android:letterSpacing="0.05"
-        android:alpha="0"
-        tools:alpha="100"
+        android:text="@string/signup"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guideline_vertical"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_login_onboarding_page"
+        style="@style/button_login_onboarding_page"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:letterSpacing="0.05"
+        android:text="@string/login"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/guideline_vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guideline_horizontal"/>
+        app:layout_constraintStart_toStartOf="@id/guideline_vertical" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_vertical"
@@ -224,4 +223,4 @@
         app:layout_constraintGuide_percent="0.80"
         app:layout_constraintStart_toStartOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.motion.widget.MotionLayout>
