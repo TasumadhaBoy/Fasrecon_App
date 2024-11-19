@@ -27,6 +27,7 @@ class ForgotPassword : AppCompatActivity(), View.OnClickListener {
         binding = ActivityForgotPasswordBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.hide()
         binding.btnGanti.setOnClickListener(this)
     }
 

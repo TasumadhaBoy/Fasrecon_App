@@ -24,6 +24,7 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.hide()
 
         val text = "Sudah punya akun? Login"
         val spannableString = SpannableString(text)

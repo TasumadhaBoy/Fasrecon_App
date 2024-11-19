@@ -29,6 +29,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         binding.forgotPassword.setOnClickListener(this)
         binding.btnLogin.setOnClickListener(this)
 
+        supportActionBar?.hide()
+
         val text = "Belum Punya akun? Daftar"
         val spannableString = SpannableString(text)
 
