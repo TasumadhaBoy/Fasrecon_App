@@ -1,11 +1,12 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Fasrecon" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.Fasrecon_primary" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:statusBarColor">@color/primary_color</item>
+    </style>
+
+    <style name="Theme.Fasrecon_secondary" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <item name="colorPrimary">#4FACFE</item>
         <item name="colorOnPrimary">@color/white</item>
-        <item name="android:statusBarColor">@color/white</item>
-        <item name="colorControlActivated">#4FACFE</item>
-
     </style>
 
     <style name="button_login_onboarding_page" parent="ThemeOverlay.Material3.Button">
@@ -21,4 +22,56 @@
         <item name="strokeWidth">2dp</item>
         <item name="cornerRadius">12dp</item>
     </style>
+
+    <style name="button_login_loginpage" parent="ThemeOverlay.Material3.Button">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:backgroundTint">@color/primary_color</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">50dp</item>
+    </style>
+
+    <style name="header_login">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">24dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="normal_tv_loginpage">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="tv_common_loginpage">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="tv_label_loginpage" parent="tv_common_loginpage">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="tv_forgot_loginpage" parent="tv_common_loginpage">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/primary_color</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">16dp</item>
+    </style>
+
+    <style name="bold_tv_nav">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/primary_color</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginStart">4dp</item>
+    </style>
+
 </resources>
