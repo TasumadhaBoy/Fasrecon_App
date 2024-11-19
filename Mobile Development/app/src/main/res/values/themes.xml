@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Fasrecon" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Theme.Fasrecon" parent="Theme.Material3.DayNight">
     </style>
 
     <style name="button_login_onboarding_page" parent="ThemeOverlay.Material3.Button">
