@@ -9,7 +9,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.application.fasrecon.R
 import com.application.fasrecon.databinding.ActivityOnboardingPageBinding
 import com.application.fasrecon.ui.login.LoginActivity
-import com.application.fasrecon.ui.login.RegisterActivity
+import com.application.fasrecon.ui.register.RegisterActivity
 
 class OnboardingPageActivity : AppCompatActivity() {
 

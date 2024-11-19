@@ -1,4 +1,4 @@
-package com.application.fasrecon.ui.login
+package com.application.fasrecon.ui.register
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,9 +10,9 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.application.fasrecon.MainActivity
 import com.application.fasrecon.R
 import com.application.fasrecon.databinding.ActivityRegisterBinding
+import com.application.fasrecon.ui.login.LoginActivity
 
 class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
