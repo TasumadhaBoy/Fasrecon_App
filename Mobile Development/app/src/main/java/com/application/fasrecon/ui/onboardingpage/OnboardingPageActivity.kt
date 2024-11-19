@@ -1,5 +1,6 @@
 package com.application.fasrecon.ui.onboardingpage
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +8,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.application.fasrecon.R
 import com.application.fasrecon.databinding.ActivityOnboardingPageBinding
+import com.application.fasrecon.ui.login.LoginActivity
+import com.application.fasrecon.ui.login.RegisterActivity
 
 class OnboardingPageActivity : AppCompatActivity() {
 
@@ -19,11 +22,13 @@ class OnboardingPageActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnLoginOnboardingPage.setOnClickListener {
-
+        val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
         }
 
         binding.btnSignupOnboardingPage.setOnClickListener {
-
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
