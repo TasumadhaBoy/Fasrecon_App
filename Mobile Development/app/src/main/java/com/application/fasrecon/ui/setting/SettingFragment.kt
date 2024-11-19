@@ -1,5 +1,6 @@
 package com.application.fasrecon.ui.setting
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import android.widget.ImageButton
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.application.fasrecon.R
+import com.application.fasrecon.ui.login.LoginActivity
 
 class SettingFragment : Fragment() {
     override fun onCreateView(
@@ -38,6 +40,11 @@ class SettingFragment : Fragment() {
 
         dialogView.findViewById<Button>(R.id.btn_cancel).setOnClickListener {
             alertDialog.dismiss()
+        }
+
+        dialogView.findViewById<Button>(R.id.btn_logout).setOnClickListener {
+            val intent = Intent(requireContext(), LoginActivity::class.java)
+            startActivity(intent)
         }
 
         alertDialog.show()
