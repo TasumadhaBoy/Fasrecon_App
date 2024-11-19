@@ -1,4 +1,4 @@
-package com.application.fasrecon
+package com.application.fasrecon.ui.setting
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.ImageButton
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import com.application.fasrecon.R
 
 class SettingFragment : Fragment() {
     override fun onCreateView(
