@@ -25,4 +25,23 @@
     <string name="log_out">Log out</string>
     <string name="cancel_setting">Cancel</string>
     <string name="title_profile">Profile</string>
+
+    <string name="masukan_username">Masukan Username</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="lupa_password">Lupa Password?</string>
+    <string name="log_in">Log In</string>
+    <string name="masuk">Masuk</string>
+    <string name="belum_punya_akun_daftar">Belum punya akun? Daftar</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sudah_punya_akun_login">Sudah punya akun? Login</string>
+    <string name="daftar">Daftar</string>
+    <string name="apakah_anda_menyetujui_term_kami">Apakah anda menyetujui term kami</string>
+    <string name="new_password">New Password</string>
+    <string name="ubah">Ubah</string>
+    <string name="date">Date</string>
+    <string name="jenis_kelamin">Jenis Kelamin</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="logout_message">Apakan anda yakin ingin keluar?</string>
 </resources>

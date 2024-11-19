@@ -7,4 +7,21 @@
     <color name="white">#FFFFFF</color>
     <color name="text_gray">#858597</color>
     <color name="circle2">#21283F</color>
+
+    <color name="custom_blue">#4FACFE</color>
+    <color name="transparent">#F8F9FD</color>
+
+    <style name="Text_header">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="input_style">
+        <item name="boxStrokeColor">#4FACFE</item>
+        <item name="boxCornerRadiusBottomEnd">12dp</item>
+        <item name="boxCornerRadiusBottomStart">12dp</item>
+        <item name="boxCornerRadiusTopEnd">12dp</item>
+        <item name="boxCornerRadiusTopStart">12dp</item>
+        <item name="height">60dp</item>
+    </style>
 </resources>
