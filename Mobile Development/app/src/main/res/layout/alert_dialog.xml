@@ -39,13 +39,13 @@
 
         <Button
             android:id="@+id/btn_cancel"
-            android:layout_width="wrap_content"
+            style="@style/button_signup_onboarding_page"
+            android:layout_width="130dp"
             android:layout_height="48dp"
             android:layout_marginTop="16dp"
             android:layout_weight="4"
-            android:background="@drawable/btn_cancel_background"
             android:text="@string/cancel_setting"
-            android:textColor="@color/white"
+            android:textColor="@color/custom_blue"
             android:textSize="12sp"
             android:textStyle="normal"
             card_view:layout_constraintEnd_toStartOf="@+id/textView"
@@ -53,11 +53,11 @@
 
         <Button
             android:id="@+id/btn_logout"
-            android:layout_width="wrap_content"
+            android:layout_width="130dp"
             android:layout_height="48dp"
             android:layout_marginTop="16dp"
             android:layout_weight="4"
-            android:background="@drawable/btn_logout_background"
+            style="@style/button_login_onboarding_page"
             android:text="@string/log_out"
             android:textSize="12sp"
             android:textStyle="normal"

@@ -20,7 +20,7 @@ class OnboardingPageActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityOnboardingPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        supportActionBar?.hide()
         binding.btnLoginOnboardingPage.setOnClickListener {
         val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
