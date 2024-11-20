@@ -11,6 +11,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.application.fasrecon.R
 import com.application.fasrecon.ui.login.LoginActivity
+import com.application.fasrecon.ui.profile.ProfileSetting
 
 class SettingFragment : Fragment() {
     override fun onCreateView(
@@ -28,6 +29,13 @@ class SettingFragment : Fragment() {
         imageButton.setOnClickListener {
             showAlertDialog()
         }
+
+        val profileArrow = view.findViewById<ImageButton>(R.id.profile_arrow)
+        profileArrow.setOnClickListener{
+            val intent = Intent(requireContext(), ProfileSetting::class.java)
+            startActivity(intent)
+        }
+
     }
 
     private fun showAlertDialog() {
