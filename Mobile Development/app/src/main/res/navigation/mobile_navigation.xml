@@ -12,16 +12,17 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_myoutfit"
         android:name="com.application.fasrecon.ui.myoutfit.MyoutfitFragment"
-        android:label="@string/title_dashboard"
+        android:label="@string/my_outfit"
         tools:layout="@layout/fragment_myoutfit" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_chatbot"
         android:name="com.application.fasrecon.ui.chatbot.ChatbotFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/chatbot"
         tools:layout="@layout/fragment_chatbot" />
+
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.application.fasrecon.ui.setting.SettingFragment"
