@@ -4,10 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import com.application.fasrecon.R
 import com.application.fasrecon.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -26,6 +25,18 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         (requireActivity() as AppCompatActivity).supportActionBar?.hide()
+
+        binding.myoutfitNavigation.setOnClickListener {
+
+        }
+
+        binding.cardContainerCamera.setOnClickListener {
+
+        }
+
+        binding.cardContainerChatbot.setOnClickListener {
+
+        }
     }
 
     override fun onDestroyView() {

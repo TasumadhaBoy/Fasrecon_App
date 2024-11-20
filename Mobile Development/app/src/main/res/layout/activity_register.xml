@@ -19,7 +19,6 @@
         android:textSize="32sp"
         android:textStyle="bold" />
 
-
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="700dp"
