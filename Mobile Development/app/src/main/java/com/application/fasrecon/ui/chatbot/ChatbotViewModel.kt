@@ -1,10 +1,10 @@
-package com.application.fasrecon.ui.notifications
+package com.application.fasrecon.ui.chatbot
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class NotificationsViewModel : ViewModel() {
+class ChatbotViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is notifications Fragment"
