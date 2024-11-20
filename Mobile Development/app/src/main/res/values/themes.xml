@@ -2,6 +2,11 @@
     <!-- Base application theme. -->
     <style name="Theme.Fasrecon_primary" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:statusBarColor">@color/primary_color</item>
+        <item name="colorPrimary">@color/primary_color</item>
+    </style>
+    <style name="Theme.Fasrecon_tertiary" parent="Theme.Material3.DayNight">
+        <item name="android:statusBarColor">@color/primary_color</item>
+        <item name="colorPrimary">@color/primary_color</item>
     </style>
 
     <style name="Theme.Fasrecon_secondary" parent="Theme.MaterialComponents.DayNight.DarkActionBar">

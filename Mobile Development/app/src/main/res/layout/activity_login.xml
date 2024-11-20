@@ -60,9 +60,9 @@
                 app:startIconDrawable="@drawable/emal_icon">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/email_login_input"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textColor="@color/black"
                     android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -91,10 +91,10 @@
                 app:startIconDrawable="@drawable/password_icon">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/password_login_input"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:inputType="textPassword"
-                    android:textColor="@color/black"
                     android:textSize="14sp" />
 
             </com.google.android.material.textfield.TextInputLayout>

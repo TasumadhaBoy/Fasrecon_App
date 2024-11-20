@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     app:layoutDescription="@xml/activity_onboarding_page_scene_portrait"
-    tools:context=".ui.onboardingpage.OnboardingPageActivity">
+    tools:context=".ui.onboardingpage.onboardingPageActivity">
 
     <TextView
         android:id="@+id/skip_menu"

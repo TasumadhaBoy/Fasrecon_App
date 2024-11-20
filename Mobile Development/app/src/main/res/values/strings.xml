@@ -13,8 +13,6 @@
     <string name="skip">Skip</string>
     <string name="login">Login</string>
     <string name="signup">Signup</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="user_profile">User Profile</string>
     <string name="user_name">Faserecon</string>
     <string name="user_email">Fasrecon@email.com</string>
@@ -25,12 +23,15 @@
     <string name="log_out">Log out</string>
     <string name="cancel_setting">Cancel</string>
     <string name="title_profile">Profile</string>
-
     <string name="masukan_username">Masukan Username</string>
     <string name="username">Username</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
+    <string name="field_email">Field Email cannot be blank</string>
+    <string name="field_password">Field password cannot be blank</string>
     <string name="forgot_password1">Forgot Password ?</string>
+    <string name="format_password">The password can\'t be less than 8 characters</string>
+    <string name="format_email">The email format is incorrect</string>
     <string name="masuk">Masuk</string>
     <string name="dont_have_account">Don\'t have an account yet ?</string>
     <string name="sign_up">Sign Up</string>
