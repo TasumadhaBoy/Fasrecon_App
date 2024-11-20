@@ -2,8 +2,11 @@
 <resources>
     <color name="primary_color">#4FACFE</color>
     <color name="darker_primary_color">#0F89F8</color>
+    <color name="not_active_color">#515151</color>
+    <color name="menu_container">#DEEFFF</color>
 
     <color name="black">#FF000000</color>
+    <color name="dark_shadow">#4D000000</color>
     <color name="white">#FFFFFF</color>
     <color name="text_gray">#858597</color>
     <color name="circle2">#21283F</color>

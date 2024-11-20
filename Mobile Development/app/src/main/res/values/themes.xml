@@ -79,4 +79,33 @@
         <item name="android:layout_marginStart">4dp</item>
     </style>
 
+    <style name="Widget.Material3.BottomNavigationView.ActiveIndicator" parent="">
+        <item name="android:width">56dp</item>
+        <item name="android:height">32dp</item>
+        <item name="marginHorizontal">4dp</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.Material3.NavigationBarView.ActiveIndicator</item>
+        <item name="android:color">?attr/colorSecondaryContainer</item>
+    </style>
+
+    <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/menu_container</item>
+    </style>
+
+    <style name="custom_bottom_nav">
+        <item name="android:background">@drawable/custom_bottom_navigation</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">75dp</item>
+        <item name="android:layout_marginStart">-2dp</item>
+        <item name="android:layout_marginEnd">-2dp</item>
+        <item name="android:layout_marginBottom">-2dp</item>
+        <item name="itemIconPadding">0dp</item>
+        <item name="itemIconSize">28dp</item>
+        <item name="itemTextColor">@color/custom_active_menu</item>
+        <item name="itemIconTint">@color/custom_active_menu</item>
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:paddingEnd">10dp</item>
+        <item name="itemActiveIndicatorStyle">@style/App.Custom.Indicator</item>
+    </style>
+
+
 </resources>
