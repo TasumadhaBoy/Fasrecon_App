@@ -95,9 +95,7 @@
         <item name="android:background">@drawable/custom_bottom_navigation</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">75dp</item>
-        <item name="android:layout_marginStart">-2dp</item>
-        <item name="android:layout_marginEnd">-2dp</item>
-        <item name="android:layout_marginBottom">-2dp</item>
+        <item name="android:layout_marginBottom">-1dp</item>
         <item name="itemIconPadding">0dp</item>
         <item name="itemIconSize">28dp</item>
         <item name="itemTextColor">@color/custom_active_menu</item>
