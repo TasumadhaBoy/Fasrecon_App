@@ -46,4 +46,12 @@
     <string name="logout_message">Apakan anda yakin ingin keluar?</string>
     <string name="my_outfit">My Outfit</string>
     <string name="chatbot">Chatbot</string>
+    <string name="hai_user">Hai, %1$s</string>
+    <string name="image_profile_home_page">image profile home page</string>
+    <string name="outfit_collection">Outfit Collection</string>
+    <string name="outfit_user">%1$s Outfit</string>
+    <string name="service">Service</string>
+    <string name="chatbot_image">chatbot image</string>
+    <string name="camera_image">camera image</string>
+    <string name="camera">Camera</string>
 </resources>
