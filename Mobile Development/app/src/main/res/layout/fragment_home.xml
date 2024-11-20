@@ -1,22 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="85dp"
     tools:context=".ui.home.HomeFragment">
 
-    <TextView
-        android:id="@+id/text_home"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        tools:context=".ui.home.HomeFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/header_container"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:background="@color/primary_color"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
+                style="@style/title_homepage"
+                android:id="@+id/tv_user_homepage"
+                android:text="@string/hai_user"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/image_profile_homepage"
+                app:layout_constraintBottom_toBottomOf="@id/image_profile_homepage"/>
+
+            <ImageView
+                android:id="@+id/image_profile_homepage"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="16dp"
+                android:contentDescription="@string/image_profile_home_page"
+                tools:src="@drawable/user_profile_image"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_container_outfit_info"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:background="@color/white"
+            android:elevation="8dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="18dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/header_container"
+            app:layout_constraintBottom_toBottomOf="@id/header_container"
+            app:cardCornerRadius="15dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/label_outfit_collection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/outfit_collection"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView
+                    style="@style/info_outfit_user"
+                    android:id="@+id/info_outfit_collection"
+                    android:text="@string/outfit_user"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/label_outfit_collection"/>
+
+                <TextView
+                    style="@style/nav_myoutfit"
+                    android:id="@+id/myoutfit_navigation"
+                    android:text="@string/my_outfit"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            style="@style/label_service"
+            android:id="@+id/label_service"
+            android:text="@string/service"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/card_container_outfit_info"/>
+
+        <androidx.cardview.widget.CardView
+            style="@style/card_service"
+            android:id="@+id/card_container_chatbot"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label_service"
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    style="@style/image_service"
+                    android:id="@+id/chatbot_image"
+                    android:contentDescription="@string/chatbot_image"
+                    android:src="@drawable/chatbot_image"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                <TextView
+                    style="@style/label_service_item"
+                    android:id="@+id/chatbot_label"
+                    android:text="@string/chatbot"
+                    app:layout_constraintStart_toEndOf="@id/chatbot_image"
+                    app:layout_constraintTop_toTopOf="@id/chatbot_image"
+                    app:layout_constraintBottom_toBottomOf="@id/chatbot_image"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            style="@style/card_service"
+            android:id="@+id/card_container_camera"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintTop_toTopOf="@id/card_container_chatbot"
+            app:layout_constraintBottom_toBottomOf="@id/card_container_chatbot"
+            app:layout_constraintStart_toStartOf="@id/guideline_vertical"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    style="@style/image_service"
+                    android:id="@+id/camera_image"
+                    android:contentDescription="@string/camera_image"
+                    android:src="@drawable/camera_image"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                <TextView
+                    style="@style/label_service_item"
+                    android:id="@+id/camera_label"
+                    android:text="@string/camera"
+                    app:layout_constraintStart_toEndOf="@id/camera_image"
+                    app:layout_constraintTop_toTopOf="@id/camera_image"
+                    app:layout_constraintBottom_toBottomOf="@id/camera_image"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="64dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_percent="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -95,9 +95,7 @@
         <item name="android:background">@drawable/custom_bottom_navigation</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">75dp</item>
-        <item name="android:layout_marginStart">-2dp</item>
-        <item name="android:layout_marginEnd">-2dp</item>
-        <item name="android:layout_marginBottom">-2dp</item>
+        <item name="android:layout_marginBottom">-1dp</item>
         <item name="itemIconPadding">0dp</item>
         <item name="itemIconSize">28dp</item>
         <item name="itemTextColor">@color/custom_active_menu</item>
@@ -107,5 +105,65 @@
         <item name="itemActiveIndicatorStyle">@style/App.Custom.Indicator</item>
     </style>
 
+    <!-- Home Fragment -->
+    <style name="title_homepage">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
 
+    <style name="info_outfit_user">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">24dp</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="label_service">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">24dp</item>
+        <item name="android:layout_marginTop">24dp</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="nav_myoutfit">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">20dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:textColor">@color/primary_color</item>
+    </style>
+
+    <style name="card_service">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">80dp</item>
+        <item name="android:backgroundTint">@color/primary_color</item>
+        <item name="elevation">8dp</item>
+        <item name="cardCornerRadius">15dp</item>
+    </style>
+
+    <style name="image_service">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">55dp</item>
+        <item name="android:layout_marginStart">8dp</item>
+    </style>
+
+    <style name="label_service_item">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">6dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>
