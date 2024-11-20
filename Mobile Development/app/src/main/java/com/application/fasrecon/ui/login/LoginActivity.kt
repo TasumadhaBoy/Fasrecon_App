@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.application.fasrecon.MainActivity
+import com.application.fasrecon.ui.MainActivity
 import com.application.fasrecon.R
 import com.application.fasrecon.databinding.ActivityLoginBinding
 import com.application.fasrecon.ui.forgotpassword.ForgotPassword
