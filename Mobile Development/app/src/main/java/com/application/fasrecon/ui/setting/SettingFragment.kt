@@ -10,32 +10,31 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.Button
-import android.widget.ImageButton
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.application.fasrecon.R
+import com.application.fasrecon.databinding.FragmentSettingsBinding
 import com.application.fasrecon.ui.login.LoginActivity
 import com.application.fasrecon.ui.profile.ProfileSetting
 
 class SettingFragment : Fragment() {
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_setting, container, false)
+
+    private var _binding: FragmentSettingsBinding? = null
+    private val binding get() = _binding!!
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        _binding = FragmentSettingsBinding.inflate(inflater, container, false)
+        val root: View = binding.root
+        return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val imageButton = view.findViewById<ImageButton>(R.id.imageButton)
-
-        imageButton.setOnClickListener {
+        binding.LogoutMenu.setOnClickListener {
             showAlertDialog()
         }
 
-        val profileArrow = view.findViewById<ImageButton>(R.id.profile_arrow)
-        profileArrow.setOnClickListener{
+        binding.profileSettings.setOnClickListener {
             val intent = Intent(requireContext(), ProfileSetting::class.java)
             startActivity(intent)
         }

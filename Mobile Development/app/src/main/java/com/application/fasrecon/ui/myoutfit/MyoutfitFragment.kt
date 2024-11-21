@@ -11,15 +11,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.Button
-import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.application.fasrecon.R
 import com.application.fasrecon.databinding.FragmentMyoutfitBinding
-import com.application.fasrecon.ui.MainActivity
-import com.application.fasrecon.ui.login.LoginActivity
 
 class MyoutfitFragment : Fragment() {
 

@@ -27,5 +27,5 @@
         android:id="@+id/navigation_profile"
         android:name="com.application.fasrecon.ui.setting.SettingFragment"
         android:label="fragment_setting"
-        tools:layout="@layout/fragment_setting" />
+        tools:layout="@layout/fragment_settings" />
 </navigation>
