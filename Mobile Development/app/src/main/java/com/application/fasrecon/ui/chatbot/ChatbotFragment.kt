@@ -7,11 +7,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.application.fasrecon.databinding.FragmentDashboardBinding
+import com.application.fasrecon.databinding.FragmentChatbotBinding
+import com.application.fasrecon.ui.chatbot.ChatbotViewModel
 
-class DashboardFragment : Fragment() {
+class ChatbotFragment : Fragment() {
 
-    private var _binding: FragmentDashboardBinding? = null
+    private var _binding: FragmentChatbotBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -23,9 +24,9 @@ class DashboardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val dashboardViewModel =
-            ViewModelProvider(this).get(DashboardViewModel::class.java)
+            ViewModelProvider(this).get(ChatbotViewModel::class.java)
 
-        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
+        _binding = FragmentChatbotBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         return root

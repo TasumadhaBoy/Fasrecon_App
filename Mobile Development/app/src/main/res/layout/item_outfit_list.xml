@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_gravity="center"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    android:padding="16dp"
+    android:elevation="8dp"
+    app:cardCornerRadius="12dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/outfit_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/outfit_image"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/outfit_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:textStyle="bold"
+            tools:text="Outfit Name"
+            app:layout_constraintStart_toEndOf="@+id/outfit_image"
+            app:layout_constraintTop_toTopOf="@+id/outfit_image" />
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/item_outfit_label_container"
+            android:id="@+id/card_label_outfit1"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintStart_toStartOf="@id/outfit_name"
+            app:layout_constraintEnd_toEndOf="@id/outfit_name"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                style="@style/item_outfit_label_text"
+                tools:text="label1" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/item_outfit_label_container"
+            android:id="@+id/card_label_outfit2"
+            android:layout_marginStart="12dp"
+            app:layout_constraintTop_toTopOf="@id/card_label_outfit1"
+            app:layout_constraintBottom_toBottomOf="@id/card_label_outfit1"
+            app:layout_constraintStart_toEndOf="@id/card_label_outfit1">
+
+            <TextView
+                style="@style/item_outfit_label_text"
+                tools:text="label2" />
+        </com.google.android.material.card.MaterialCardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

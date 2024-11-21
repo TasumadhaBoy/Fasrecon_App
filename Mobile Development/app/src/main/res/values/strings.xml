@@ -67,6 +67,7 @@
     <string name="chatbot_image">chatbot image</string>
     <string name="camera_image">camera image</string>
     <string name="camera">Camera</string>
+    <string name="outfit_image">Outfit Image</string>
     <string-array name="gender_array">
         <item>Laki-laki</item>
         <item>Perempuan</item>
