@@ -4,6 +4,7 @@
     <color name="darker_primary_color">#0F89F8</color>
     <color name="not_active_color">#515151</color>
     <color name="menu_container">#DEEFFF</color>
+    <color name="background_fragment_activity">#F8FBFF</color>
 
     <color name="black">#FF000000</color>
     <color name="dark_shadow">#4D000000</color>

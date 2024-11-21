@@ -68,6 +68,10 @@
     <string name="camera_image">camera image</string>
     <string name="camera">Camera</string>
     <string name="outfit_image">Outfit Image</string>
+    <string name="choose_your_outfit_type">Choose your outfit type</string>
+    <string name="cancel">Cancel</string>
+    <string name="apply">Apply</string>
+    <string name="filter">Filter</string>
     <string-array name="gender_array">
         <item>Laki-laki</item>
         <item>Perempuan</item>

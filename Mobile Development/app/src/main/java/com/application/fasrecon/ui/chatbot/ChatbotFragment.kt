@@ -1,14 +1,12 @@
-package com.application.fasrecon.ui.dashboard
+package com.application.fasrecon.ui.chatbot
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.application.fasrecon.databinding.FragmentChatbotBinding
-import com.application.fasrecon.ui.chatbot.ChatbotViewModel
 
 class ChatbotFragment : Fragment() {
 
