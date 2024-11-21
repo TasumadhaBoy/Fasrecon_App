@@ -44,6 +44,19 @@
     <string name="jenis_kelamin">Jenis Kelamin</string>
     <string name="forgot_password">Forgot Password</string>
     <string name="logout_message">Apakan anda yakin ingin keluar?</string>
+    <string name="submit">Submit</string>
+    <string name="Placeholder_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+    <string name="logout_alert">Logout</string>
+    <string name="name">Name</string>
+    <string name="save_profile">Save Profile</string>
+    <string name="your_outfit_collection">Your outfit collection</string>
+    <string name="warna">Warna</string>
+    <string name="jenis">Jenis</string>
+    <string name="nama_baju">Nama baju</string>
+    <string name="field_username">Field username cannot be blank\n</string>
+    <string name="field_gender">field gender cannot be blank</string>
+    <string name="field_date">Field Date cannot be blank</string>
+    <string name="field_checkbox">please agree with term\n</string>
     <string name="my_outfit">My Outfit</string>
     <string name="chatbot">Chatbot</string>
     <string name="hai_user">Hai, %1$s</string>
@@ -54,4 +67,10 @@
     <string name="chatbot_image">chatbot image</string>
     <string name="camera_image">camera image</string>
     <string name="camera">Camera</string>
+    <string name="outfit_image">Outfit Image</string>
+    <string-array name="gender_array">
+        <item>Laki-laki</item>
+        <item>Perempuan</item>
+    </string-array>
+
 </resources>

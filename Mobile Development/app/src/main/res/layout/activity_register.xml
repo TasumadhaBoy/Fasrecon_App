@@ -5,8 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#4FACFE"
+    android:orientation="vertical"
     tools:context=".ui.register.RegisterActivity">
 
     <TextView
@@ -19,12 +19,11 @@
         android:textSize="32sp"
         android:textStyle="bold" />
 
-
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="700dp"
-        android:layout_marginTop="100dp"
         android:layout_alignParentBottom="true"
+        android:layout_marginTop="100dp"
         android:layout_marginBottom="-10dp"
         android:padding="16dp"
         android:paddingBottom="0dp"
@@ -51,7 +50,7 @@
                     android:textColor="@color/black" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/textInput_username"
+                    android:id="@+id/text_Layout_username"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -69,6 +68,7 @@
                     tools:targetApi="p">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textInput_username"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:textColor="@color/black"
@@ -85,7 +85,7 @@
                     android:textColor="@color/black" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/textInputLayout"
+                    android:id="@+id/text_layout_email"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -103,6 +103,7 @@
                     tools:targetApi="p">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_input_email"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:textColor="@color/black"
@@ -120,7 +121,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/textInputLayout2"
+                    android:id="@+id/text_layout_password"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -136,6 +137,7 @@
                     app:startIconDrawable="@drawable/password_icon">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_input_password"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:inputType="textPassword"
@@ -157,7 +159,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/gender_input"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:layout_marginTop="8dp"
@@ -170,11 +172,12 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView3"
                     app:startIconDrawable="@drawable/gender_icon">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <AutoCompleteTextView
+                        android:id="@+id/autoCompleteTextView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:layout_weight="1"
+                        android:inputType="none" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -189,7 +192,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/date_input"
+                    android:id="@+id/date_layout"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -204,6 +207,7 @@
                     app:startIconDrawable="@drawable/date_icon">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/date_input"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:inputType="date"

@@ -1,9 +1,10 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.Fasrecon_primary" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:statusBarColor">@color/primary_color</item>
         <item name="colorPrimary">@color/primary_color</item>
     </style>
+
     <style name="Theme.Fasrecon_tertiary" parent="Theme.Material3.DayNight">
         <item name="android:statusBarColor">@color/primary_color</item>
         <item name="colorPrimary">@color/primary_color</item>
@@ -18,6 +19,16 @@
         <item name="android:backgroundTint">@color/primary_color</item>
         <item name="android:textColor">@color/white</item>
         <item name="cornerRadius">12dp</item>
+    </style>
+
+    <style name="cloth_list" parent="ThemeOverlay.Material3.Button">
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:textColor">@color/primary_color</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">10sp</item>
+        <item name="strokeColor">@color/primary_color</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="android:radius">24dp</item>
     </style>
 
     <style name="button_signup_onboarding_page" parent="ThemeOverlay.Material3.Button">
@@ -83,7 +94,9 @@
         <item name="android:width">56dp</item>
         <item name="android:height">32dp</item>
         <item name="marginHorizontal">4dp</item>
-        <item name="shapeAppearance">@style/ShapeAppearance.Material3.NavigationBarView.ActiveIndicator</item>
+        <item name="shapeAppearance">
+            @style/ShapeAppearance.Material3.NavigationBarView.ActiveIndicator
+        </item>
         <item name="android:color">?attr/colorSecondaryContainer</item>
     </style>
 
@@ -166,4 +179,53 @@
         <item name="android:textSize">24sp</item>
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="item_outfit_label_container">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">25dp</item>
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="cornerRadius">50dp</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="strokeColor">@color/primary_color</item>
+    </style>
+
+    <style name="item_outfit_label_text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingStart">25dp</item>
+        <item name="android:paddingEnd">25dp</item>
+        <item name="android:textColor">@color/primary_color</item>
+    </style>
+
+    <style name="button_active_type_outfit" parent="ThemeOverlay.Material3.Button">
+        <item name="android:padding">0dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">35dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="cornerRadius">50dp</item>
+    </style>
+
+    <style name="button_in_dialog" parent="ThemeOverlay.Material3.Button">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+    </style>
+
+    <style name="button_cancel" parent="button_in_dialog">
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:textColor">@color/primary_color</item>
+        <item name="strokeColor">@color/primary_color</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="cornerRadius">10dp</item>
+    </style>
+
+    <style name="button_apply" parent="button_in_dialog">
+        <item name="android:backgroundTint">@color/primary_color</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="cornerRadius">10dp</item>
+    </style>
+    
 </resources>

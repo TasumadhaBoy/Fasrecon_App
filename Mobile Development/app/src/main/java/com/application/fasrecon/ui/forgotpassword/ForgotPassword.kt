@@ -23,6 +23,27 @@ class ForgotPassword : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(p0: View?) {
         if (p0?.id == R.id.btn_ganti) {
+
+            val email = binding.emailInput.text.toString().trim()
+
+            if (email.isEmpty()) {
+                binding.emailInput.setError(
+                    resources.getString(R.string.field_email),
+                    null
+                )
+                binding.emailInput.requestFocus()
+                return
+            }
+            if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email)
+                    .matches() && email.isNotBlank()
+            ) {
+                binding.emailInput.setError(
+                    resources.getString(R.string.format_email),
+                    null
+                )
+                return
+            }
+
             val moveToLoginPage = Intent(this@ForgotPassword, LoginActivity::class.java)
             startActivity(moveToLoginPage)
         }
