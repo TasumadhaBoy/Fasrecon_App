@@ -1,10 +1,14 @@
 package com.application.fasrecon.ui.setting
 
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import android.widget.Button
 import android.widget.ImageButton
 import androidx.appcompat.app.AlertDialog
@@ -40,21 +44,25 @@ class SettingFragment : Fragment() {
 
     private fun showAlertDialog() {
 
-        val dialogView = layoutInflater.inflate(R.layout.alert_dialog, null)
+        val dialog = Dialog(requireContext())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(true)
+        dialog.setContentView(R.layout.logout_dialog)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.window?.setLayout(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
 
-        val alertDialog = AlertDialog.Builder(requireContext())
-            .setView(dialogView)
-            .create()
-
-        dialogView.findViewById<Button>(R.id.btn_cancel).setOnClickListener {
-            alertDialog.dismiss()
+        dialog.findViewById<Button>(R.id.btn_cancel).setOnClickListener {
+            dialog.dismiss()
         }
 
-        dialogView.findViewById<Button>(R.id.btn_logout).setOnClickListener {
+        dialog.findViewById<Button>(R.id.btn_logout).setOnClickListener {
             val intent = Intent(requireContext(), LoginActivity::class.java)
             startActivity(intent)
         }
 
-        alertDialog.show()
+        dialog.show()
     }
 }
