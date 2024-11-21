@@ -179,4 +179,31 @@
         <item name="android:textSize">24sp</item>
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="item_outfit_label_container">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">25dp</item>
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="cornerRadius">50dp</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="strokeColor">@color/primary_color</item>
+    </style>
+
+    <style name="item_outfit_label_text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingStart">25dp</item>
+        <item name="android:paddingEnd">25dp</item>
+        <item name="android:textColor">@color/primary_color</item>
+    </style>
+
+    <style name="button_active_type_outfit" parent="ThemeOverlay.Material3.Button">
+        <item name="android:padding">0dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">35dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="cornerRadius">50dp</item>
+    </style>
 </resources>
