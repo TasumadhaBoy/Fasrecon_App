@@ -1,5 +1,6 @@
 package com.application.fasrecon.ui.home
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.application.fasrecon.R
 import com.application.fasrecon.databinding.FragmentHomeBinding
+import com.application.fasrecon.ui.MainActivity
 
 class HomeFragment : Fragment() {
 
