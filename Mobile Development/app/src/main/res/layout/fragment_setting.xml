@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context=".ui.setting.SettingFragment">
+    tools:context=".ui.setting.SettingFragment"
+    android:theme="@style/Theme.Fasrecon_primary">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
