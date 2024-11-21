@@ -7,9 +7,7 @@
     android:layout_gravity="center"
     android:padding="8dp"
     card_view:cardCornerRadius="16dp"
-    card_view:circularflow_defaultRadius="16dp"
-    card_view:circularflow_radiusInDP="16dp"
-    card_view:layout_constraintCircleRadius="16dp">
+    android:theme="@style/Theme.Fasrecon_primary">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
