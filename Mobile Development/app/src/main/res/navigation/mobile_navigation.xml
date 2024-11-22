@@ -12,9 +12,9 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_myoutfit"
+        android:id="@+id/navigation_myclothes"
         android:name="com.application.fasrecon.ui.myclothes.MyClothesFragment"
-        android:label="@string/my_outfit"
+        android:label="@string/my_clothes"
         tools:layout="@layout/fragment_myclothes" />
 
     <fragment

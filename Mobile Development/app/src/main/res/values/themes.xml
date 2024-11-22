@@ -293,8 +293,8 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">bottom|end</item>
-        <item name="android:layout_marginEnd">20dp</item>
-        <item name="android:layout_marginBottom">24dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:layout_marginBottom">88dp</item>
         <item name="android:backgroundTint">@color/primary_color</item>
         <item name="tint">@color/white</item>
         <item name="srcCompat">@drawable/baseline_add_24</item>

@@ -28,10 +28,6 @@ class HomeFragment : Fragment() {
 
         (requireActivity() as AppCompatActivity).supportActionBar?.hide()
 
-        binding.myoutfitNavigation.setOnClickListener {
-
-        }
-
         binding.cardContainerCamera.setOnClickListener {
 
         }

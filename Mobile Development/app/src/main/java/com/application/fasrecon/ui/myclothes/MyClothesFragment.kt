@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.view.Window
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.application.fasrecon.R
@@ -33,8 +34,8 @@ class MyClothesFragment : Fragment() {
             showFilterDialog()
         }
 
-        binding.addClothes.setOnClickListener {
-
+        binding.addClothesButton.setOnClickListener {
+            showBottomSheetDialog()
         }
     }
 
@@ -70,6 +71,11 @@ class MyClothesFragment : Fragment() {
         dialog.show()
     }
 
+    private fun showBottomSheetDialog() {
+        val bottomSheetDialog = AddClothesBottomSheetDialog()
+        bottomSheetDialog.show(parentFragmentManager, AddClothesBottomSheetDialog.ADD_CLOTHES_BOTTOM_SHEET_DIALOG)
+    }
+
     private fun setAllClothesType(list: List<String>, recyclerView: RecyclerView): MyClothesTypeAdapter{
         val adapter = MyClothesTypeAdapter()
         adapter.submitList(list)
@@ -83,6 +89,7 @@ class MyClothesFragment : Fragment() {
         recyclerView.adapter = adapter
         return adapter
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
