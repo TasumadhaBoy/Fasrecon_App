@@ -21,7 +21,7 @@
         <item name="cornerRadius">12dp</item>
     </style>
 
-    <style name="cloth_list" parent="ThemeOverlay.Material3.Button">
+    <style name="clothes_list" parent="ThemeOverlay.Material3.Button">
         <item name="android:backgroundTint">@color/white</item>
         <item name="android:textColor">@color/primary_color</item>
         <item name="android:textStyle">normal</item>
@@ -129,7 +129,7 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
-    <style name="info_outfit_user">
+    <style name="info_clothes_user">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginStart">24dp</item>
@@ -149,7 +149,7 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
-    <style name="nav_myoutfit">
+    <style name="nav_myclothes">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginEnd">20dp</item>
@@ -180,7 +180,7 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="item_outfit_label_container">
+    <style name="item_clothes_label_container">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">25dp</item>
         <item name="android:backgroundTint">@color/white</item>
@@ -189,7 +189,7 @@
         <item name="strokeColor">@color/primary_color</item>
     </style>
 
-    <style name="item_outfit_label_text">
+    <style name="item_clothes_label_text">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:gravity">center</item>
@@ -198,7 +198,7 @@
         <item name="android:textColor">@color/primary_color</item>
     </style>
 
-    <style name="button_active_type_outfit" parent="ThemeOverlay.Material3.Button">
+    <style name="button_active_type_clothes" parent="ThemeOverlay.Material3.Button">
         <item name="android:padding">0dp</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">35dp</item>

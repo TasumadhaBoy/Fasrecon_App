@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/navigation_myoutfit"
-        android:name="com.application.fasrecon.ui.mycloth.MyClothesFragment"
+        android:name="com.application.fasrecon.ui.myclothes.MyClothesFragment"
         android:label="@string/my_outfit"
-        tools:layout="@layout/fragment_myoutfit" />
+        tools:layout="@layout/fragment_myclothes" />
 
     <fragment
         android:id="@+id/navigation_chatbot"

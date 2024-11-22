@@ -1,4 +1,4 @@
-package com.application.fasrecon.ui.mycloth
+package com.application.fasrecon.ui.myclothes
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

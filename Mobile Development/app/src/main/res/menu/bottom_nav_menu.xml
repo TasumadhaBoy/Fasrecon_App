@@ -8,7 +8,7 @@
 
     <item
         android:id="@+id/navigation_myoutfit"
-        android:icon="@drawable/myoutfit_menu_icon"
+        android:icon="@drawable/myclothes_menu_icon"
         android:title="@string/my_outfit" />
 
     <item

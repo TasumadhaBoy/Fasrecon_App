@@ -1,4 +1,4 @@
-package com.application.fasrecon.ui.mycloth
+package com.application.fasrecon.ui.myclothes
 
 import android.app.Dialog
 import android.graphics.Color
@@ -13,15 +13,15 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.application.fasrecon.R
-import com.application.fasrecon.databinding.FragmentMyoutfitBinding
+import com.application.fasrecon.databinding.FragmentMyclothesBinding
 
 class MyClothesFragment : Fragment() {
 
-    private var _binding: FragmentMyoutfitBinding? = null
+    private var _binding: FragmentMyclothesBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        _binding = FragmentMyoutfitBinding.inflate(inflater, container, false)
+        _binding = FragmentMyclothesBinding.inflate(inflater, container, false)
         val root: View = binding.root
         return root
     }

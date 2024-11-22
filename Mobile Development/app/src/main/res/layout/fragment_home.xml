@@ -43,7 +43,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/card_container_outfit_info"
+            android:id="@+id/card_container_clothes_info"
             android:layout_width="0dp"
             android:layout_height="100dp"
             android:background="@color/white"
@@ -61,26 +61,26 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/label_outfit_collection"
+                    android:id="@+id/label_clothes_collection"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="20dp"
-                    android:text="@string/outfit_collection"
+                    android:text="@string/clothes_collection"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
 
                 <TextView
-                    style="@style/info_outfit_user"
-                    android:id="@+id/info_outfit_collection"
-                    android:text="@string/outfit_user"
+                    style="@style/info_clothes_user"
+                    android:id="@+id/info_Clothes_collection"
+                    android:text="@string/clothes_user"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/label_outfit_collection"/>
+                    app:layout_constraintTop_toBottomOf="@id/label_clothes_collection"/>
 
                 <TextView
-                    style="@style/nav_myoutfit"
-                    android:id="@+id/myoutfit_navigation"
-                    android:text="@string/my_outfit"
+                    style="@style/nav_myclothes"
+                    android:id="@+id/myclothes_navigation"
+                    android:text="@string/my_clothes"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -91,7 +91,7 @@
             android:id="@+id/label_service"
             android:text="@string/service"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/card_container_outfit_info"/>
+            app:layout_constraintTop_toBottomOf="@id/card_container_clothes_info"/>
 
         <androidx.cardview.widget.CardView
             style="@style/card_service"
