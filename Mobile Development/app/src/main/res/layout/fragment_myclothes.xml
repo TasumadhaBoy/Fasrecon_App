@@ -1,67 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_fragment_activity"
     tools:context=".ui.myclothes.MyClothesFragment">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:background="@color/white"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:background="@color/background_fragment_activity">
+
+        <androidx.appcompat.widget.Toolbar
+            style="@style/custom_toolbar"
+            android:id="@+id/toolbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                style="@style/custom_title_toolbar"
+                android:id="@+id/title_fragment_menu"
+                android:text="@string/my_clothes" />
+        </androidx.appcompat.widget.Toolbar>
 
         <TextView
-            android:id="@+id/title_fragment_menu"
-            android:layout_width="match_parent"
+            android:id="@+id/label_your_clothes_collection"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/my_clothes"
-            android:textColor="@color/primary_color"
-            android:textSize="24sp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/your_clothes_collection"
+            android:textColor="@color/black"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textAlignment="center" />
-    </androidx.appcompat.widget.Toolbar>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
-    <TextView
-        android:id="@+id/label_your_clothes_collection"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/your_clothes_collection"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+        <ImageView
+            android:id="@+id/filter_clothes"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="24dp"
+            android:contentDescription="@string/filter"
+            android:src="@drawable/baseline_filter_list_24"
+            app:layout_constraintBottom_toBottomOf="@id/label_your_clothes_collection"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/label_your_clothes_collection" />
 
-    <ImageView
-        android:id="@+id/filter_clothes"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginEnd="24dp"
-        android:contentDescription="@string/filter"
-        android:src="@drawable/baseline_filter_list_24"
-        app:layout_constraintBottom_toBottomOf="@id/label_your_clothes_collection"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/label_your_clothes_collection" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_clothes"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label_your_clothes_collection"
+            tools:listitem="@layout/item_clothes_list" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list_clothes"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="20dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/label_your_clothes_collection"
-        tools:listitem="@layout/item_clothes_list" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        style="@style/fab_button"
+        android:id="@+id/add_clothes"
+        android:contentDescription="@string/add_new_clothes" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

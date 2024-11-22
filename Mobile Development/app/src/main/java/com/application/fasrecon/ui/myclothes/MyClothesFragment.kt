@@ -29,8 +29,12 @@ class MyClothesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.filterOutfit.setOnClickListener {
+        binding.filterClothes.setOnClickListener {
             showFilterDialog()
+        }
+
+        binding.addClothes.setOnClickListener {
+
         }
     }
 
@@ -47,7 +51,7 @@ class MyClothesFragment : Fragment() {
         )
 
         val list = listOf("T-shirt", "Shirt", "jacket", "Hoodie", "Polo Shirt", "Trucker")
-        val clothesList = dialog.findViewById<RecyclerView>(R.id.list_outfit_type)
+        val clothesList = dialog.findViewById<RecyclerView>(R.id.list_clothes_type)
         val adapter = setAllClothesType(list, clothesList)
         val layoutManager = LinearLayoutManager(requireActivity())
         clothesList.layoutManager = layoutManager

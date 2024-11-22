@@ -78,6 +78,9 @@
     <string name="profile_settings_arrow">Settings Arrow</string>
     <string name="notification_settings_icon">Notification Settings Icon</string>
     <string name="logout_icon">Logout Icon</string>
+    <string name="add_new_clothes">Add New Clothes</string>
+    <string name="take_a_photo">Take Picture</string>
+    <string name="gallery">Gallery</string>
     <string-array name="gender_array">
         <item>Laki-laki</item>
         <item>Perempuan</item>

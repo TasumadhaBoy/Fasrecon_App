@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_gravity="center"
+    android:padding="8dp"
+    card_view:cardCornerRadius="16dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingBottom="12dp">
+
+        <View
+            android:id="@+id/mini_path"
+            android:layout_width="50dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/path_color"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent"/>
+
+        <LinearLayout
+            style="@style/add_clothes_options"
+            android:id="@+id/take_picture_add_clothes"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@id/mini_path">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                style="@style/add_clothes_options_icon"
+                android:src="@drawable/baseline_photo_camera_24" />
+
+            <TextView
+                style="@style/add_clothes_options_text"
+                android:text="@string/take_a_photo" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/add_clothes_options"
+            android:id="@+id/gallery_add_clothes"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@id/take_picture_add_clothes">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                style="@style/add_clothes_options_icon"
+                android:src="@drawable/gallery_icon_24" />
+
+            <TextView
+                style="@style/add_clothes_options_text"
+                android:text="@string/gallery" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

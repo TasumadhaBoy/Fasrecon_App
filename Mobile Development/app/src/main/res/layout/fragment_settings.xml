@@ -8,23 +8,16 @@
     tools:context=".ui.setting.SettingFragment">
 
     <androidx.appcompat.widget.Toolbar
+        style="@style/custom_toolbar"
         android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" >
 
         <TextView
+            style="@style/custom_title_toolbar"
             android:id="@+id/title_fragment_menu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/settings"
-            android:textAlignment="center"
-            android:textColor="@color/primary_color"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:text="@string/settings" />
     </androidx.appcompat.widget.Toolbar>
 
     <ImageView
@@ -39,24 +32,16 @@
         tools:src="@tools:sample/avatars" />
 
     <TextView
+        style="@style/user_name"
         android:id="@+id/User_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:textSize="18sp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/User_profile"
         app:layout_constraintStart_toStartOf="@+id/User_profile"
         app:layout_constraintTop_toBottomOf="@+id/User_profile"
         tools:text="Fasrecon"/>
 
     <TextView
+        style="@style/user_email"
         android:id="@+id/user_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:textColor="@color/text_gray"
         app:layout_constraintEnd_toEndOf="@+id/User_name"
         app:layout_constraintStart_toStartOf="@+id/User_name"
         app:layout_constraintTop_toBottomOf="@+id/User_name"
