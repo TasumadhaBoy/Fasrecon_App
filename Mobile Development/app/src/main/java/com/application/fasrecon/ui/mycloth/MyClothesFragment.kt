@@ -1,10 +1,9 @@
-package com.application.fasrecon.ui.myoutfit
+package com.application.fasrecon.ui.mycloth
 
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.application.fasrecon.R
 import com.application.fasrecon.databinding.FragmentMyoutfitBinding
 
-class MyoutfitFragment : Fragment() {
+class MyClothesFragment : Fragment() {
 
     private var _binding: FragmentMyoutfitBinding? = null
     private val binding get() = _binding!!
@@ -48,26 +47,37 @@ class MyoutfitFragment : Fragment() {
         )
 
         val list = listOf("T-shirt", "Shirt", "jacket", "Hoodie", "Polo Shirt", "Trucker")
-        val clothList = dialog.findViewById<RecyclerView>(R.id.list_outfit_type)
-        setAllClothType(list, clothList)
+        val clothesList = dialog.findViewById<RecyclerView>(R.id.list_outfit_type)
+        val adapter = setAllClothesType(list, clothesList)
         val layoutManager = LinearLayoutManager(requireActivity())
-        clothList.layoutManager = layoutManager
+        clothesList.layoutManager = layoutManager
 
         dialog.findViewById<Button>(R.id.btn_cancel_filter).setOnClickListener {
             dialog.dismiss()
         }
 
         dialog.findViewById<Button>(R.id.btn_apply_filter).setOnClickListener {
-            dialog.dismiss()
+            val selectedItem = adapter.getSelectedItem()
+            if (selectedItem != null) {
+                dialog.dismiss()
+            }
         }
 
         dialog.show()
     }
 
-    private fun setAllClothType(list: List<String>, recyclerView: RecyclerView){
-        val adapter = ClothTypeAdapter()
+    private fun setAllClothesType(list: List<String>, recyclerView: RecyclerView): MyClothesTypeAdapter{
+        val adapter = MyClothesTypeAdapter()
         adapter.submitList(list)
         recyclerView.adapter = adapter
+        return adapter
+    }
+
+    private fun setListClothes(list: List<String>, recyclerView: RecyclerView): MyClothesTypeAdapter{
+        val adapter = MyClothesTypeAdapter()
+        adapter.submitList(list)
+        recyclerView.adapter = adapter
+        return adapter
     }
 
     override fun onDestroyView() {

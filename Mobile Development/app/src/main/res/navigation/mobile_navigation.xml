@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_myoutfit"
-        android:name="com.application.fasrecon.ui.myoutfit.MyoutfitFragment"
+        android:name="com.application.fasrecon.ui.mycloth.MyClothesFragment"
         android:label="@string/my_outfit"
         tools:layout="@layout/fragment_myoutfit" />
 

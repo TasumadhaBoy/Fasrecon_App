@@ -1,37 +1,40 @@
-package com.application.fasrecon.ui.myoutfit
+package com.application.fasrecon.ui.mycloth
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.application.fasrecon.databinding.ItemClothTypeBinding
 
-class ClothTypeAdapter: ListAdapter<String, ClothTypeAdapter.ListViewHolder>(DIFF_CALLBACK) {
+class MyClothesTypeAdapter: ListAdapter<String, MyClothesTypeAdapter.ListViewHolder>(DIFF_CALLBACK) {
 
+    private var clothList: List<String> = emptyList()
     private var radioChecked = -1
 
     inner class ListViewHolder (private val binding: ItemClothTypeBinding): ViewHolder(binding.root) {
         fun bind(type: String, pos: Int) {
             binding.tvClothType.text = type
             binding.radioBtn.isChecked = pos == radioChecked
-
             itemView.setOnClickListener {
-                radioCheckedInfo(itemView)
+                radioCheckedInfo()
             }
             binding.radioBtn.setOnClickListener {
-                radioCheckedInfo(binding.radioBtn)
+                radioCheckedInfo()
             }
         }
 
-        private fun radioCheckedInfo(view: View) {
+        private fun radioCheckedInfo() {
             val previousRadioChecked = radioChecked
             radioChecked = adapterPosition
             notifyItemChanged(previousRadioChecked)
             notifyItemChanged(radioChecked)
         }
+    }
+
+    fun getSelectedItem(): String? {
+        return if (radioChecked >= 0) getItem(radioChecked) else null
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
@@ -41,6 +44,10 @@ class ClothTypeAdapter: ListAdapter<String, ClothTypeAdapter.ListViewHolder>(DIF
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         holder.bind(getItem(position), position)
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(item: String, position: Int)
     }
 
     companion object {
