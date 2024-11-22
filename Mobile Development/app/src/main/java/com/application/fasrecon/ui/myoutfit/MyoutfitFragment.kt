@@ -1,17 +1,18 @@
 package com.application.fasrecon.ui.myoutfit
 
 import android.app.Dialog
-import android.content.Context
-import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.application.fasrecon.R
 import com.application.fasrecon.databinding.FragmentMyoutfitBinding
 
@@ -46,6 +47,12 @@ class MyoutfitFragment : Fragment() {
             ViewGroup.LayoutParams.WRAP_CONTENT
         )
 
+        val list = listOf("T-shirt", "Shirt", "jacket", "Hoodie", "Polo Shirt", "Trucker")
+        val clothList = dialog.findViewById<RecyclerView>(R.id.list_outfit_type)
+        setAllClothType(list, clothList)
+        val layoutManager = LinearLayoutManager(requireActivity())
+        clothList.layoutManager = layoutManager
+
         dialog.findViewById<Button>(R.id.btn_cancel_filter).setOnClickListener {
             dialog.dismiss()
         }
@@ -55,6 +62,12 @@ class MyoutfitFragment : Fragment() {
         }
 
         dialog.show()
+    }
+
+    private fun setAllClothType(list: List<String>, recyclerView: RecyclerView){
+        val adapter = ClothTypeAdapter()
+        adapter.submitList(list)
+        recyclerView.adapter = adapter
     }
 
     override fun onDestroyView() {

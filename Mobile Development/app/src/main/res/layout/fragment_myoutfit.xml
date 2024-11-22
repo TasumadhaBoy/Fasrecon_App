@@ -62,6 +62,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/label_your_outfit_collection"
-        tools:listitem="@layout/item_outfit_list" />
+        tools:listitem="@layout/item_cloth_list" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
