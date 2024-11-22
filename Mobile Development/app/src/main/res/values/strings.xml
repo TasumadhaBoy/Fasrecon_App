@@ -3,12 +3,12 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="title_menu_1">Outfit Recommendation</string>
+    <string name="title_menu_1">Clothes Recommendation</string>
     <string name="onboarding_page_image">Onboarding Page Image</string>
     <string name="description_menu_1">description menu 1</string>
     <string name="title_menu_2">Integrated Machine Learning</string>
     <string name="description_menu_2">description menu 2</string>
-    <string name="title_menu_3">Manage Outfit Easily</string>
+    <string name="title_menu_3">Manage Clothes Easily</string>
     <string name="description_menu_3">description menu 3</string>
     <string name="skip">Skip</string>
     <string name="login">Login</string>
@@ -49,7 +49,7 @@
     <string name="logout_alert">Logout</string>
     <string name="name">Name</string>
     <string name="save_profile">Save Profile</string>
-    <string name="your_outfit_collection">Your outfit collection</string>
+    <string name="your_clothes_collection">Your Clothes collection</string>
     <string name="warna">Warna</string>
     <string name="jenis">Jenis</string>
     <string name="nama_baju">Nama baju</string>
@@ -57,18 +57,18 @@
     <string name="field_gender">field gender cannot be blank</string>
     <string name="field_date">Field Date cannot be blank</string>
     <string name="field_checkbox">please agree with term\n</string>
-    <string name="my_outfit">My Outfit</string>
+    <string name="my_clothes">My Clothes</string>
     <string name="chatbot">Chatbot</string>
     <string name="hai_user">Hai, %1$s</string>
     <string name="image_profile_home_page">image profile home page</string>
-    <string name="outfit_collection">Outfit Collection</string>
-    <string name="outfit_user">%1$s Outfit</string>
+    <string name="clothes_collection">Clothes Collection</string>
+    <string name="clothes_user">%1$s Clothes</string>
     <string name="service">Service</string>
     <string name="chatbot_image">chatbot image</string>
     <string name="camera_image">camera image</string>
     <string name="camera">Camera</string>
-    <string name="outfit_image">Outfit Image</string>
-    <string name="choose_your_outfit_type">Choose your outfit type</string>
+    <string name="clothes_image">Clothes Image</string>
+    <string name="choose_your_clothes_type">Choose your Clothes type</string>
     <string name="cancel">Cancel</string>
     <string name="apply">Apply</string>
     <string name="filter">Filter</string>
@@ -78,6 +78,11 @@
     <string name="profile_settings_arrow">Settings Arrow</string>
     <string name="notification_settings_icon">Notification Settings Icon</string>
     <string name="logout_icon">Logout Icon</string>
+    <string name="add_new_clothes">Add New Clothes</string>
+    <string name="take_a_photo">Take Picture</string>
+    <string name="gallery">Gallery</string>
+    <string name="no_image">No Image Selected</string>
+    <string name="failed_take_photo">Failed to take a photo</string>
     <string-array name="gender_array">
         <item>Laki-laki</item>
         <item>Perempuan</item>

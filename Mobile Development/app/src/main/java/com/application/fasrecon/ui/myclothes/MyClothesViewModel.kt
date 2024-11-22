@@ -1,10 +1,10 @@
-package com.application.fasrecon.ui.myoutfit
+package com.application.fasrecon.ui.myclothes
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class MyoutfitViewModel : ViewModel() {
+class MyClothesViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is dashboard Fragment"

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="75dp"
+    android:layout_height="50dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
-        android:id="@+id/tv_outfit_type"
+        android:id="@+id/tv_clothes_type"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -17,10 +17,11 @@
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <RadioButton
+        android:id="@+id/radio_btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/tv_outfit_type"
-        app:layout_constraintBottom_toBottomOf="@id/tv_outfit_type"
+        app:layout_constraintTop_toTopOf="@id/tv_clothes_type"
+        app:layout_constraintBottom_toBottomOf="@id/tv_clothes_type"
         app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
