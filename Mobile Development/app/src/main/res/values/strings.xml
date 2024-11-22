@@ -81,6 +81,8 @@
     <string name="add_new_clothes">Add New Clothes</string>
     <string name="take_a_photo">Take Picture</string>
     <string name="gallery">Gallery</string>
+    <string name="no_image">No Image Selected</string>
+    <string name="failed_take_photo">Failed to take a photo</string>
     <string-array name="gender_array">
         <item>Laki-laki</item>
         <item>Perempuan</item>

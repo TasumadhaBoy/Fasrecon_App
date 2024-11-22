@@ -34,6 +34,10 @@ class SettingFragment : Fragment() {
             showAlertDialog()
         }
 
+        binding.logoutIcon.setOnClickListener {
+            showAlertDialog()
+        }
+
         binding.profileSettings.setOnClickListener {
             val intent = Intent(requireContext(), ProfileSetting::class.java)
             startActivity(intent)
