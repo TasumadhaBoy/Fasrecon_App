@@ -10,16 +10,22 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.application.fasrecon.R
 import com.application.fasrecon.databinding.FragmentSettingsBinding
 import com.application.fasrecon.ui.login.LoginActivity
-import com.application.fasrecon.ui.profile.ProfileSetting
+import com.application.fasrecon.ui.profile.ProfileSettings
 
-class SettingFragment : Fragment() {
+class SettingsFragment : Fragment() {
 
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!!
+
+    override fun onStart() {
+        super.onStart()
+        (requireActivity() as AppCompatActivity).supportActionBar?.show()
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
@@ -39,7 +45,7 @@ class SettingFragment : Fragment() {
         }
 
         binding.profileSettings.setOnClickListener {
-            val intent = Intent(requireContext(), ProfileSetting::class.java)
+            val intent = Intent(requireContext(), ProfileSettings::class.java)
             startActivity(intent)
         }
     }

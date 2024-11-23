@@ -5,7 +5,6 @@
     <color name="not_active_color">#515151</color>
     <color name="menu_container">#DEEFFF</color>
     <color name="background_fragment_activity">#F8FBFF</color>
-
     <color name="black">#FF000000</color>
     <color name="dark_shadow">#4D000000</color>
     <color name="white">#FFFFFF</color>
@@ -16,18 +15,6 @@
     <color name="circle2">#21283F</color>
     <color name="custom_blue">#4FACFE</color>
     <color name="transparent">#F8F9FD</color>
-
-    <style name="Text_header">
-        <item name="android:textSize">14sp</item>
-        <item name="android:textStyle">normal</item>
-    </style>
-
-    <style name="input_style">
-        <item name="boxStrokeColor">#4FACFE</item>
-        <item name="boxCornerRadiusBottomEnd">12dp</item>
-        <item name="boxCornerRadiusBottomStart">12dp</item>
-        <item name="boxCornerRadiusTopEnd">12dp</item>
-        <item name="boxCornerRadiusTopStart">12dp</item>
-        <item name="height">60dp</item>
-    </style>
+    <color name="field_disabled">#66BEDFFA</color>
+    <color name="text_disabled">#2C5478</color>
 </resources>

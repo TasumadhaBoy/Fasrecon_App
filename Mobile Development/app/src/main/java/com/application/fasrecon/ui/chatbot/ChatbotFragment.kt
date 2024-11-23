@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.application.fasrecon.databinding.FragmentChatbotBinding
@@ -12,8 +13,11 @@ class ChatbotFragment : Fragment() {
 
     private var _binding: FragmentChatbotBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+    override fun onStart() {
+        super.onStart()
+        (requireActivity() as AppCompatActivity).supportActionBar?.show()
+    }
+
     private val binding get() = _binding!!
 
     override fun onCreateView(
