@@ -6,23 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar_layout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/white">
-
-        <com.google.android.material.appbar.MaterialToolbar
-            style="@style/custom_toolbar"
-            android:id="@+id/topAppBar"
-            app:menu="@menu/appbar_menu" />
-
-    </com.google.android.material.appbar.AppBarLayout>
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         style="@style/custom_bottom_nav"
         android:id="@+id/nav_view"
@@ -40,7 +23,7 @@
         app:layout_constraintBottom_toTopOf="@id/nav_view"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appbar_layout"
+        app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/mobile_navigation" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

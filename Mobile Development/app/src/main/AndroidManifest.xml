@@ -44,7 +44,6 @@
         <activity
             android:name=".ui.MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.Fasrecon_primary" />
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"

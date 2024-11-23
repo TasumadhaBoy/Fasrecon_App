@@ -22,11 +22,6 @@ class MyClothesFragment : Fragment() {
     private var _binding: FragmentMyclothesBinding? = null
     private val binding get() = _binding!!
 
-    override fun onStart() {
-        super.onStart()
-        (requireActivity() as AppCompatActivity).supportActionBar?.show()
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentMyclothesBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -35,6 +30,9 @@ class MyClothesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (requireActivity() as AppCompatActivity).setSupportActionBar(binding.topAppBar)
+        (requireActivity() as AppCompatActivity).supportActionBar?.title = getString(R.string.my_clothes)
+
 
         binding.filterClothes.setOnClickListener {
             showFilterDialog()

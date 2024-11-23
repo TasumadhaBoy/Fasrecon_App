@@ -22,7 +22,7 @@
     <string name="logout">Logout</string>
     <string name="log_out">Log out</string>
     <string name="cancel_setting">Cancel</string>
-    <string name="title_profile">Profile</string>
+    <string name="profile">Profile</string>
     <string name="masukan_username">Masukan Username</string>
     <string name="username">Username</string>
     <string name="email">Email</string>
