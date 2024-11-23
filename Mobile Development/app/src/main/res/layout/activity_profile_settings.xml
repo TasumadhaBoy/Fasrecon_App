@@ -110,6 +110,7 @@
 
     <TextView
         style="@style/change_password_navigation"
+        android:id="@+id/change_password"
         android:text="@string/change_password"
         app:layout_constraintTop_toBottomOf="@id/pass_edit"
         app:layout_constraintEnd_toEndOf="parent" />

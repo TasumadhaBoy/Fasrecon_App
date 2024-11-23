@@ -3,6 +3,8 @@ package com.application.fasrecon.ui.profile
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -22,6 +24,7 @@ class ProfileSettings : AppCompatActivity() {
         binding = ActivityProfileSettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.topAppBar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         binding.nameEditInputLayout.setEndIconOnClickListener {
             binding.nameEditInputLayout.isEnabled = true
@@ -37,11 +40,14 @@ class ProfileSettings : AppCompatActivity() {
             false
         }
 
-
         binding.nameEditInput.setOnFocusChangeListener { _, hasFocus ->
             if (!hasFocus) {
                 binding.nameEditInput.isEnabled = false
             }
+        }
+
+        binding.changePassword.setOnClickListener {
+            
         }
 
         binding.saveBtn.setOnClickListener {
@@ -56,5 +62,12 @@ class ProfileSettings : AppCompatActivity() {
         binding.nameEditInput.isEnabled = false
         val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(binding.nameEditInput.windowToken, 0)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            finish()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
