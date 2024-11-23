@@ -3,15 +3,18 @@ package com.application.fasrecon.ui.myclothes
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import android.view.WindowInsetsController
 import android.widget.Button
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.application.fasrecon.R
@@ -22,8 +25,11 @@ class MyClothesFragment : Fragment() {
     private var _binding: FragmentMyclothesBinding? = null
     private val binding get() = _binding!!
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         _binding = FragmentMyclothesBinding.inflate(inflater, container, false)
         val root: View = binding.root
         return root
@@ -31,9 +37,7 @@ class MyClothesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (requireActivity() as AppCompatActivity).setSupportActionBar(binding.topAppBar)
-        (requireActivity() as AppCompatActivity).supportActionBar?.title = getString(R.string.my_clothes)
-
+        setActionBar()
 
         binding.filterClothes.setOnClickListener {
             showFilterDialog()
@@ -42,6 +46,12 @@ class MyClothesFragment : Fragment() {
         binding.addClothesButton.setOnClickListener {
             showBottomSheetDialog()
         }
+    }
+
+    private fun setActionBar() {
+        (requireActivity() as AppCompatActivity).setSupportActionBar(binding.topAppBar)
+        (requireActivity() as AppCompatActivity).supportActionBar?.title =
+            getString(R.string.my_clothes)
     }
 
     private fun showFilterDialog() {
@@ -78,17 +88,26 @@ class MyClothesFragment : Fragment() {
 
     private fun showBottomSheetDialog() {
         val bottomSheetDialog = AddClothesBottomSheetDialog()
-        bottomSheetDialog.show(parentFragmentManager, AddClothesBottomSheetDialog.ADD_CLOTHES_BOTTOM_SHEET_DIALOG)
+        bottomSheetDialog.show(
+            parentFragmentManager,
+            AddClothesBottomSheetDialog.ADD_CLOTHES_BOTTOM_SHEET_DIALOG
+        )
     }
 
-    private fun setAllClothesType(list: List<String>, recyclerView: RecyclerView): MyClothesTypeAdapter{
+    private fun setAllClothesType(
+        list: List<String>,
+        recyclerView: RecyclerView
+    ): MyClothesTypeAdapter {
         val adapter = MyClothesTypeAdapter()
         adapter.submitList(list)
         recyclerView.adapter = adapter
         return adapter
     }
 
-    private fun setListClothes(list: List<String>, recyclerView: RecyclerView): MyClothesTypeAdapter{
+    private fun setListClothes(
+        list: List<String>,
+        recyclerView: RecyclerView
+    ): MyClothesTypeAdapter {
         val adapter = MyClothesTypeAdapter()
         adapter.submitList(list)
         recyclerView.adapter = adapter

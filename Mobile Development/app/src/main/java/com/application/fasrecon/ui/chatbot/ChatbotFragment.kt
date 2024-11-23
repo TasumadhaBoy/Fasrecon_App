@@ -1,12 +1,14 @@
 package com.application.fasrecon.ui.chatbot
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowInsetsController
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.application.fasrecon.R
 import com.application.fasrecon.databinding.FragmentChatbotBinding
 
@@ -15,7 +17,11 @@ class ChatbotFragment : Fragment() {
     private var _binding: FragmentChatbotBinding? = null
     private val binding get() = _binding!!
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         _binding = FragmentChatbotBinding.inflate(inflater, container, false)
         val root: View = binding.root
         return root
@@ -23,8 +29,13 @@ class ChatbotFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setActionBar()
+    }
+
+    private fun setActionBar() {
         (requireActivity() as AppCompatActivity).setSupportActionBar(binding.topAppBar)
-        (requireActivity() as AppCompatActivity).supportActionBar?.title = getString(R.string.chatbot)
+        (requireActivity() as AppCompatActivity).supportActionBar?.title =
+            getString(R.string.chatbot)
     }
 
     override fun onDestroyView() {

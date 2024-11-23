@@ -18,12 +18,13 @@
         <activity
             android:name=".ui.changepassword.ChangePassword"
             android:exported="false"
-            android:theme="@style/Theme.Fasrecon_primary"/>
+            android:label="@string/change_password"
+            android:theme="@style/Theme.Fasrecon_secondary"/>
         <activity
             android:name=".ui.profile.ProfileSettings"
             android:exported="false"
             android:label="Profile Settings"
-            android:theme="@style/Theme.Fasrecon_primary" />
+            android:theme="@style/Theme.Fasrecon_secondary" />
         <activity
             android:name=".ui.forgotpassword.ForgotPassword"
             android:exported="false"
@@ -40,16 +41,17 @@
             android:name=".ui.onboardingpage.OnboardingPageActivity"
             android:exported="true"
             android:theme="@style/Theme.Fasrecon_primary">
+        </activity>
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Fasrecon_primary">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.MainActivity"
-            android:exported="true"
-            android:theme="@style/Theme.Fasrecon_primary" />
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"
