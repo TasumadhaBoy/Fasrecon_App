@@ -45,16 +45,8 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/input_layout_enabled"
                 android:id="@+id/text_email_layout_login"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="8dp"
-                app:boxCornerRadiusBottomEnd="12dp"
-                app:boxCornerRadiusBottomStart="12dp"
-                app:boxCornerRadiusTopEnd="12dp"
-                app:boxCornerRadiusTopStart="12dp"
-                app:boxStrokeColor="@color/primary_color"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/email_login"
                 app:startIconDrawable="@drawable/emal_icon">
@@ -75,15 +67,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/text_email_layout_login" />
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/input_layout_enabled"
                 android:id="@+id/text_password_layout_login"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="8dp"
-                app:boxCornerRadiusBottomEnd="12dp"
-                app:boxCornerRadiusBottomStart="12dp"
-                app:boxCornerRadiusTopEnd="12dp"
-                app:boxCornerRadiusTopStart="12dp"
                 app:boxStrokeColor="@color/primary_color"
                 app:endIconMode="password_toggle"
                 app:layout_constraintStart_toStartOf="parent"

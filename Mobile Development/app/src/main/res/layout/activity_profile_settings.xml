@@ -116,7 +116,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        style="@style/button_save_profile"
+        style="@style/button_save_and_change"
         android:id="@+id/save_btn"
         android:text="@string/save_profile"
         app:layout_constraintEnd_toEndOf="parent"

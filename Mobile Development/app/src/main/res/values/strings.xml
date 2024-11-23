@@ -85,6 +85,8 @@
     <string name="failed_take_photo">Failed to take a photo</string>
     <string name="image_profile_settings">Image Profile Settings</string>
     <string name="change_password">Change Password</string>
+    <string name="current_password">Current Password</string>
+    <string name="new_password_format">* Your new password must be at least\n \ \ 8 characters</string>
     <string-array name="gender_array">
         <item>Laki-laki</item>
         <item>Perempuan</item>

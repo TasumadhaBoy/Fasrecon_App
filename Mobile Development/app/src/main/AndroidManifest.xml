@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
 
     <application
@@ -15,10 +16,14 @@
         android:supportsRtl="true"
         tools:targetApi="31">
         <activity
+            android:name=".ui.changepassword.ChangePassword"
+            android:exported="false"
+            android:theme="@style/Theme.Fasrecon_primary"/>
+        <activity
             android:name=".ui.profile.ProfileSettings"
             android:exported="false"
-            android:theme="@style/Theme.Fasrecon_primary"
-            android:label="Profile Settings"/>
+            android:label="Profile Settings"
+            android:theme="@style/Theme.Fasrecon_primary" />
         <activity
             android:name=".ui.forgotpassword.ForgotPassword"
             android:exported="false"
@@ -50,7 +55,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             tools:ignore="DiscouragedApi,LockedOrientationActivity,MissingClass" />
-
     </application>
 
 </manifest>

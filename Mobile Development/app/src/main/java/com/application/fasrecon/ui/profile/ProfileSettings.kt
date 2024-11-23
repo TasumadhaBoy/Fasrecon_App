@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.application.fasrecon.databinding.ActivityProfileSettingsBinding
 import com.application.fasrecon.ui.MainActivity
+import com.application.fasrecon.ui.changepassword.ChangePassword
 
 class ProfileSettings : AppCompatActivity() {
 
@@ -47,7 +48,8 @@ class ProfileSettings : AppCompatActivity() {
         }
 
         binding.changePassword.setOnClickListener {
-            
+            val intent = Intent(this, ChangePassword::class.java)
+            startActivity(intent)
         }
 
         binding.saveBtn.setOnClickListener {
