@@ -47,6 +47,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                         resources.getString(R.string.format_email),
                         null
                     )
+                    binding.emailLoginInput.requestFocus()
                     return
                 }
                 if (password.isEmpty()) {
@@ -62,6 +63,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                         resources.getString(R.string.format_password),
                         null
                     )
+                    binding.passwordLoginInput.requestFocus()
                     return
                 }
 
@@ -83,6 +85,5 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(moveToForgotPasswordPage)
             }
         }
-
     }
 }

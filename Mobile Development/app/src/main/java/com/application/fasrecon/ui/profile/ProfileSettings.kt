@@ -2,16 +2,21 @@ package com.application.fasrecon.ui.profile
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.MotionEvent
 import android.view.View
+import android.view.WindowInsetsController
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import com.application.fasrecon.R
 import com.application.fasrecon.databinding.ActivityProfileSettingsBinding
 import com.application.fasrecon.ui.MainActivity
+import com.application.fasrecon.ui.changepassword.ChangePassword
 
 class ProfileSettings : AppCompatActivity() {
 
@@ -20,11 +25,9 @@ class ProfileSettings : AppCompatActivity() {
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityProfileSettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setSupportActionBar(binding.topAppBar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        setActionBar()
 
         binding.nameEditInputLayout.setEndIconOnClickListener {
             binding.nameEditInputLayout.isEnabled = true
@@ -40,14 +43,9 @@ class ProfileSettings : AppCompatActivity() {
             false
         }
 
-        binding.nameEditInput.setOnFocusChangeListener { _, hasFocus ->
-            if (!hasFocus) {
-                binding.nameEditInput.isEnabled = false
-            }
-        }
-
         binding.changePassword.setOnClickListener {
-            
+            val intent = Intent(this, ChangePassword::class.java)
+            startActivity(intent)
         }
 
         binding.saveBtn.setOnClickListener {
@@ -56,6 +54,11 @@ class ProfileSettings : AppCompatActivity() {
             Toast.makeText(this, "Profile Updated", Toast.LENGTH_SHORT).show()
         }
 
+    }
+
+    private fun setActionBar() {
+        setSupportActionBar(binding.topAppBar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     private fun disabledText() {
