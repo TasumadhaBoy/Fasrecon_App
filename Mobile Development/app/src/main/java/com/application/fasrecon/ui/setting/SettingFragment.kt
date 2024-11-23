@@ -42,7 +42,6 @@ class SettingFragment : Fragment() {
             val intent = Intent(requireContext(), ProfileSetting::class.java)
             startActivity(intent)
         }
-
     }
 
     private fun showAlertDialog() {

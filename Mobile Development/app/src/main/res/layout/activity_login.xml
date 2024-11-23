@@ -37,7 +37,7 @@
             android:padding="16dp">
 
             <TextView
-                style="@style/tv_label_loginpage"
+                style="@style/tv_label_input_text"
                 android:id="@+id/email_login"
                 android:layout_marginTop="8dp"
                 android:text="@string/email"
@@ -67,7 +67,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                style="@style/tv_label_loginpage"
+                style="@style/tv_label_input_text"
                 android:id="@+id/password_login"
                 android:layout_marginTop="24dp"
                 android:text="@string/password"

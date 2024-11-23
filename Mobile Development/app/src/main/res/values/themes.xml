@@ -42,7 +42,7 @@
     <style name="button_login_loginpage" parent="ThemeOverlay.Material3.Button">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">60dp</item>
-        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginTop">20dp</item>
         <item name="android:backgroundTint">@color/primary_color</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">20sp</item>
@@ -70,15 +70,18 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <style name="tv_label_loginpage" parent="tv_common_loginpage">
+    <style name="tv_label_input_text" parent="tv_common_loginpage">
         <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/text_gray</item>
+        <item name="android:layout_marginStart">4dp</item>
     </style>
 
     <style name="tv_forgot_loginpage" parent="tv_common_loginpage">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/primary_color</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:layout_marginStart">4dp</item>
     </style>
 
     <style name="bold_tv_nav">
