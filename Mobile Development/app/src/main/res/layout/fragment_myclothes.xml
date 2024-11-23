@@ -11,18 +11,22 @@
         android:layout_height="match_parent"
         android:background="@color/background_fragment_activity">
 
-        <androidx.appcompat.widget.Toolbar
-            style="@style/custom_toolbar"
-            android:id="@+id/toolbar"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:background="@color/white">
 
-            <TextView
-                style="@style/custom_title_toolbar"
-                android:id="@+id/title_fragment_menu"
-                android:text="@string/my_clothes" />
-        </androidx.appcompat.widget.Toolbar>
+            <com.google.android.material.appbar.MaterialToolbar
+                style="@style/custom_toolbar"
+                android:id="@+id/topAppBar"
+                app:menu="@menu/appbar_menu" />
+
+        </com.google.android.material.appbar.AppBarLayout>
 
         <TextView
             android:id="@+id/label_your_clothes_collection"
@@ -35,7 +39,7 @@
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar" />
+            app:layout_constraintTop_toBottomOf="@id/appbar_layout" />
 
         <ImageView
             android:id="@+id/filter_clothes"

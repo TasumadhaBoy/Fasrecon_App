@@ -10,13 +10,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.application.fasrecon.R
 import com.application.fasrecon.databinding.FragmentSettingsBinding
 import com.application.fasrecon.ui.login.LoginActivity
-import com.application.fasrecon.ui.profile.ProfileSetting
+import com.application.fasrecon.ui.profile.ProfileSettings
 
-class SettingFragment : Fragment() {
+class SettingsFragment : Fragment() {
 
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!!
@@ -29,6 +30,9 @@ class SettingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (requireActivity() as AppCompatActivity).setSupportActionBar(binding.topAppBar)
+        (requireActivity() as AppCompatActivity).supportActionBar?.title = getString(R.string.profile)
+
 
         binding.LogoutMenu.setOnClickListener {
             showAlertDialog()
@@ -39,7 +43,7 @@ class SettingFragment : Fragment() {
         }
 
         binding.profileSettings.setOnClickListener {
-            val intent = Intent(requireContext(), ProfileSetting::class.java)
+            val intent = Intent(requireContext(), ProfileSettings::class.java)
             startActivity(intent)
         }
     }
