@@ -25,10 +25,6 @@ class MyClothesListAdapter: ListAdapter<String, MyClothesListAdapter.ListViewHol
         holder.bind(getItem(position), position)
     }
 
-    interface OnItemClickListener {
-        fun onItemClick(item: String, position: Int)
-    }
-
     companion object {
         val DIFF_CALLBACK: DiffUtil.ItemCallback<String> =
             object : DiffUtil.ItemCallback<String>(){

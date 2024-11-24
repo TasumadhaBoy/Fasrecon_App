@@ -37,5 +37,5 @@
         app:layout_constraintBottom_toBottomOf="@id/country_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/country_name" />
-    
+
 </androidx.constraintlayout.widget.ConstraintLayout>
