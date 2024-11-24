@@ -19,7 +19,7 @@ import com.application.fasrecon.ui.MainActivity
 @SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivitySplashScreenBinding
+    private lateinit var binding: ActivitySplashScreenBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,34 +42,49 @@ class SplashScreenActivity : AppCompatActivity() {
         }
     }
 
-    private fun showAnimation() {
-        val background1ScaleX = ObjectAnimator.ofFloat(binding.logoBackground1, View.SCALE_X, 1f, 1.25f).apply {
-            duration = 1000
-            startDelay = 200
-            repeatMode = ObjectAnimator.REVERSE
-            repeatCount = 2
-        }
-        val background1ScaleY = ObjectAnimator.ofFloat(binding.logoBackground1, View.SCALE_Y, 1f, 1.25f).apply {
-            duration = 1000
-            startDelay = 200
-            repeatMode = ObjectAnimator.REVERSE
-            repeatCount = 2
-        }
 
-        val background2ScaleX = ObjectAnimator.ofFloat(binding.logoBackground2, View.SCALE_X, 1f, 1.25f).apply {
-            duration = 1000
-            repeatMode = ObjectAnimator.REVERSE
-            repeatCount = 2
-        }
-        val background2ScaleY = ObjectAnimator.ofFloat(binding.logoBackground2, View.SCALE_Y, 1f, 1.25f).apply {
-            duration = 1000
-            repeatMode = ObjectAnimator.REVERSE
-            repeatCount = 2
-        }
+    private fun showAnimation() {
+        val background1ScaleX = animationScale(binding.logoBackground1, "SCALE_X", 200)
+        val background1ScaleY = animationScale(binding.logoBackground1, "SCALE_Y",200)
+
+        val background2ScaleX = animationScale(binding.logoBackground2, "SCALE_X")
+        val background2ScaleY = animationScale(binding.logoBackground2, "SCALE_Y")
+
+        val appNameAlpha = ObjectAnimator.ofFloat(binding.appText, View.ALPHA, 1f).setDuration(1000)
+        val appNameScaleX =
+            ObjectAnimator.ofFloat(binding.appText, View.SCALE_X, 0.25f, 1f).setDuration(1000)
+        val appNameScaleY =
+            ObjectAnimator.ofFloat(binding.appText, View.SCALE_Y, 0.25f, 1f).setDuration(1000)
 
         AnimatorSet().apply {
-            playTogether(background1ScaleX, background1ScaleY, background2ScaleX, background2ScaleY)
+            playTogether(
+                background1ScaleX,
+                background1ScaleY,
+                background2ScaleX,
+                background2ScaleY,
+                appNameAlpha,
+                appNameScaleX,
+                appNameScaleY
+            )
             start()
+        }
+    }
+
+    private fun animationScale(
+        view: View,
+        type: String,
+        mStartDelay: Long = 0
+    ): ObjectAnimator {
+        var typeView = View.SCALE_X
+        if (type == "SCALE_Y") {
+            typeView = View.SCALE_Y
+        }
+
+        return ObjectAnimator.ofFloat(view, typeView, 1f, 1.25f).apply {
+            duration = 1000
+            startDelay = mStartDelay
+            repeatMode = ObjectAnimator.REVERSE
+            repeatCount = 1
         }
     }
 }

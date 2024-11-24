@@ -394,5 +394,20 @@
         <item name="android:layout_marginTop">12dp</item>
         <item name="android:layout_marginEnd">24dp</item>
     </style>
+
+    <style name="logo_splash_screen">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="app_name">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/primary_color</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAlignment">center</item>
+    </style>
     
 </resources>
