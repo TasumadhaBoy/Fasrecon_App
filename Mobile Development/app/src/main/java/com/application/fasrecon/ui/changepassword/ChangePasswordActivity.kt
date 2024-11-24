@@ -1,28 +1,17 @@
 package com.application.fasrecon.ui.changepassword
 
-import android.content.Intent
 import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
-import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
-import android.view.WindowInsetsController
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.application.fasrecon.R
 import com.application.fasrecon.databinding.ActivityChangePasswordBinding
-import com.application.fasrecon.ui.MainActivity
-import com.application.fasrecon.ui.forgotpassword.ForgotPassword
-import com.application.fasrecon.ui.register.RegisterActivity
 
-class ChangePassword : AppCompatActivity(), View.OnClickListener {
+class ChangePasswordActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityChangePasswordBinding
 

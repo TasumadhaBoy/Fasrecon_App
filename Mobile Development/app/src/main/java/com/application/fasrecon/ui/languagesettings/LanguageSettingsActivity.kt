@@ -1,11 +1,13 @@
 package com.application.fasrecon.ui.languagesettings
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.SimpleItemAnimator
 import com.application.fasrecon.R
 import com.application.fasrecon.databinding.ActivityLanguageSettingsBinding
 
@@ -17,12 +19,13 @@ class LanguageSettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityLanguageSettingsBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_language_settings)
+        setContentView(binding.root)
+
+        setListLanguage()
 
         val layoutManager = LinearLayoutManager(this)
         binding.listLanguage.layoutManager = layoutManager
-
-        setListLanguage()
+        (binding.listLanguage.itemAnimator as? SimpleItemAnimator)?.supportsChangeAnimations = false
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())

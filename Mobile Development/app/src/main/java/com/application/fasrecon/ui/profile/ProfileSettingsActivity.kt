@@ -2,23 +2,17 @@ package com.application.fasrecon.ui.profile
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
-import android.view.Menu
 import android.view.MenuItem
 import android.view.MotionEvent
-import android.view.View
-import android.view.WindowInsetsController
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import com.application.fasrecon.R
 import com.application.fasrecon.databinding.ActivityProfileSettingsBinding
 import com.application.fasrecon.ui.MainActivity
-import com.application.fasrecon.ui.changepassword.ChangePassword
+import com.application.fasrecon.ui.changepassword.ChangePasswordActivity
 
-class ProfileSettings : AppCompatActivity() {
+class ProfileSettingsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityProfileSettingsBinding
 
@@ -44,7 +38,7 @@ class ProfileSettings : AppCompatActivity() {
         }
 
         binding.changePassword.setOnClickListener {
-            val intent = Intent(this, ChangePassword::class.java)
+            val intent = Intent(this, ChangePasswordActivity::class.java)
             startActivity(intent)
         }
 

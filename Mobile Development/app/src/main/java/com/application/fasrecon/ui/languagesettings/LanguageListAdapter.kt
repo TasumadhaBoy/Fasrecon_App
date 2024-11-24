@@ -1,28 +1,47 @@
 package com.application.fasrecon.ui.languagesettings
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.application.fasrecon.R
 import com.application.fasrecon.data.preferences.LanguageModel
 import com.application.fasrecon.databinding.ItemLanguageSettingsBinding
 
 class LanguageListAdapter :
     ListAdapter<LanguageModel, LanguageListAdapter.LanguageViewHolder>(DIFF_CALLBACK) {
-    class LanguageViewHolder(private val binding: ItemLanguageSettingsBinding) :
+
+        private var languageChecked = -1
+
+    inner class LanguageViewHolder(private val binding: ItemLanguageSettingsBinding) :
         ViewHolder(binding.root) {
-        fun bind(language: LanguageModel) {
+        fun bind(language: LanguageModel, pos: Int) {
             binding.countryImage.setImageDrawable(language.countryImage)
             binding.countryName.text = language.countryName
 
-            if (language.checked) {
+            if (pos == languageChecked) {
                 binding.languageChecked.visibility = View.VISIBLE
+                binding.languageContainer.setBackgroundResource(R.drawable.custom_language_settings_checked)
             } else {
                 binding.languageChecked.visibility = View.GONE
+                binding.languageContainer.setBackgroundResource(R.drawable.custom_language_settings_unchecked)
             }
+
+            itemView.setOnClickListener {
+                languageCheckedInfo()
+            }
+        }
+
+        private fun languageCheckedInfo() {
+            val previousLanguageChecked = languageChecked
+            languageChecked = adapterPosition
+            notifyItemChanged(previousLanguageChecked)
+            notifyItemChanged(languageChecked)
         }
     }
 
@@ -36,7 +55,8 @@ class LanguageListAdapter :
     }
 
     override fun onBindViewHolder(holder: LanguageViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), position)
+        Log.d("Mantap", getItem(position).toString())
     }
 
     companion object {

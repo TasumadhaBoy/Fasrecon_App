@@ -14,8 +14,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.application.fasrecon.R
 import com.application.fasrecon.databinding.FragmentSettingsBinding
+import com.application.fasrecon.ui.languagesettings.LanguageSettingsActivity
 import com.application.fasrecon.ui.login.LoginActivity
-import com.application.fasrecon.ui.profile.ProfileSettings
+import com.application.fasrecon.ui.profile.ProfileSettingsActivity
 
 class SettingsFragment : Fragment() {
 
@@ -36,17 +37,22 @@ class SettingsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setActionBar()
 
+        binding.profileSettings.setOnClickListener {
+            val intent = Intent(requireContext(), ProfileSettingsActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.languageSettings.setOnClickListener {
+            val intent = Intent(requireContext(), LanguageSettingsActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.LogoutMenu.setOnClickListener {
             showAlertDialog()
         }
 
         binding.logoutIcon.setOnClickListener {
             showAlertDialog()
-        }
-
-        binding.profileSettings.setOnClickListener {
-            val intent = Intent(requireContext(), ProfileSettings::class.java)
-            startActivity(intent)
         }
     }
 
