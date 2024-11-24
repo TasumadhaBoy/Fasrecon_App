@@ -11,7 +11,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.application.fasrecon.R
 import com.application.fasrecon.databinding.ActivityMainBinding
 
-@Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
