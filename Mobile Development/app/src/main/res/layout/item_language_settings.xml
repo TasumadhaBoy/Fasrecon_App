@@ -23,27 +23,19 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
+        style="@style/country_name"
         android:id="@+id/country_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:textColor="@color/black"
-        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@id/country_image"
         app:layout_constraintStart_toEndOf="@+id/country_image"
         app:layout_constraintTop_toTopOf="@+id/country_image"
         tools:text="Indonesia" />
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
+        style="@style/check_icon"
         android:id="@+id/language_checked"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
         android:src="@drawable/baseline_check_24"
-        android:tint="@color/primary_color"
         app:layout_constraintBottom_toBottomOf="@id/country_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/country_name" />
-
-
+    
 </androidx.constraintlayout.widget.ConstraintLayout>
