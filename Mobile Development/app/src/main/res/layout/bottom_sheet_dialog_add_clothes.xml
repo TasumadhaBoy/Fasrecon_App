@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:background="@drawable/custom_bottom_sheet_dialog_add_clothes"
+    android:background="@drawable/custom_bottom_sheet_dialog"
     android:paddingBottom="16dp">
 
     <View

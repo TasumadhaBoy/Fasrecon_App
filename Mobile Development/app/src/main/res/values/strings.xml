@@ -88,6 +88,9 @@
     <string name="current_password">Current Password</string>
     <string name="new_password_format">*Your new password must be at least\n \ 8 characters</string>
     <string name="fasrecon">Fasrecon</string>
+    <string name="english_us">English (US)</string>
+    <string name="english_uk">English (UK)</string>
+    <string name="indonesia">Indonesia</string>
     <string-array name="gender_array">
         <item>Laki-laki</item>
         <item>Perempuan</item>
