@@ -16,6 +16,10 @@
         android:supportsRtl="true"
         tools:targetApi="31">
         <activity
+            android:name=".ui.languagesettings.LanguageSettingsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Fasrecon_primary"/>
+        <activity
             android:name=".ui.splashscreen.SplashScreenActivity"
             android:exported="true"
             android:theme="@style/Theme.Fasrecon_primary">
@@ -26,12 +30,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.changepassword.ChangePassword"
+            android:name=".ui.changepassword.ChangePasswordActivity"
             android:exported="false"
             android:label="@string/change_password"
             android:theme="@style/Theme.Fasrecon_secondary" />
         <activity
-            android:name=".ui.profile.ProfileSettings"
+            android:name=".ui.profile.ProfileSettingsActivity"
             android:exported="false"
             android:label="Profile Settings"
             android:theme="@style/Theme.Fasrecon_secondary" />
@@ -50,13 +54,11 @@
         <activity
             android:name=".ui.onboardingpage.OnboardingPageActivity"
             android:exported="false"
-            android:theme="@style/Theme.Fasrecon_primary"/>
+            android:theme="@style/Theme.Fasrecon_primary" />
         <activity
             android:name=".ui.MainActivity"
             android:exported="false"
-            android:theme="@style/Theme.Fasrecon_primary">
-
-        </activity>
+            android:theme="@style/Theme.Fasrecon_primary"/>
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"
