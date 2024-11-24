@@ -218,7 +218,6 @@
         <item name="android:paddingEnd">25dp</item>
         <item name="android:textColor">@color/primary_color</item>
     </style>
-
     <style name="button_active_type_clothes" parent="ThemeOverlay.Material3.Button">
         <item name="android:padding">0dp</item>
         <item name="android:layout_width">wrap_content</item>

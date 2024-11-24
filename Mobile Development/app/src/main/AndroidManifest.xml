@@ -16,6 +16,9 @@
         android:supportsRtl="true"
         tools:targetApi="31">
         <activity
+            android:name=".ui.languagesettings.LanguageSettingsActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.splashscreen.SplashScreenActivity"
             android:exported="true"
             android:theme="@style/Theme.Fasrecon_primary">
@@ -50,13 +53,11 @@
         <activity
             android:name=".ui.onboardingpage.OnboardingPageActivity"
             android:exported="false"
-            android:theme="@style/Theme.Fasrecon_primary"/>
+            android:theme="@style/Theme.Fasrecon_primary" />
         <activity
             android:name=".ui.MainActivity"
             android:exported="false"
-            android:theme="@style/Theme.Fasrecon_primary">
-
-        </activity>
+            android:theme="@style/Theme.Fasrecon_primary"></activity>
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"

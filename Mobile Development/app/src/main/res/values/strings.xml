@@ -91,6 +91,7 @@
     <string name="english_us">English (US)</string>
     <string name="english_uk">English (UK)</string>
     <string name="indonesia">Indonesia</string>
+    <string name="save_settings">Save Settings</string>
     <string-array name="gender_array">
         <item>Laki-laki</item>
         <item>Perempuan</item>

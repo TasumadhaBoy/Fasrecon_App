@@ -1,19 +1,16 @@
-package com.application.fasrecon.ui.setting
+package com.application.fasrecon.ui.settings
 
 import android.app.Dialog
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
-import android.view.WindowInsetsController
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.application.fasrecon.R
 import com.application.fasrecon.databinding.FragmentSettingsBinding
