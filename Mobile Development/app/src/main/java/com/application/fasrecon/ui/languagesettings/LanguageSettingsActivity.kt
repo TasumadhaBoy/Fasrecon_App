@@ -14,6 +14,8 @@ import com.application.fasrecon.R
 import com.application.fasrecon.data.preferences.SettingsPreference
 import com.application.fasrecon.data.preferences.settingsDataStore
 import com.application.fasrecon.databinding.ActivityLanguageSettingsBinding
+import com.application.fasrecon.ui.FasreconApplication
+import com.application.fasrecon.ui.MainActivity
 import com.application.fasrecon.ui.viewmodelfactory.SettingsViewModelFactory
 import java.util.Locale
 
@@ -31,9 +33,6 @@ class LanguageSettingsActivity : AppCompatActivity() {
         setActionBar()
         pref = SettingsPreference.getInstance(this.settingsDataStore)
 
-        languageSettingsViewModel.getLanguageSetting().observe(this) {it ->
-            Log.d("mantap", it.toString())
-        }
         val adapter = setListLanguage()
         val layoutManager = LinearLayoutManager(this)
         binding.listLanguage.layoutManager = layoutManager
@@ -57,13 +56,11 @@ class LanguageSettingsActivity : AppCompatActivity() {
         languageSettingsViewModel.getLanguageSetting().observe(this) { langCode ->
             if (langCode != "") {
                 languageData.forEach { it.checked = it.id == langCode }
-                Log.d("adakah", languageData.find { it.id == langCode }.toString())
-                Log.d("Testing", "ahh")
+            } else {
+                languageData.first().checked = true
             }
-            Log.d("Test", languageData.toString())
             adapter.submitList(languageData)
             binding.listLanguage.adapter = adapter
-
         }
         return adapter
     }
@@ -78,11 +75,13 @@ class LanguageSettingsActivity : AppCompatActivity() {
     private fun setLocaleCode(langCode: String) {
         locale = Locale(langCode)
         resources.configuration.setLocale(locale)
-        createConfigurationContext(resources.configuration)
+
+        @Suppress("DEPRECATION")
+        resources.updateConfiguration(resources.configuration, resources.displayMetrics)
         languageSettingsViewModel.saveLanguageSettings(langCode)
-        val intent = Intent(this, LanguageSettingsActivity::class.java)
+        val intent = Intent(this, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(intent)
-        finish()
     }
 
     private fun setActionBar() {

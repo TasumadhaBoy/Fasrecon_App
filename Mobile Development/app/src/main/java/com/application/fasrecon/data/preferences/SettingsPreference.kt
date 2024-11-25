@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.map
 val Context.settingsDataStore: DataStore<Preferences> by preferencesDataStore(name = "languangeSelected")
 
 class SettingsPreference(private val dataStore: DataStore<Preferences>) {
+
     suspend fun saveLanguageSettings(language: String) {
         dataStore.edit { preferences ->
             preferences[LANG_CODE] = language

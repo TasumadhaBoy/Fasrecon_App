@@ -11,7 +11,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.application.fasrecon.R
 import com.application.fasrecon.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
