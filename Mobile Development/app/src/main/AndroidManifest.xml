@@ -18,7 +18,8 @@
         <activity
             android:name=".ui.languagesettings.LanguageSettingsActivity"
             android:exported="false"
-            android:theme="@style/Theme.Fasrecon_primary"/>
+            android:label="@string/language"
+            android:theme="@style/Theme.Fasrecon_secondary"/>
         <activity
             android:name=".ui.splashscreen.SplashScreenActivity"
             android:exported="true"
@@ -37,7 +38,7 @@
         <activity
             android:name=".ui.profile.ProfileSettingsActivity"
             android:exported="false"
-            android:label="Profile Settings"
+            android:label="@string/profile_settings"
             android:theme="@style/Theme.Fasrecon_secondary" />
         <activity
             android:name=".ui.forgotpassword.ForgotPassword"
@@ -65,5 +66,4 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             tools:ignore="DiscouragedApi,LockedOrientationActivity,MissingClass" />
     </application>
-
 </manifest>

@@ -1,11 +1,9 @@
 package com.application.fasrecon.ui.languagesettings
 
 import android.annotation.SuppressLint
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
@@ -24,7 +22,8 @@ class LanguageListAdapter :
             binding.countryImage.setImageDrawable(language.countryImage)
             binding.countryName.text = language.countryName
 
-            if (pos == languageChecked) {
+            if (pos == languageChecked || language.checked) {
+                languageChecked = pos
                 binding.languageChecked.visibility = View.VISIBLE
                 binding.languageContainer.setBackgroundResource(R.drawable.custom_language_settings_checked)
             } else {
@@ -40,6 +39,10 @@ class LanguageListAdapter :
         private fun languageCheckedInfo() {
             val previousLanguageChecked = languageChecked
             languageChecked = adapterPosition
+
+            val previousItem = getItem(previousLanguageChecked)
+            if (previousItem != null) previousItem.checked = false
+
             notifyItemChanged(previousLanguageChecked)
             notifyItemChanged(languageChecked)
         }
@@ -56,7 +59,10 @@ class LanguageListAdapter :
 
     override fun onBindViewHolder(holder: LanguageViewHolder, position: Int) {
         holder.bind(getItem(position), position)
-        Log.d("Mantap", getItem(position).toString())
+    }
+
+    fun getSelectedItem(): LanguageModel? {
+        return if (languageChecked >= 0) getItem(languageChecked) else null
     }
 
     companion object {
@@ -66,7 +72,7 @@ class LanguageListAdapter :
                     oldItem: LanguageModel,
                     newItem: LanguageModel
                 ): Boolean {
-                    return oldItem.countryName == newItem.countryName
+                    return oldItem.id == newItem.id
                 }
 
                 @SuppressLint("DiffUtilEquals")

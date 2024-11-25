@@ -21,7 +21,7 @@
     <string name="log_out">Log out</string>
     <string name="cancel_settings">Cancel</string>
     <string name="profile">Profile</string>
-    <string name="input_username">Input Username</string>
+    <string name="input_username">input_username</string>
     <string name="username">Username</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
@@ -32,14 +32,14 @@
     <string name="format_email">The email format is incorrect</string>
     <string name="enter">Enter</string>
     <string name="dont_have_account">Don\'t have an account yet ?</string>
-    <string name="sign_up">Signup</string>
+    <string name="sign_up">Sign Up</string>
     <string name="already_have_an_account">Already have an account? Login</string>
     <string name="register">Register</string>
     <string name="do_you_agree_with_our_terms">Do you agree with our terms</string>
     <string name="new_password">New Password</string>
-    <string name="change">Change</string>
+    <string name="change">change</string>
     <string name="date">Date</string>
-    <string name="gender">Jenis Kelamin</string>
+    <string name="gender">gender</string>
     <string name="forgot_password">Forgot Password</string>
     <string name="logout_message">Are you sure you want to logout?</string>
     <string name="submit">Submit</string>
@@ -52,7 +52,7 @@
     <string name="type">Type</string>
     <string name="clothes_name">Clothes name</string>
     <string name="field_username">Field username cannot be blank\n</string>
-    <string name="field_gender">field gender cannot be blank</string>
+    <string name="field_gender">Field gender cannot be blank</string>
     <string name="field_date">Field Date cannot be blank</string>
     <string name="field_checkbox">please agree with term\n</string>
     <string name="my_clothes">My Clothes</string>
@@ -62,8 +62,8 @@
     <string name="clothes_collection">Clothes Collection</string>
     <string name="clothes_user">%1$s Clothes</string>
     <string name="service">Service</string>
-    <string name="chatbot_image">chatbot image</string>
-    <string name="camera_image">camera image</string>
+    <string name="chatbot_image">Chatbot image</string>
+    <string name="camera_image">Camera image</string>
     <string name="camera">Camera</string>
     <string name="clothes_image">Clothes Image</string>
     <string name="choose_your_clothes_type">Choose your Clothes type</string>

@@ -148,7 +148,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="@string/jenis_kelamin"
+                    android:text="@string/gender"
                     android:textColor="@color/black"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
@@ -216,7 +216,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="@string/apakah_anda_menyetujui_term_kami"
+                    android:text="@string/do_you_agree_with_our_terms"
                     android:textColor="@color/black" />
 
                 <Button
@@ -239,7 +239,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="16dp"
-                    android:text="@string/sudah_punya_akun_login"
+                    android:text="@string/already_have_an_account"
                     android:textColor="@color/black"
                     android:textColorHighlight="@color/transparent"
                     android:textSize="16sp"

@@ -7,28 +7,35 @@ import com.application.fasrecon.data.preferences.LanguageModel
 
 class LanguageObject(private val context: Context) {
 
-    fun allLanguage(): List<LanguageModel> {
+    fun allLanguage(): MutableList<LanguageModel> {
         val items: MutableList<LanguageModel> = mutableListOf()
         items.add(
             LanguageModel(
+                "en-rUS",
                 ContextCompat.getDrawable(
                     context,
                     R.drawable.united_states_flag_icon
-                ), "English (US)", false
+                ),
+                ContextCompat.getString(context, R.string.english_us),
+                false
             )
         )
         items.add(
             LanguageModel(
+                "en-rGB",
                 ContextCompat.getDrawable(
                     context,
                     R.drawable.united_kingdom_flag_icon
-                ), "English (UK)", false
+                ),
+                ContextCompat.getString(context, R.string.english_uk),
+                false
             )
         )
         items.add(
             LanguageModel(
+                "in",
                 ContextCompat.getDrawable(context, R.drawable.indonesia_flag_icon),
-                "Indonesia",
+                ContextCompat.getString(context, R.string.indonesia),
                 false
             )
         )
