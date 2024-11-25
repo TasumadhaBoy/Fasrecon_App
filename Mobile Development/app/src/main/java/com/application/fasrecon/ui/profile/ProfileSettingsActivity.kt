@@ -7,12 +7,12 @@ import android.view.MenuItem
 import android.view.MotionEvent
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import com.application.fasrecon.databinding.ActivityProfileSettingsBinding
+import com.application.fasrecon.ui.BaseActivity
 import com.application.fasrecon.ui.MainActivity
 import com.application.fasrecon.ui.changepassword.ChangePasswordActivity
 
-class ProfileSettingsActivity : AppCompatActivity() {
+class ProfileSettingsActivity : BaseActivity() {
 
     private lateinit var binding: ActivityProfileSettingsBinding
 

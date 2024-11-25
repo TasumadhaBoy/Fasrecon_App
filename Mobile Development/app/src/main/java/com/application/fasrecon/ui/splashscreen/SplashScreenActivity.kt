@@ -9,15 +9,15 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.application.fasrecon.R
 import com.application.fasrecon.databinding.ActivitySplashScreenBinding
-import com.application.fasrecon.ui.MainActivity
+import com.application.fasrecon.ui.BaseActivity
+import com.application.fasrecon.ui.onboardingpage.OnboardingPageActivity
 
 @SuppressLint("CustomSplashScreen")
-class SplashScreenActivity : AppCompatActivity() {
+class SplashScreenActivity : BaseActivity() {
 
     private lateinit var binding: ActivitySplashScreenBinding
 
@@ -30,7 +30,7 @@ class SplashScreenActivity : AppCompatActivity() {
         showAnimation()
 
         Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, OnboardingPageActivity::class.java))
             finish()
         }, 2200)
 

@@ -2,7 +2,7 @@ package com.application.fasrecon.di
 
 import android.content.Context
 import com.application.fasrecon.data.preferences.UserPreference
-import com.application.fasrecon.data.preferences.dataStore
+import com.application.fasrecon.data.preferences.userDataStore
 import com.application.fasrecon.data.remote.retrofit.ApiConfig
 import com.application.fasrecon.data.repository.AuthRepository
 import kotlinx.coroutines.flow.first

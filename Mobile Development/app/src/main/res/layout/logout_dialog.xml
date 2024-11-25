@@ -42,7 +42,7 @@
             android:id="@+id/btn_cancel"
             style="@style/button_cancel"
             android:layout_marginEnd="8dp"
-            android:text="@string/cancel_setting"
+            android:text="@string/cancel_settings"
             card_view:layout_constraintTop_toTopOf="@id/guideline_horizontal"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintEnd_toEndOf="@id/guideline_vertical"
