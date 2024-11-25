@@ -3,15 +3,15 @@ package com.application.fasrecon.ui.onboardingpage
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.application.fasrecon.R
 import com.application.fasrecon.databinding.ActivityOnboardingPageBinding
+import com.application.fasrecon.ui.BaseActivity
 import com.application.fasrecon.ui.login.LoginActivity
 import com.application.fasrecon.ui.register.RegisterActivity
 
-class OnboardingPageActivity : AppCompatActivity() {
+class OnboardingPageActivity : BaseActivity() {
 
     private lateinit var binding: ActivityOnboardingPageBinding
 

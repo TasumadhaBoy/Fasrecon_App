@@ -3,12 +3,12 @@ package com.application.fasrecon.ui.forgotpassword
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import com.application.fasrecon.R
 import com.application.fasrecon.databinding.ActivityForgotPasswordBinding
+import com.application.fasrecon.ui.BaseActivity
 import com.application.fasrecon.ui.login.LoginActivity
 
-class ForgotPassword : AppCompatActivity(), View.OnClickListener {
+class ForgotPassword : BaseActivity(), View.OnClickListener {
 
     private lateinit var binding : ActivityForgotPasswordBinding
 

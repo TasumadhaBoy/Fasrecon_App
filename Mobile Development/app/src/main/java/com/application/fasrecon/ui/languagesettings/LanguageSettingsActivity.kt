@@ -2,10 +2,8 @@ package com.application.fasrecon.ui.languagesettings
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,12 +12,12 @@ import com.application.fasrecon.R
 import com.application.fasrecon.data.preferences.SettingsPreference
 import com.application.fasrecon.data.preferences.settingsDataStore
 import com.application.fasrecon.databinding.ActivityLanguageSettingsBinding
-import com.application.fasrecon.ui.FasreconApplication
+import com.application.fasrecon.ui.BaseActivity
 import com.application.fasrecon.ui.MainActivity
 import com.application.fasrecon.ui.viewmodelfactory.SettingsViewModelFactory
 import java.util.Locale
 
-class LanguageSettingsActivity : AppCompatActivity() {
+class LanguageSettingsActivity : BaseActivity() {
 
     private lateinit var binding: ActivityLanguageSettingsBinding
     private lateinit var pref: SettingsPreference

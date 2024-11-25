@@ -1,11 +1,7 @@
 package com.application.fasrecon.ui
 
-import android.os.Build
 import android.os.Bundle
-import android.view.WindowInsetsController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.application.fasrecon.R

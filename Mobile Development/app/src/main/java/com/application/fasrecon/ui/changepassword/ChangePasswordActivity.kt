@@ -7,11 +7,11 @@ import android.text.style.ForegroundColorSpan
 import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import com.application.fasrecon.R
 import com.application.fasrecon.databinding.ActivityChangePasswordBinding
+import com.application.fasrecon.ui.BaseActivity
 
-class ChangePasswordActivity : AppCompatActivity(), View.OnClickListener {
+class ChangePasswordActivity : BaseActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityChangePasswordBinding
 

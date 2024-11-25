@@ -14,17 +14,17 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.EditText
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.application.fasrecon.R
 import com.application.fasrecon.databinding.ActivityRegisterBinding
+import com.application.fasrecon.ui.BaseActivity
 import com.application.fasrecon.ui.login.LoginActivity
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
-class RegisterActivity : AppCompatActivity(), View.OnClickListener {
+class RegisterActivity : BaseActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityRegisterBinding
 

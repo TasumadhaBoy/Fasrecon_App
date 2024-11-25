@@ -3,7 +3,6 @@ package com.application.fasrecon.ui
 import android.app.Application
 import com.application.fasrecon.data.preferences.SettingsPreference
 import com.application.fasrecon.data.preferences.settingsDataStore
-import com.application.fasrecon.ui.languagesettings.LanguageSettingsViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
