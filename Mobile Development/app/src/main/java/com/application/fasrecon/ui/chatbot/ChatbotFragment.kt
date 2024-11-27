@@ -27,6 +27,10 @@ class ChatbotFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setActionBar()
+
+        binding.newChatbot.setOnClickListener {
+            
+        }
     }
 
     private fun setActionBar() {
