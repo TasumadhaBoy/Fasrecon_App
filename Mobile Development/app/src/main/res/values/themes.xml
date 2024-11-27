@@ -422,5 +422,30 @@
         <item name="android:layout_marginEnd">16dp</item>
         <item name="android:tint">@color/primary_color</item>
     </style>
+
+    <style name="type_message">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:layout_marginStart">12dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:layout_marginEnd">12dp</item>
+        <item name="boxCornerRadiusTopStart">25dp</item>
+        <item name="boxCornerRadiusBottomStart">25dp</item>
+        <item name="boxCornerRadiusTopEnd">25dp</item>
+        <item name="boxCornerRadiusBottomEnd">25dp</item>
+        <item name="boxStrokeColor">@color/primary_color</item>
+    </style>
+
+    <style name="button_send_message" parent="ThemeOverlay.Material3.Button">
+        <item name="android:layout_width">53dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:paddingStart">18dp</item>
+        <item name="android:paddingEnd">0dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:backgroundTint">@color/primary_color</item>
+        <item name="cornerRadius">100dp</item>
+        <item name="android:layout_marginEnd">10dp</item>
+    </style>
     
 </resources>

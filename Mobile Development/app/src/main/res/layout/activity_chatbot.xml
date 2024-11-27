@@ -5,6 +5,77 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.chatbot.ChatbotActivity">
+    tools:context=".ui.chatbot.ChatbotActivity"
+    android:background="@color/background_fragment_activity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        style="@style/custom_toolbar_layout"
+        android:id="@+id/appbar_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            style="@style/custom_toolbar"
+            android:id="@+id/topAppBar"
+            app:menu="@menu/appbar_menu" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <TextView
+        android:id="@+id/time_info"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:textAlignment="center"
+        android:textColor="@color/text_gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appbar_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="Sun 11:31 PM" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/time_info"
+        tools:listitem="@layout/item_chatbot_message"
+        tools:itemCount="5"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/type_message"
+            android:id="@+id/input_message_layout"
+            android:hint="@string/type_here"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/send_message_button">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email_login_input"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            style="@style/button_send_message"
+            android:id="@+id/send_message_button"
+            app:icon="@drawable/send_message_icon"
+            app:iconSize="20dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
