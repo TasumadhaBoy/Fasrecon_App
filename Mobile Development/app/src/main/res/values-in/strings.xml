@@ -90,6 +90,9 @@
     <string name="english_uk">Bahasa Inggris (UK)</string>
     <string name="indonesia">Indonesia</string>
     <string name="save_settings">Simpan Pengaturan</string>
+    <string name="new_chat">Obrolan Baru</string>
+    <string name="open_the_chat">Buka Obrolan</string>
+    <string name="history_chatbot">History Chatbot</string>
     <string-array name="gender_array">
         <item>Laki-laki</item>
         <item>Perempuan</item>

@@ -12,9 +12,9 @@
         android:title="@string/my_clothes" />
 
     <item
-        android:id="@+id/navigation_chatbot"
+        android:id="@+id/navigation_history_chatbot"
         android:icon="@drawable/chatbot_menu_icon"
-        android:title="@string/chatbot" />
+        android:title="@string/history_chatbot" />
 
     <item
         android:id="@+id/navigation_profile"
