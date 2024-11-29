@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/navigation_history_chatbot"
         android:name="com.application.fasrecon.ui.historychatbot.HistoryChatbotFragment"
-        android:label="@string/history_chatbot"
+        android:label="@string/chatbot"
         tools:layout="@layout/fragment_history_chatbot" />
 
     <fragment

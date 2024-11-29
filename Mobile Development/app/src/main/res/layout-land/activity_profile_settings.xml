@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profile_settings_page"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_fragment_activity"
+        android:orientation="vertical"
+        tools:context=".ui.profile.ProfileSettingsActivity">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@color/white">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                style="@style/custom_toolbar"
+                android:id="@+id/topAppBar"
+                app:menu="@menu/appbar_menu" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <ImageView
+            android:id="@+id/image_profile_settings"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="12dp"
+            android:contentDescription="@string/image_profile_settings"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appbar_layout"
+            app:srcCompat="@drawable/user_profile_image" />
+
+        <TextView
+            style="@style/tv_label_input_text"
+            android:id="@+id/name_edit_settings"
+            android:layout_marginTop="32dp"
+            android:layout_marginStart="20dp"
+            android:text="@string/name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_profile_settings" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/input_layout_disabled"
+            android:id="@+id/name_edit_input_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/name_edit_settings"
+            app:endIconDrawable="@drawable/edit_icon_24"
+            app:endIconMode="custom">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/text_input_disabled"
+                android:id="@+id/name_edit_input"
+                tools:text="Fasrecon"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/email_settings"
+            style="@style/tv_label_input_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:text="@string/email"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/name_edit_input_layout" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/input_layout_disabled"
+            android:id="@+id/email_edit"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/email_settings">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/text_input_disabled"
+                android:id="@+id/email_edit_input"
+                tools:text="fasrecon@gmail.com"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/password_settings"
+            style="@style/tv_label_input_text"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:text="@string/password"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/email_edit" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/pass_edit"
+            style="@style/input_layout_disabled"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/password_settings">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/text_input_disabled"
+                android:id="@+id/pass_edit_input"
+                android:inputType="textPassword"
+                tools:text="mantap1234" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            style="@style/change_password_navigation"
+            android:id="@+id/change_password"
+            android:text="@string/change_password"
+            app:layout_constraintTop_toBottomOf="@id/pass_edit"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            style="@style/button_save_and_change"
+            android:id="@+id/save_btn"
+            android:text="@string/save_profile"
+            android:layout_marginTop="48dp"
+            app:layout_constraintTop_toBottomOf="@id/change_password"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -14,7 +14,7 @@
     <item
         android:id="@+id/navigation_history_chatbot"
         android:icon="@drawable/chatbot_menu_icon"
-        android:title="@string/history_chatbot" />
+        android:title="@string/chatbot" />
 
     <item
         android:id="@+id/navigation_profile"
