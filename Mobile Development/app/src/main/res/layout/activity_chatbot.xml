@@ -46,6 +46,7 @@
         tools:itemCount="5"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/type_message_container"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
