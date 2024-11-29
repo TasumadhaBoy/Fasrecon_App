@@ -67,6 +67,7 @@
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         style="@style/fab_button"
         android:id="@+id/add_clothes_button"
+        app:srcCompat="@drawable/baseline_add_24"
         android:contentDescription="@string/add_new_clothes" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

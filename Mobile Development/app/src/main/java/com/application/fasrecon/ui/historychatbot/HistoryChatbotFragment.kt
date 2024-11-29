@@ -1,4 +1,4 @@
-package com.application.fasrecon.ui.chatbot
+package com.application.fasrecon.ui.historychatbot
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.application.fasrecon.R
-import com.application.fasrecon.databinding.FragmentChatbotBinding
+import com.application.fasrecon.databinding.FragmentHistoryChatbotBinding
 
-class ChatbotFragment : Fragment() {
+class HistoryChatbotFragment : Fragment() {
 
-    private var _binding: FragmentChatbotBinding? = null
+    private var _binding: FragmentHistoryChatbotBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -19,7 +19,7 @@ class ChatbotFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentChatbotBinding.inflate(inflater, container, false)
+        _binding = FragmentHistoryChatbotBinding.inflate(inflater, container, false)
         val root: View = binding.root
         return root
     }
@@ -27,6 +27,10 @@ class ChatbotFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setActionBar()
+
+        binding.newChatbot.setOnClickListener {
+
+        }
     }
 
     private fun setActionBar() {
