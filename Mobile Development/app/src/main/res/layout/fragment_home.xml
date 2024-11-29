@@ -4,18 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="85dp"
     tools:context=".ui.home.HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingBottom="24dp"
         tools:context=".ui.home.HomeFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/header_container"
             android:layout_width="0dp"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
             android:background="@color/primary_color"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -99,6 +99,7 @@
             android:layout_marginStart="18dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="4dp"
+            android:layout_marginBottom="24dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/label_service"
             app:layout_constraintEnd_toEndOf="@id/guideline_vertical">

@@ -26,13 +26,8 @@
             android:theme="@style/Theme.Fasrecon_secondary" />
         <activity
             android:name=".ui.splashscreen.SplashScreenActivity"
-            android:exported="true"
+            android:exported="false"
             android:theme="@style/Theme.Fasrecon_primary">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ui.changepassword.ChangePasswordActivity"
@@ -62,8 +57,14 @@
             android:theme="@style/Theme.Fasrecon_primary" />
         <activity
             android:name=".ui.MainActivity"
-            android:exported="false"
-            android:theme="@style/Theme.Fasrecon_primary" />
+            android:exported="true"
+            android:theme="@style/Theme.Fasrecon_primary">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"

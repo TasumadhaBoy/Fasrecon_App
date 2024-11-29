@@ -3,7 +3,7 @@ package com.application.fasrecon.ui.languagesettings
 import android.content.Context
 import androidx.core.content.ContextCompat
 import com.application.fasrecon.R
-import com.application.fasrecon.data.preferences.LanguageModel
+import com.application.fasrecon.data.model.LanguageModel
 
 class LanguageObject(private val context: Context) {
 

@@ -1,4 +1,4 @@
-package com.application.fasrecon.data.preferences
+package com.application.fasrecon.data.model
 
 import android.graphics.drawable.Drawable
 

@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.application.fasrecon.R
-import com.application.fasrecon.data.preferences.LanguageModel
+import com.application.fasrecon.data.model.LanguageModel
 import com.application.fasrecon.databinding.ItemLanguageSettingsBinding
 
 class LanguageListAdapter :
