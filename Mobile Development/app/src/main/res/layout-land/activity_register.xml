@@ -13,7 +13,10 @@
 
         <TextView
             style="@style/header_login_register"
+            android:id="@+id/header_register"
             android:text="@string/sign_up"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toTopOf="@id/card_register"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -22,7 +25,7 @@
             android:id="@+id/card_register"
             android:layout_width="match_parent"
             android:layout_height="550dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="-15dp"
             android:padding="16dp"
             android:paddingBottom="0dp"
