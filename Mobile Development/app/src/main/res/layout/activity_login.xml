@@ -10,7 +10,7 @@
     tools:context=".ui.login.LoginActivity">
 
     <TextView
-        style="@style/header_login"
+        style="@style/header_login_register"
         android:text="@string/login"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -109,7 +109,7 @@
                 app:layout_constraintStart_toStartOf="parent">
 
                 <TextView
-                    style="@style/normal_tv_loginpage"
+                    style="@style/normal_tv_nav"
                     android:id="@+id/dont_have_acc"
                     android:text="@string/dont_have_account" />
 

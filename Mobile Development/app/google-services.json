@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "929822068528",
+    "project_id": "fasrecon-auth",
+    "storage_bucket": "fasrecon-auth.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:929822068528:android:fd6363d05c57458ed382f5",
+        "android_client_info": {
+          "package_name": "com.application.fasrecon"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClkcMF6eL1YXjDgMqnlc3RsbYFgI9OE68"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

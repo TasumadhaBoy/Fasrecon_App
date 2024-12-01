@@ -5,86 +5,103 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:background="@color/primary_color"
-        android:orientation="vertical"
-        tools:context=".ui.login.LoginActivity"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/primary_color"
+        tools:context=".ui.register.RegisterActivity">
 
         <TextView
             style="@style/header_login_register"
-            android:id="@+id/header_login"
-            android:text="@string/login"
-            android:layout_marginTop="8dp"
+            android:text="@string/sign_up"
+            app:layout_constraintBottom_toTopOf="@id/card_register"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/card_login"
-            app:layout_constraintVertical_bias="0"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/card_login"
+            android:id="@+id/card_register"
             android:layout_width="match_parent"
-            android:layout_height="500dp"
-            android:layout_marginTop="50dp"
-            android:layout_alignParentBottom="true"
+            android:layout_height="550dp"
+            android:layout_marginTop="100dp"
             android:layout_marginBottom="-15dp"
             android:padding="16dp"
+            android:paddingBottom="0dp"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="20dp"
-            app:layout_constraintTop_toTopOf="@id/header_login"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintStart_toStartOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/login_container"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="16dp">
 
                 <TextView
+                    android:id="@+id/username_register_label"
                     style="@style/tv_label_input_text"
-                    android:id="@+id/email_login"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/email"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/username"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_Layout_username"
                     style="@style/input_layout_enabled"
-                    android:id="@+id/text_email_layout_login"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/email_login"
-                    app:startIconDrawable="@drawable/emal_icon">
+                    app:layout_constraintTop_toBottomOf="@id/username_register_label"
+                    app:startIconDrawable="@drawable/user_icon">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/email_login_input"
+                        android:id="@+id/textInput_username"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:textSize="14sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
+                    android:id="@+id/email_register_label"
                     style="@style/tv_label_input_text"
-                    android:id="@+id/password_login"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/password"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/email"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/text_email_layout_login" />
+                    app:layout_constraintTop_toBottomOf="@+id/text_Layout_username" />
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_email"
                     style="@style/input_layout_enabled"
-                    android:id="@+id/text_password_layout_login"
-                    app:boxStrokeColor="@color/primary_color"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/email_register_label"
+                    app:startIconDrawable="@drawable/emal_icon">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_input_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="14sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/password_register_label"
+                    style="@style/tv_label_input_text"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/password"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_email" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_password"
+                    style="@style/input_layout_enabled"
                     app:endIconMode="password_toggle"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/password_login"
+                    app:layout_constraintTop_toBottomOf="@+id/password_register_label"
                     app:startIconDrawable="@drawable/password_icon">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/password_login_input"
+                        android:id="@+id/text_input_password"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:inputType="textPassword"
@@ -92,39 +109,33 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <TextView
-                    style="@style/tv_forgot_loginpage"
-                    android:id="@+id/forgot_password"
-                    android:text="@string/forgot_password"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/text_password_layout_login" />
-
                 <Button
-                    style="@style/button_login_loginpage"
-                    android:id="@+id/btn_login"
-                    android:text="@string/login"
+                    android:id="@+id/btn_register"
+                    style="@style/button_register_registerpage"
+                    android:text="@string/register"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/forgot_password" />
+                    app:layout_constraintTop_toBottomOf="@id/text_layout_password" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:textAlignment="center"
-                    android:layout_marginBottom="15dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintVertical_bias="1">
 
                     <TextView
+                        android:id="@+id/already_have_acc"
                         style="@style/normal_tv_nav"
-                        android:id="@+id/dont_have_acc"
-                        android:text="@string/dont_have_account" />
+                        android:text="@string/already_have_an_account" />
 
                     <TextView
+                        android:id="@+id/login_navigation"
                         style="@style/bold_tv_nav"
-                        android:id="@+id/register_navigation"
-                        android:text="@string/register" />
+                        android:text="@string/login" />
 
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>

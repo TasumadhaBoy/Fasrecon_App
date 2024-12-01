@@ -76,6 +76,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
             R.id.register_navigation -> {
                 val moveToRegisterPage =
                     Intent(this@LoginActivity, RegisterActivity::class.java)
+                moveToRegisterPage.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(moveToRegisterPage)
             }
 

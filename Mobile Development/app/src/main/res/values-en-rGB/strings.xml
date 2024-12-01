@@ -33,7 +33,7 @@
     <string name="enter">Enter</string>
     <string name="dont_have_account">Don\'t have an account yet ?</string>
     <string name="sign_up">Sign Up</string>
-    <string name="already_have_an_account">Already have an account? Login</string>
+    <string name="already_have_an_account">Already have an account?</string>
     <string name="register">Register</string>
     <string name="do_you_agree_with_our_terms">Do you agree with our terms</string>
     <string name="new_password">New Password</string>
