@@ -95,6 +95,10 @@
     <string name="history_chatbot">History Chatbot</string>
     <string name="user_image">User Image</string>
     <string name="type_here">Type Here</string>
+    <string name="success_register">Success Create Account</string>
+    <string name="no_internet">No Internet Connection</string>
+    <string name="email_registered">Email has been registered</string>
+    <string name="unknown_error">Unknown Error</string>
     <string-array name="gender_array">
         <item>Man</item>
         <item>Woman</item>

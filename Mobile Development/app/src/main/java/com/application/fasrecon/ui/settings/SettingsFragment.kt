@@ -17,11 +17,15 @@ import com.application.fasrecon.databinding.FragmentSettingsBinding
 import com.application.fasrecon.ui.languagesettings.LanguageSettingsActivity
 import com.application.fasrecon.ui.login.LoginActivity
 import com.application.fasrecon.ui.profile.ProfileSettingsActivity
+import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
 
 class SettingsFragment : Fragment() {
 
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!!
+
+    private val auth = FirebaseAuth.getInstance()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,6 +40,7 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setActionBar()
+        setUserProfile()
 
         binding.profileSettings.setOnClickListener {
             val intent = Intent(requireContext(), ProfileSettingsActivity::class.java)
@@ -62,6 +67,14 @@ class SettingsFragment : Fragment() {
             getString(R.string.profile)
     }
 
+    private fun setUserProfile() {
+        binding.UserName.text = auth.currentUser?.displayName
+        binding.userEmail.text = auth.currentUser?.email
+        Glide.with(this)
+            .load(auth.currentUser?.photoUrl)
+            .into(binding.UserProfile)
+    }
+
     private fun showAlertDialog() {
 
         val dialog = Dialog(requireContext())
@@ -79,6 +92,7 @@ class SettingsFragment : Fragment() {
         }
 
         dialog.findViewById<Button>(R.id.btn_logout).setOnClickListener {
+            auth.signOut()
             val intent = Intent(requireContext(), LoginActivity::class.java)
             startActivity(intent)
         }

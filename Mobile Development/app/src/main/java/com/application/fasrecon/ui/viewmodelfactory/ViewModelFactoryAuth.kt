@@ -29,9 +29,9 @@ class ViewModelFactoryAuth private constructor(private val authRepository: AuthR
         @Volatile
         private var instance: ViewModelFactoryAuth? = null
 
-//        fun getInstance(context: Context): ViewModelFactoryAuth =
-//            instance ?: synchronized(this) {
-//                instance ?: ViewModelFactoryAuth(InjectionAuth.createRepository(context))
-//            }.also { instance = it }
+        fun getInstance(context: Context): ViewModelFactoryAuth =
+            instance ?: synchronized(this) {
+                instance ?: ViewModelFactoryAuth(InjectionAuth.createRepository(context))
+            }.also { instance = it }
     }
 }

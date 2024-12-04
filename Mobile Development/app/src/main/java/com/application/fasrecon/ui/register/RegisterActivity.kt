@@ -3,14 +3,24 @@ package com.application.fasrecon.ui.register
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.activity.viewModels
+import cn.pedant.SweetAlert.SweetAlertDialog
 import com.application.fasrecon.R
 import com.application.fasrecon.databinding.ActivityRegisterBinding
 import com.application.fasrecon.ui.BaseActivity
 import com.application.fasrecon.ui.login.LoginActivity
+import com.application.fasrecon.ui.viewmodelfactory.ViewModelFactoryAuth
+import com.application.fasrecon.util.WrapMessage
+import com.google.firebase.FirebaseNetworkException
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
+import com.google.firebase.auth.FirebaseAuthUserCollisionException
+import com.google.firebase.auth.userProfileChangeRequest
 
 class RegisterActivity : BaseActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityRegisterBinding
+    private val registerViewModel: RegisterViewModel by viewModels { ViewModelFactoryAuth.getInstance(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,6 +81,40 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
                     )
                     binding.textInputPassword.requestFocus()
                     return
+                }
+
+                registerViewModel.registerAccount(username, email, password)
+
+                registerViewModel.loadingData.observe(this) {
+
+                }
+
+                registerViewModel.errorHandling.observe(this) {
+                    val message = when(it) {
+                        WrapMessage("NO_INTERNET") -> getString(R.string.no_internet)
+                        WrapMessage("WRONG_EMAIL_FORMAT") -> getString(R.string.format_email)
+                        WrapMessage("EMAIL_REGISTERED") -> getString(R.string.email_registered)
+                        else -> getString(R.string.unknown_error)
+                    }
+
+                    SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                        .setTitleText("Failed")
+                        .setConfirmText("Try Again")
+                        .setContentText("Create Account Failed\n${message}")
+                        .show()
+                }
+
+                registerViewModel.registerMessage.observe(this) {
+                    SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
+                        .setTitleText("Success Create Account")
+                        .setConfirmClickListener { sDialog ->
+                            sDialog.dismissWithAnimation()
+                            val intent = Intent(this, LoginActivity::class.java)
+                            intent.flags =
+                                Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                            startActivity(intent)
+                        }
+                        .show()
                 }
             }
             R.id.login_navigation -> {

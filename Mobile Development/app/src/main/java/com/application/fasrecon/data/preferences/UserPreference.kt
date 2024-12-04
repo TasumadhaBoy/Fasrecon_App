@@ -15,18 +15,9 @@ val Context.userDataStore: DataStore<Preferences> by preferencesDataStore(name =
 
 class UserPreference private constructor(private val dataStore: DataStore<Preferences>) {
 
-    suspend fun saveSession(user: UserModel) {
+    suspend fun saveSession() {
         dataStore.edit { preferences ->
-            preferences[TOKEN] = user.token
             preferences[IS_LOGIN] = true
-        }
-    }
-
-    fun getSession(): Flow<UserModel> {
-        return dataStore.data.map { preferences ->
-            UserModel(
-                preferences[TOKEN] ?: "", preferences[IS_LOGIN] ?: false
-            )
         }
     }
 
@@ -40,7 +31,6 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
         @Volatile
         private var INSTANCE: UserPreference? = null
 
-        private val TOKEN = stringPreferencesKey("token")
         private val IS_LOGIN = booleanPreferencesKey("isLogin")
 
         fun getInstance(dataStore: DataStore<Preferences>): UserPreference {
