@@ -3,16 +3,20 @@ package com.application.fasrecon.ui.login
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.activity.viewModels
+import cn.pedant.SweetAlert.SweetAlertDialog
 import com.application.fasrecon.ui.MainActivity
 import com.application.fasrecon.R
 import com.application.fasrecon.databinding.ActivityLoginBinding
 import com.application.fasrecon.ui.BaseActivity
-import com.application.fasrecon.ui.forgotpassword.ForgotPassword
 import com.application.fasrecon.ui.register.RegisterActivity
+import com.application.fasrecon.ui.viewmodelfactory.ViewModelFactoryAuth
+import com.application.fasrecon.util.WrapMessage
 
 class LoginActivity : BaseActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityLoginBinding
+    private val loginViewModel: LoginViewModel by viewModels { ViewModelFactoryAuth.getInstance(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +26,41 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
         binding.btnLogin.setOnClickListener(this)
         binding.registerNavigation.setOnClickListener(this)
         binding.forgotPassword.setOnClickListener(this)
+
+        loginViewModel.loadingData.observe(this) {
+            displayLoading(it)
+        }
+
+        loginViewModel.errorHandling.observe(this) {
+            val message = when(it) {
+                WrapMessage("NO_INTERNET") -> getString(R.string.no_internet)
+                WrapMessage("WRONG_EMAIL_PASSWORD") -> getString(R.string.wrong_email_password)
+                WrapMessage("INVALID_USER") -> getString(R.string.invalid_user)
+                WrapMessage("TOO_MANY_REQUEST") -> getString(R.string.too_many_request)
+                else -> getString(R.string.unknown_error)
+            }
+
+            SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                .setTitleText("Login Failed")
+                .setConfirmText("Try Again")
+                .setContentText(message)
+                .show()
+        }
+
+        loginViewModel.loginMessage.observe(this) {
+            loginViewModel.saveSession(true)
+            SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
+                .setTitleText("Login Success")
+                .setContentText("Welcome $it")
+                .setConfirmClickListener { sDialog ->
+                    sDialog.dismissWithAnimation()
+                    val intent = Intent(this, MainActivity::class.java)
+                    intent.flags =
+                        Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                    startActivity(intent)
+                }
+                .show()
+        }
 
         supportActionBar?.hide()
     }
@@ -67,10 +106,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
                     return
                 }
 
-                // loginViewModel.loginAccount(email, password)
-                val moveToLoginPage =
-                    Intent(this@LoginActivity, MainActivity::class.java)
-                startActivity(moveToLoginPage)
+                loginViewModel.loginAccount(email, password)
             }
 
             R.id.register_navigation -> {
@@ -79,12 +115,14 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
                 moveToRegisterPage.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(moveToRegisterPage)
             }
+        }
+    }
 
-            R.id.forgot_password -> {
-                val moveToForgotPasswordPage =
-                    Intent(this@LoginActivity, ForgotPassword::class.java)
-                startActivity(moveToForgotPasswordPage)
-            }
+    private fun displayLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.loadingLogin?.visibility = View.VISIBLE
+        } else {
+            binding.loadingLogin?.visibility = View.GONE
         }
     }
 }

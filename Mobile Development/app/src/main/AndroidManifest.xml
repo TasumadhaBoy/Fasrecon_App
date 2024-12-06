@@ -42,7 +42,7 @@
             android:label="@string/change_password"
             android:theme="@style/Theme.Fasrecon_secondary" />
         <activity
-            android:name=".ui.profile.ProfileSettingsActivity"
+            android:name=".ui.profilesettings.ProfileSettingsActivity"
             android:exported="false"
             android:label="@string/profile_settings"
             android:theme="@style/Theme.Fasrecon_secondary" />
