@@ -102,6 +102,7 @@
     <string name="wrong_email_password">Email or password is incorrect</string>
     <string name="invalid_user">Account not registered yet</string>
     <string name="too_many_request">Too many login requests, please try again later.</string>
+    <string name="session_expired">Session Expired, please login again !</string>
     <string-array name="gender_array">
         <item>Man</item>
         <item>Woman</item>

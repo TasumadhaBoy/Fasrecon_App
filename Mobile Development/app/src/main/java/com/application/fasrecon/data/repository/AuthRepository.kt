@@ -4,12 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.application.fasrecon.data.preferences.UserPreference
 import com.application.fasrecon.data.Result
-import com.application.fasrecon.data.model.UserModel
 import com.application.fasrecon.util.WrapMessage
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthException
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
@@ -71,9 +69,9 @@ class AuthRepository private constructor(
         @Volatile
         private var instance: AuthRepository? = null
 
-        fun getInstance(authUser: FirebaseAuth, preference: UserPreference): AuthRepository =
+        fun getInstance(authUser: FirebaseAuth, userPreference: UserPreference): AuthRepository =
             instance ?: synchronized(this) {
-                instance ?: AuthRepository(authUser, preference)
+                instance ?: AuthRepository(authUser, userPreference)
             }.also { instance = it }
     }
 }

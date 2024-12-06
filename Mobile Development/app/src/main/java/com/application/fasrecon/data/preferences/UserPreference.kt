@@ -5,11 +5,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
-import com.application.fasrecon.data.model.UserModel
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
 
 val Context.userDataStore: DataStore<Preferences> by preferencesDataStore(name = "userSession")
 
@@ -17,7 +13,7 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
 
     suspend fun saveSession(isLogin: Boolean) {
         dataStore.edit { preferences ->
-            preferences[IS_LOGIN] = true
+            preferences[IS_LOGIN] = isLogin
         }
     }
 
