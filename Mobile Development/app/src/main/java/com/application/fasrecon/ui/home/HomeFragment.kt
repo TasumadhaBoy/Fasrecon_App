@@ -21,7 +21,11 @@ class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private val homeViewModel: HomeViewModel by viewModels { ViewModelFactoryUser.getInstance(requireActivity()) }
+    private val homeViewModel: HomeViewModel by viewModels {
+        ViewModelFactoryUser.getInstance(
+            requireActivity()
+        )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,8 +49,8 @@ class HomeFragment : Fragment() {
         }
 
         homeViewModel.getUserData()
-        homeViewModel.errorHandling.observe(requireActivity()) { msg ->
-            handleError(msg)
+        homeViewModel.errorHandling.observe(requireActivity()) {
+            handleError(it)
         }
 
         homeViewModel.userData.observe(requireActivity()) {
@@ -54,7 +58,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun setUserData(userData: UserModel){
+    private fun setUserData(userData: UserModel) {
         binding.tvUserHomepage.text = getString(R.string.hai_user, userData.name)
         if (userData.photoUrl != null) {
             Glide.with(requireActivity())
@@ -64,25 +68,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun handleError(msg: WrapMessage<String?>) {
-        if (msg.getDataIfNotDisplayed().let { it == "SESSION_EXPIRED" }){
-            SweetAlertDialog(requireActivity(), SweetAlertDialog.ERROR_TYPE)
-                .setTitleText("Failed")
-                .setConfirmText("Try Again")
-                .setContentText(getString(R.string.session_expired))
-                .setConfirmClickListener { sDialog ->
-                    sDialog.dismissWithAnimation()
-                    val intent = Intent(requireActivity(), LoginActivity::class.java)
-                    Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                    startActivity(intent)
-                }
-                .show()
-        } else {
-
-            val message = when(msg) {
-                WrapMessage("NO_INTERNET") -> getString(R.string.no_internet)
-                else -> getString(R.string.unknown_error)
-            }
-
+        msg.getDataIfNotDisplayed().let { message ->
             SweetAlertDialog(requireActivity(), SweetAlertDialog.ERROR_TYPE)
                 .setTitleText("Failed")
                 .setConfirmText("Try Again")

@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.application.fasrecon.data.preferences.UserPreference
 import com.application.fasrecon.data.Result
+import com.application.fasrecon.data.model.UserModel
 import com.application.fasrecon.util.WrapMessage
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.FirebaseTooManyRequestsException
@@ -62,7 +63,13 @@ class AuthRepository private constructor(
     }
 
     suspend fun saveSession(isLogin: Boolean) {
-        userPreference.saveSession(isLogin)
+        val curUser = authUser.currentUser
+        val userData = UserModel(
+            curUser?.displayName,
+            curUser?.email,
+            curUser?.photoUrl.toString()
+        )
+        userPreference.saveSession(userData, isLogin)
     }
 
     companion object {

@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.application.fasrecon.data.repository.UserRepository
 import com.application.fasrecon.di.InjectionUser
 import com.application.fasrecon.ui.home.HomeViewModel
+import com.application.fasrecon.ui.profile.ProfileViewModel
 
 class ViewModelFactoryUser private constructor(private val userRepository: UserRepository): ViewModelProvider.NewInstanceFactory() {
     @Suppress("UNCHECKED_CAST")
@@ -14,6 +15,8 @@ class ViewModelFactoryUser private constructor(private val userRepository: UserR
 
         if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
             return HomeViewModel(userRepository) as T
+        } else if (modelClass.isAssignableFrom(ProfileViewModel::class.java)) {
+            return ProfileViewModel(userRepository) as T
         }
 
         throw IllegalArgumentException("Unknown ViewModel Class: " + modelClass.name)

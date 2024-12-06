@@ -1,4 +1,4 @@
-package com.application.fasrecon.ui.settings
+package com.application.fasrecon.ui.profile
 
 import android.app.Dialog
 import android.content.Intent
@@ -12,19 +12,28 @@ import android.view.Window
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import cn.pedant.SweetAlert.SweetAlertDialog
 import com.application.fasrecon.R
-import com.application.fasrecon.databinding.FragmentSettingsBinding
+import com.application.fasrecon.data.model.UserModel
+import com.application.fasrecon.databinding.FragmentProfileBinding
 import com.application.fasrecon.ui.languagesettings.LanguageSettingsActivity
 import com.application.fasrecon.ui.login.LoginActivity
-import com.application.fasrecon.ui.profile.ProfileSettingsActivity
+import com.application.fasrecon.ui.profilesettings.ProfileSettingsActivity
+import com.application.fasrecon.ui.viewmodelfactory.ViewModelFactoryUser
+import com.application.fasrecon.util.WrapMessage
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 
-class SettingsFragment : Fragment() {
+class ProfileFragment : Fragment() {
 
-    private var _binding: FragmentSettingsBinding? = null
+    private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
-
+    private val profileViewModel: ProfileViewModel by viewModels {
+        ViewModelFactoryUser.getInstance(
+            requireActivity()
+        )
+    }
     private val auth = FirebaseAuth.getInstance()
 
     override fun onCreateView(
@@ -32,7 +41,7 @@ class SettingsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentSettingsBinding.inflate(inflater, container, false)
+        _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root
         return root
     }
@@ -40,7 +49,15 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setActionBar()
-        setUserProfile()
+        profileViewModel.getUserData()
+
+        profileViewModel.userData.observe(requireActivity()) {
+            setUserData(it)
+        }
+
+        profileViewModel.errorHandling.observe(requireActivity()) {
+            handleError(it)
+        }
 
         binding.profileSettings.setOnClickListener {
             val intent = Intent(requireContext(), ProfileSettingsActivity::class.java)
@@ -67,12 +84,31 @@ class SettingsFragment : Fragment() {
             getString(R.string.profile)
     }
 
-    private fun setUserProfile() {
-        binding.UserName.text = auth.currentUser?.displayName
-        binding.userEmail.text = auth.currentUser?.email
-        Glide.with(this)
-            .load(auth.currentUser?.photoUrl)
-            .into(binding.UserProfile)
+    private fun setUserData(userData: UserModel) {
+        binding.UserName.text = getString(R.string.hai_user, userData.name)
+        binding.userEmail.text = userData.email
+        if (userData.photoUrl != null) {
+            Glide.with(requireActivity())
+                .load(userData.photoUrl)
+                .into(binding.userProfile)
+        }
+    }
+
+    private fun handleError(msg: WrapMessage<String?>) {
+        val message = when (msg) {
+            WrapMessage("NO_INTERNET") -> getString(R.string.no_internet)
+            else -> getString(R.string.unknown_error)
+        }
+
+        SweetAlertDialog(requireActivity(), SweetAlertDialog.ERROR_TYPE)
+            .setTitleText("Failed")
+            .setConfirmText("Try Again")
+            .setContentText(message)
+            .setConfirmClickListener { sDialog ->
+                sDialog.dismissWithAnimation()
+                profileViewModel.getUserData()
+            }
+            .show()
     }
 
     private fun showAlertDialog() {

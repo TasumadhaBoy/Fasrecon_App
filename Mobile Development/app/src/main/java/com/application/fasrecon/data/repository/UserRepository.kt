@@ -1,30 +1,22 @@
 package com.application.fasrecon.data.repository
 
-import android.service.autofill.UserData
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.application.fasrecon.data.preferences.UserPreference
 import com.google.firebase.auth.FirebaseAuth
 import com.application.fasrecon.data.Result
 import com.application.fasrecon.data.model.UserModel
-import com.google.firebase.FirebaseNetworkException
-import com.google.firebase.auth.FirebaseAuthException
+import com.application.fasrecon.util.WrapMessage
+import kotlinx.coroutines.flow.first
 
-class UserRepository(private val user: FirebaseAuth, userPreference: UserPreference) {
+class UserRepository(private val user: FirebaseAuth, private val userPreference: UserPreference) {
 
     fun getUserData(): LiveData<Result<UserModel>> = liveData {
-        emit(Result.Loading)
         try {
-            val userData = user.currentUser
-            val newUserData = UserModel(userData?.displayName, userData?.email, userData?.photoUrl)
-            emit(Result.Success(newUserData))
-
+            val userData = userPreference.getSession().first()
+            emit(Result.Success(userData))
         } catch (e: Exception) {
-            val message = when(e) {
-                is FirebaseNetworkException -> "NO_INTERNET"
-                is FirebaseAuthException -> "SESSION_EXPIRED"
-                else -> "UNKNOWN_ERROR"
-            }
+            emit(Result.Error(WrapMessage("Failed to get User Data")))
         }
     }
 

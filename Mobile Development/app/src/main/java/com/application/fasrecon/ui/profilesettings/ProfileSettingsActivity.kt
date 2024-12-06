@@ -1,4 +1,4 @@
-package com.application.fasrecon.ui.profile
+package com.application.fasrecon.ui.profilesettings
 
 import android.annotation.SuppressLint
 import android.content.Intent
