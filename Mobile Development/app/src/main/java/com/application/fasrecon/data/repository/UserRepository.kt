@@ -13,7 +13,7 @@ class UserRepository(private val user: FirebaseAuth, private val userPreference:
 
     fun getUserData(): LiveData<Result<UserModel>> = liveData {
         try {
-            val userData = userPreference.getSession().first()
+            val userData = userPreference.getData().first()
             emit(Result.Success(userData))
         } catch (e: Exception) {
             emit(Result.Error(WrapMessage("Failed to get User Data")))
@@ -21,7 +21,6 @@ class UserRepository(private val user: FirebaseAuth, private val userPreference:
     }
 
     companion object {
-
         @Volatile
         private var instance: UserRepository? = null
 

@@ -63,6 +63,7 @@ class HomeFragment : Fragment() {
         if (userData.photoUrl != null) {
             Glide.with(requireActivity())
                 .load(userData.photoUrl)
+                .error(R.drawable.no_profile)
                 .into(binding.imageProfileHomepage)
         }
     }

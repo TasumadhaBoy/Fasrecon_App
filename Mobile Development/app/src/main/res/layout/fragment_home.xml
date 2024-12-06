@@ -24,6 +24,7 @@
             <TextView
                 style="@style/title_homepage"
                 android:id="@+id/tv_user_homepage"
+                android:layout_marginBottom="8dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/image_profile_homepage"
                 app:layout_constraintBottom_toBottomOf="@id/image_profile_homepage"

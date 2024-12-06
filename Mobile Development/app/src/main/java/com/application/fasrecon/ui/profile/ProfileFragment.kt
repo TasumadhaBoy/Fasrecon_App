@@ -85,13 +85,14 @@ class ProfileFragment : Fragment() {
     }
 
     private fun setUserData(userData: UserModel) {
-        binding.UserName.text = getString(R.string.hai_user, userData.name)
+        binding.UserName.text = userData.name
         binding.userEmail.text = userData.email
         if (userData.photoUrl != null) {
             Glide.with(requireActivity())
                 .load(userData.photoUrl)
+                .error(R.drawable.no_profile)
                 .into(binding.userProfile)
-        }
+        } 
     }
 
     private fun handleError(msg: WrapMessage<String?>) {

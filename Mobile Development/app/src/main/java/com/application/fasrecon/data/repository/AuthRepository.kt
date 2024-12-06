@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.userProfileChangeRequest
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.tasks.await
 
 class AuthRepository private constructor(
@@ -70,6 +71,10 @@ class AuthRepository private constructor(
             curUser?.photoUrl.toString()
         )
         userPreference.saveSession(userData, isLogin)
+    }
+
+    fun getSession(): Flow<Boolean> {
+        return userPreference.getSession()
     }
 
     companion object {

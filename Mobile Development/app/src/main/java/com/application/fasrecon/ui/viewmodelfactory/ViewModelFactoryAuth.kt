@@ -7,6 +7,7 @@ import com.application.fasrecon.data.repository.AuthRepository
 import com.application.fasrecon.di.InjectionAuth
 import com.application.fasrecon.ui.login.LoginViewModel
 import com.application.fasrecon.ui.register.RegisterViewModel
+import com.application.fasrecon.ui.splashscreen.SplashScreenViewModel
 
 class ViewModelFactoryAuth private constructor(private val authRepository: AuthRepository) :
     ViewModelProvider.NewInstanceFactory() {
@@ -18,10 +19,9 @@ class ViewModelFactoryAuth private constructor(private val authRepository: AuthR
             return RegisterViewModel(authRepository) as T
         } else if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
             return LoginViewModel(authRepository) as T
+        } else if (modelClass.isAssignableFrom(SplashScreenViewModel::class.java)) {
+            return SplashScreenViewModel(authRepository) as T
         }
-//        else if (modelClass.isAssignableFrom(SplashScreenViewModel::class.java)) {
-//            return SplashScreenViewModel(authRepository) as T
-//        }
         throw IllegalArgumentException("Unknown ViewModel Class: " + modelClass.name)
     }
 

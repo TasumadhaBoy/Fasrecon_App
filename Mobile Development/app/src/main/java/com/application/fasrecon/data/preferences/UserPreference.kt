@@ -24,13 +24,19 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
         }
     }
 
-    fun getSession(): Flow<UserModel> {
+    fun getData(): Flow<UserModel> {
         return dataStore.data.map { preferences ->
             UserModel(
                 preferences[NAME] ?: "",
                 preferences[EMAIL] ?: "",
                 preferences[PHOTO] ?: ""
             )
+        }
+    }
+
+    fun getSession(): Flow<Boolean> {
+        return dataStore.data.map { preferences ->
+            preferences[IS_LOGIN] ?: false
         }
     }
 

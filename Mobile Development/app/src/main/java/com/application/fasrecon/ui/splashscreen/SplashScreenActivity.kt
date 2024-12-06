@@ -9,17 +9,21 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.application.fasrecon.R
 import com.application.fasrecon.databinding.ActivitySplashScreenBinding
 import com.application.fasrecon.ui.BaseActivity
+import com.application.fasrecon.ui.MainActivity
 import com.application.fasrecon.ui.onboardingpage.OnboardingPageActivity
+import com.application.fasrecon.ui.viewmodelfactory.ViewModelFactoryAuth
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : BaseActivity() {
 
     private lateinit var binding: ActivitySplashScreenBinding
+    private val splashScreenViewModel: SplashScreenViewModel by viewModels { ViewModelFactoryAuth.getInstance(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +34,13 @@ class SplashScreenActivity : BaseActivity() {
         showAnimation()
 
         Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this, OnboardingPageActivity::class.java))
+            splashScreenViewModel.getSession().observe(this) {
+                if (it) {
+                    startActivity(Intent(this, MainActivity::class.java))
+                } else {
+                    startActivity(Intent(this, OnboardingPageActivity::class.java))
+                }
+            }
             finish()
         }, 2200)
 
