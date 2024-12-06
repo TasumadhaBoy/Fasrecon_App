@@ -15,7 +15,7 @@ val Context.userDataStore: DataStore<Preferences> by preferencesDataStore(name =
 
 class UserPreference private constructor(private val dataStore: DataStore<Preferences>) {
 
-    suspend fun saveSession() {
+    suspend fun saveSession(isLogin: Boolean) {
         dataStore.edit { preferences ->
             preferences[IS_LOGIN] = true
         }
