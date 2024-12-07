@@ -49,7 +49,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
 
         loginViewModel.loginMessage.observe(this) {
             val password = binding.passwordLoginInput.text.toString().trim()
-            loginViewModel.saveSession(true, password)
+            loginViewModel.saveSession(password)
             SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
                 .setTitleText("Login Success")
                 .setContentText("Welcome $it")

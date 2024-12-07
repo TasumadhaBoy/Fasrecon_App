@@ -11,11 +11,7 @@ import com.application.fasrecon.ui.BaseActivity
 import com.application.fasrecon.ui.login.LoginActivity
 import com.application.fasrecon.ui.viewmodelfactory.ViewModelFactoryAuth
 import com.application.fasrecon.util.WrapMessage
-import com.google.firebase.FirebaseNetworkException
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
-import com.google.firebase.auth.FirebaseAuthUserCollisionException
-import com.google.firebase.auth.userProfileChangeRequest
+
 
 class RegisterActivity : BaseActivity(), View.OnClickListener {
 
@@ -128,9 +124,9 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
 
     private fun displayLoading(isLoading: Boolean) {
         if (isLoading) {
-            binding.loadingRegister?.visibility = View.VISIBLE
+            binding.loadingRegister.visibility = View.VISIBLE
         } else {
-            binding.loadingRegister?.visibility = View.GONE
+            binding.loadingRegister.visibility = View.GONE
         }
     }
 }

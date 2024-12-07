@@ -1,23 +1,16 @@
 package com.application.fasrecon.ui.profilesettings
 
-import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.application.fasrecon.data.Result
-import com.application.fasrecon.data.model.UserModel
+import com.application.fasrecon.data.local.entity.UserEntity
 import com.application.fasrecon.data.repository.UserRepository
 import com.application.fasrecon.util.WrapMessage
 import kotlinx.coroutines.launch
 
 class ProfileSettingsViewModel (private val userRepository: UserRepository): ViewModel() {
-
-    private val _userData = MutableLiveData<UserModel>()
-    val userData: LiveData<UserModel> = _userData
-
-    private val error = MutableLiveData<WrapMessage<String?>>()
-    val errorHandling: LiveData<WrapMessage<String?>> = error
 
     private val updateMsg = MutableLiveData<String?>()
     val updateDataMessage: LiveData<String?> = updateMsg
@@ -28,22 +21,7 @@ class ProfileSettingsViewModel (private val userRepository: UserRepository): Vie
     private val loadData = MutableLiveData<Boolean>()
     val loadingData: LiveData<Boolean> = loadData
 
-    fun getUserData() {
-        userRepository.getUserData().observeForever { result ->
-            if (result != null) {
-                when (result) {
-                    is Result.Loading -> {}
-                    is Result.Success -> {
-                        _userData.value = result.data
-                    }
-
-                    is Result.Error -> {
-                        error.value = result.errorMessage
-                    }
-                }
-            }
-        }
-    }
+    fun getUserData() = userRepository.getUserData()
 
     fun updateData(name: String, photo: String? = null) {
         userRepository.updateUserData(name, photo).observeForever { result ->
@@ -64,7 +42,7 @@ class ProfileSettingsViewModel (private val userRepository: UserRepository): Vie
         }
     }
 
-    fun UpdateUserDataLocal(name: String, photo: String) {
+    fun updateUserDataLocal(name: String, photo: String) {
         viewModelScope.launch {
             userRepository.updateUserDataLocal(name, photo)
         }

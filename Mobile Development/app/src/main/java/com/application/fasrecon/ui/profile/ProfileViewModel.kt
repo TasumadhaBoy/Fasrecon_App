@@ -5,37 +5,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.application.fasrecon.data.Result
-import com.application.fasrecon.data.model.UserModel
+import com.application.fasrecon.data.local.entity.UserEntity
 import com.application.fasrecon.data.repository.UserRepository
 import com.application.fasrecon.util.WrapMessage
 import kotlinx.coroutines.launch
 
 class ProfileViewModel (private val userRepository: UserRepository): ViewModel() {
 
-    private val _userData = MutableLiveData<UserModel>()
-    val userData: LiveData<UserModel> = _userData
+    fun getUserData() = userRepository.getUserData()
 
-    private val error = MutableLiveData<WrapMessage<String?>>()
-    val errorHandling: LiveData<WrapMessage<String?>> = error
-
-    fun getUserData() {
-        userRepository.getUserData().observeForever { result ->
-            if (result != null) {
-                when (result) {
-                    is Result.Loading -> {}
-                    is Result.Success -> {
-                        _userData.value = result.data
-                    }
-
-                    is Result.Error -> {
-                        error.value = result.errorMessage
-                    }
-                }
-            }
-        }
-    }
-
-    fun logout() {
+    suspend fun logout() {
         viewModelScope.launch {
             userRepository.logout()
         }

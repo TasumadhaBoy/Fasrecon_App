@@ -6,7 +6,5 @@ import androidx.lifecycle.asLiveData
 import com.application.fasrecon.data.repository.AuthRepository
 
 class SplashScreenViewModel(private val authRepository: AuthRepository): ViewModel() {
-    fun getSession(): LiveData<Boolean> {
-        return authRepository.getSession().asLiveData()
-    }
+    fun getSession(): Boolean = authRepository.getSession()
 }

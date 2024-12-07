@@ -5,6 +5,7 @@
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:name=".ui.FasreconApplication"
@@ -46,10 +47,6 @@
             android:exported="false"
             android:label="@string/profile_settings"
             android:theme="@style/Theme.Fasrecon_secondary" />
-        <activity
-            android:name=".ui.forgotpassword.ForgotPassword"
-            android:exported="false"
-            android:theme="@style/Theme.Fasrecon_primary" />
         <activity
             android:name=".ui.register.RegisterActivity"
             android:exported="false"

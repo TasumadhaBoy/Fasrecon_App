@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.view.MotionEvent
 import android.view.View
@@ -13,12 +12,11 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.application.fasrecon.R
-import com.application.fasrecon.data.model.UserModel
+import com.application.fasrecon.data.local.entity.UserEntity
 import com.application.fasrecon.databinding.ActivityProfileSettingsBinding
 import com.application.fasrecon.ui.BaseActivity
 import com.application.fasrecon.ui.MainActivity
 import com.application.fasrecon.ui.changepassword.ChangePasswordActivity
-import com.application.fasrecon.ui.myclothes.AddClothesBottomSheetDialog
 import com.application.fasrecon.ui.viewmodelfactory.ViewModelFactoryUser
 import com.application.fasrecon.util.WrapMessage
 import com.bumptech.glide.Glide
@@ -37,13 +35,7 @@ class ProfileSettingsActivity : BaseActivity() {
         setContentView(binding.root)
         setActionBar()
 
-        profileSettingsViewModel.getUserData()
-
-        profileSettingsViewModel.errorHandling.observe(this) {
-            handleError(it)
-        }
-
-        profileSettingsViewModel.userData.observe(this) {
+        profileSettingsViewModel.getUserData().observe(this) {
             setUserData(it)
         }
 
@@ -100,7 +92,7 @@ class ProfileSettingsActivity : BaseActivity() {
         )
     }
 
-    private fun setUserData(userData: UserModel) {
+    private fun setUserData(userData: UserEntity) {
         name = userData.name
         binding.nameEditInput.setText(userData.name)
         binding.emailEditInput.setText(userData.email)
@@ -110,20 +102,6 @@ class ProfileSettingsActivity : BaseActivity() {
                 .load(userData.photoUrl)
                 .error(R.drawable.no_profile)
                 .into(binding.imageProfileSettings)
-        }
-    }
-
-    private fun handleError(msg: WrapMessage<String?>) {
-        msg.getDataIfNotDisplayed().let { message ->
-            SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
-                .setTitleText("Failed")
-                .setConfirmText("Try Again")
-                .setContentText(message)
-                .setConfirmClickListener { sDialog ->
-                    sDialog.dismissWithAnimation()
-                    profileSettingsViewModel.getUserData()
-                }
-                .show()
         }
     }
 
@@ -164,7 +142,7 @@ class ProfileSettingsActivity : BaseActivity() {
         }
 
         profileSettingsViewModel.updateDataMessage.observe(this) {
-            profileSettingsViewModel.UpdateUserDataLocal(newName, imageUriSelected.toString())
+            profileSettingsViewModel.updateUserDataLocal(newName, imageUriSelected.toString())
             SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
                 .setTitleText("Update Profile Success")
                 .setConfirmClickListener { sDialog ->

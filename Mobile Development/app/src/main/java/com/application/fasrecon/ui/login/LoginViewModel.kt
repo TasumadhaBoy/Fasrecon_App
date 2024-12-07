@@ -38,9 +38,9 @@ class LoginViewModel(private val authRepository: AuthRepository): ViewModel() {
         }
     }
 
-    fun saveSession(isLogin: Boolean, password: String) {
+    fun saveSession(password: String) {
         viewModelScope.launch {
-            authRepository.saveSession(isLogin, password)
+            authRepository.saveSession(password)
         }
     }
 }

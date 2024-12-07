@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.application.fasrecon.R
-import com.application.fasrecon.data.model.UserModel
+import com.application.fasrecon.data.local.entity.UserEntity
 import com.application.fasrecon.databinding.FragmentProfileBinding
 import com.application.fasrecon.ui.languagesettings.LanguageSettingsActivity
 import com.application.fasrecon.ui.login.LoginActivity
@@ -49,14 +49,8 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setActionBar()
-        profileViewModel.getUserData()
-
-        profileViewModel.userData.observe(requireActivity()) {
+        profileViewModel.getUserData().observe(requireActivity()) {
             setUserData(it)
-        }
-
-        profileViewModel.errorHandling.observe(requireActivity()) {
-            handleError(it)
         }
 
         binding.profileSettings.setOnClickListener {
@@ -84,7 +78,7 @@ class ProfileFragment : Fragment() {
             getString(R.string.profile)
     }
 
-    private fun setUserData(userData: UserModel) {
+    private fun setUserData(userData: UserEntity) {
         binding.UserName.text = userData.name
         binding.userEmail.text = userData.email
         if (userData.photoUrl != null) {
@@ -92,20 +86,6 @@ class ProfileFragment : Fragment() {
                 .load(userData.photoUrl)
                 .error(R.drawable.no_profile)
                 .into(binding.userProfile)
-        } 
-    }
-
-    private fun handleError(msg: WrapMessage<String?>) {
-        msg.getDataIfNotDisplayed().let { message ->
-            SweetAlertDialog(requireActivity(), SweetAlertDialog.ERROR_TYPE)
-                .setTitleText("Failed")
-                .setConfirmText("Try Again")
-                .setContentText(message)
-                .setConfirmClickListener { sDialog ->
-                    sDialog.dismissWithAnimation()
-                    profileViewModel.getUserData()
-                }
-                .show()
         }
     }
 
@@ -126,7 +106,6 @@ class ProfileFragment : Fragment() {
         }
 
         dialog.findViewById<Button>(R.id.btn_logout).setOnClickListener {
-            auth.signOut()
             profileViewModel.logout()
             val intent = Intent(requireContext(), LoginActivity::class.java)
             startActivity(intent)
