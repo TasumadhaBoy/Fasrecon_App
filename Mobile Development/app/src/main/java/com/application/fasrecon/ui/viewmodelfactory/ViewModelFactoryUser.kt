@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.application.fasrecon.data.repository.UserRepository
 import com.application.fasrecon.di.InjectionUser
+import com.application.fasrecon.ui.changepassword.ChangePasswordViewModel
 import com.application.fasrecon.ui.home.HomeViewModel
 import com.application.fasrecon.ui.profile.ProfileViewModel
 import com.application.fasrecon.ui.profilesettings.ProfileSettingsViewModel
@@ -20,6 +21,8 @@ class ViewModelFactoryUser private constructor(private val userRepository: UserR
             return ProfileViewModel(userRepository) as T
         } else if (modelClass.isAssignableFrom(ProfileSettingsViewModel::class.java)) {
             return ProfileSettingsViewModel(userRepository) as T
+        } else if (modelClass.isAssignableFrom(ChangePasswordViewModel::class.java)) {
+            return ChangePasswordViewModel(userRepository) as T
         }
 
         throw IllegalArgumentException("Unknown ViewModel Class: " + modelClass.name)

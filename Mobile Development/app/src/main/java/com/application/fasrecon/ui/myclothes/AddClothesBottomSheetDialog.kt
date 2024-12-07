@@ -23,7 +23,9 @@ import java.io.File
 @Suppress("DEPRECATION")
 class AddClothesBottomSheetDialog: BottomSheetDialogFragment() {
     private lateinit var binding: BottomSheetDialogPhotoCameraBinding
+    private var imageByUser: ImageByUser? = null
     private var imageUri: Uri? = null
+
 
     private val openGalleryPhoto = registerForActivityResult(ActivityResultContracts.PickVisualMedia()){ uri: Uri? ->
         if (uri != null){
@@ -36,7 +38,6 @@ class AddClothesBottomSheetDialog: BottomSheetDialogFragment() {
     private val openAccessCamera =
         registerForActivityResult(ActivityResultContracts.TakePicture()) { isSuccess ->
             if (isSuccess) {
-//                showImage()
                 startCrop(imageUri)
 
             } else {
@@ -99,10 +100,8 @@ class AddClothesBottomSheetDialog: BottomSheetDialogFragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == UCrop.REQUEST_CROP && resultCode == RESULT_OK) {
-//            homeViewModel.curImg = UCrop.getOutput(data!!)
-//            homeViewModel.curImg?.let { uri ->
-//                showImage(uri)
-//            }
+            imageUri = UCrop.getOutput(data!!)
+            imageUri?.let { imageByUser?.imageUriByUser(it) }
         } else if (resultCode == UCrop.RESULT_ERROR) {
             val cropError = UCrop.getError(data!!)
             showToast(cropError?.message ?: "Crop image failed")
@@ -111,6 +110,14 @@ class AddClothesBottomSheetDialog: BottomSheetDialogFragment() {
 
     private fun showToast(message: String) {
         Toast.makeText(requireActivity(), message, Toast.LENGTH_SHORT).show()
+    }
+
+    fun setImageByUser(imageByUser: ImageByUser) {
+        this.imageByUser = imageByUser
+    }
+
+    interface ImageByUser {
+        fun imageUriByUser(imageUri: Uri)
     }
 
     companion object {

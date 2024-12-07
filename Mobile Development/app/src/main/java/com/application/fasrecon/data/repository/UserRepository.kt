@@ -49,6 +49,8 @@ class UserRepository(
         try {
             val userPassword = user.currentUser
             userPassword?.updatePassword(newPassword)
+            val id = userDao.getDataUser().value?.id
+            userDao.changeUserPassword(newPassword, id)
             emit(Result.Success("SUCCESS"))
         } catch (e: Exception) {
             val errorMessage = when (e) {
@@ -63,7 +65,8 @@ class UserRepository(
     }
 
     suspend fun updateUserDataLocal(name: String, photo: String?) {
-        userDao.updateProfileUser(name, photo)
+        val id = userDao.getDataUser().value?.id
+        userDao.updateProfileUser(name, photo, id)
     }
 
     suspend fun logout() {

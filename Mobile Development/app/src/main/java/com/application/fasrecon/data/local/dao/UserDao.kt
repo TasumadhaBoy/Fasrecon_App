@@ -12,8 +12,11 @@ interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertDataUser(user: UserEntity)
 
-    @Query("UPDATE user SET  name = :name, photoUrl = :photo")
-    suspend fun updateProfileUser(name: String, photo: String?)
+    @Query("UPDATE user SET name = :name, photoUrl = :photo WHERE id = :id")
+    suspend fun updateProfileUser(name: String, photo: String?, id: Long?)
+
+    @Query("UPDATE user SET password = :newPassword WHERE id = :id")
+    suspend fun changeUserPassword(newPassword: String, id: Long?)
 
     @Query("SELECT * FROM user")
     fun getDataUser(): LiveData<UserEntity>

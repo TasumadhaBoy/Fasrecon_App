@@ -7,13 +7,22 @@ import android.text.style.ForegroundColorSpan
 import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
+import androidx.activity.viewModels
+import cn.pedant.SweetAlert.SweetAlertDialog
 import com.application.fasrecon.R
 import com.application.fasrecon.databinding.ActivityChangePasswordBinding
 import com.application.fasrecon.ui.BaseActivity
+import com.application.fasrecon.ui.viewmodelfactory.ViewModelFactoryUser
+import com.application.fasrecon.util.WrapMessage
 
 class ChangePasswordActivity : BaseActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityChangePasswordBinding
+    private val changePasswordViewModel: ChangePasswordViewModel by viewModels {
+        ViewModelFactoryUser.getInstance(
+            this
+        )
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +32,36 @@ class ChangePasswordActivity : BaseActivity(), View.OnClickListener {
         setSpannable(binding.newPasswordFormat)
 
         binding.changeBtn.setOnClickListener(this)
+
+        changePasswordViewModel.loadingData.observe(this) {
+            displayLoading(it)
+        }
+
+        changePasswordViewModel.errorHandling.observe(this) {
+            val message = when(it) {
+                WrapMessage("NO_INTERNET") -> getString(R.string.no_internet)
+                WrapMessage("TOO_MANY_REQUEST") -> getString(R.string.too_many_request)
+                WrapMessage("LOGIN_AGAIN") -> getString(R.string.failed_update_login_again)
+                else -> getString(R.string.unknown_error)
+            }
+
+            SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                .setTitleText("Update Profile Failed")
+                .setConfirmText("Try Again")
+                .setContentText(message)
+                .show()
+        }
+
+        changePasswordViewModel.changePasswordMessage.observe(this) {
+
+            SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
+                .setTitleText("Change Password Success")
+//                .setConfirmClickListener { sDialog ->
+//                    sDialog.dismissWithAnimation()
+//                    finish()
+//                }
+                .show()
+        }
     }
 
     override fun onClick(v: View) {
@@ -65,6 +104,17 @@ class ChangePasswordActivity : BaseActivity(), View.OnClickListener {
                     return
                 }
 
+                changePasswordViewModel.getUserData().observe(this) {
+                    if (it.password != currentPassword) {
+                        SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Change Failed")
+                            .setConfirmText("Try Again")
+                            .setContentText(getString(R.string.current_password_incorrect))
+                            .show()
+                    } else {
+                        changePasswordViewModel.changePassword(newPassword)
+                    }
+                }
                 finish()
             }
 
@@ -81,6 +131,14 @@ class ChangePasswordActivity : BaseActivity(), View.OnClickListener {
         val spannable = SpannableString(targetView)
         spannable.setSpan(ForegroundColorSpan(Color.RED), 0, 1, 0)
         view.text = spannable
+    }
+
+    private fun displayLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.loadingChangePassword.visibility = View.VISIBLE
+        } else {
+            binding.loadingChangePassword.visibility = View.GONE
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
