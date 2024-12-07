@@ -48,7 +48,8 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
         }
 
         loginViewModel.loginMessage.observe(this) {
-            loginViewModel.saveSession(true)
+            val password = binding.passwordLoginInput.text.toString().trim()
+            loginViewModel.saveSession(true, password)
             SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
                 .setTitleText("Login Success")
                 .setContentText("Welcome $it")
@@ -120,9 +121,9 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
 
     private fun displayLoading(isLoading: Boolean) {
         if (isLoading) {
-            binding.loadingLogin?.visibility = View.VISIBLE
+            binding.loadingLogin.visibility = View.VISIBLE
         } else {
-            binding.loadingLogin?.visibility = View.GONE
+            binding.loadingLogin.visibility = View.GONE
         }
     }
 }

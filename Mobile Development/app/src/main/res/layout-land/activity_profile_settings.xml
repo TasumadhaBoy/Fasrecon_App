@@ -30,7 +30,7 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/image_profile_settings"
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -39,7 +39,21 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/appbar_layout"
-            app:srcCompat="@drawable/user_profile_image" />
+            tools:src="@drawable/no_profile"/>
+
+        <Button
+            android:id="@+id/container_change_image"
+            android:layout_width="32dp"
+            android:layout_height="40dp"
+            android:elevation="0dp"
+            android:gravity="center"
+            android:paddingStart="7dp"
+            android:paddingEnd="0dp"
+            app:icon="@drawable/edit_icon_24"
+            app:iconSize="18dp"
+            app:layout_constraintEnd_toEndOf="@id/image_profile_settings"
+            app:layout_constraintBottom_toBottomOf="@id/image_profile_settings">
+        </Button>
 
         <TextView
             style="@style/tv_label_input_text"
@@ -129,5 +143,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
+        <ProgressBar
+            android:id="@+id/loading_update"
+            style="?attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.35"
+            tools:visibility="visible" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

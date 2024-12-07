@@ -458,5 +458,5 @@
         <item name="cornerRadius">100dp</item>
         <item name="android:layout_marginEnd">10dp</item>
     </style>
-    
+
 </resources>

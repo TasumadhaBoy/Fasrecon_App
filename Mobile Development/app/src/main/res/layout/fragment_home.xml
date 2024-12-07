@@ -30,14 +30,14 @@
                 app:layout_constraintBottom_toBottomOf="@id/image_profile_homepage"
                 tools:text="Hai, Fasrecon"/>
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/image_profile_homepage"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="16dp"
                 android:contentDescription="@string/image_profile_home_page"
-                tools:src="@drawable/user_profile_image"
+                tools:src="@drawable/no_profile"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 

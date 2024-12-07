@@ -96,20 +96,17 @@ class ProfileFragment : Fragment() {
     }
 
     private fun handleError(msg: WrapMessage<String?>) {
-        val message = when (msg) {
-            WrapMessage("NO_INTERNET") -> getString(R.string.no_internet)
-            else -> getString(R.string.unknown_error)
+        msg.getDataIfNotDisplayed().let { message ->
+            SweetAlertDialog(requireActivity(), SweetAlertDialog.ERROR_TYPE)
+                .setTitleText("Failed")
+                .setConfirmText("Try Again")
+                .setContentText(message)
+                .setConfirmClickListener { sDialog ->
+                    sDialog.dismissWithAnimation()
+                    profileViewModel.getUserData()
+                }
+                .show()
         }
-
-        SweetAlertDialog(requireActivity(), SweetAlertDialog.ERROR_TYPE)
-            .setTitleText("Failed")
-            .setConfirmText("Try Again")
-            .setContentText(message)
-            .setConfirmClickListener { sDialog ->
-                sDialog.dismissWithAnimation()
-                profileViewModel.getUserData()
-            }
-            .show()
     }
 
     private fun showAlertDialog() {
@@ -130,6 +127,7 @@ class ProfileFragment : Fragment() {
 
         dialog.findViewById<Button>(R.id.btn_logout).setOnClickListener {
             auth.signOut()
+            profileViewModel.logout()
             val intent = Intent(requireContext(), LoginActivity::class.java)
             startActivity(intent)
         }

@@ -57,7 +57,7 @@
                     android:id="@+id/text_email_layout_login"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/email_login"
-                    app:startIconDrawable="@drawable/emal_icon">
+                    app:startIconDrawable="@drawable/email_icon">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/email_login_input"
@@ -127,6 +127,19 @@
                         android:text="@string/register" />
 
                 </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/loading_login"
+                    style="?attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.25"
+                    tools:visibility="visible" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>

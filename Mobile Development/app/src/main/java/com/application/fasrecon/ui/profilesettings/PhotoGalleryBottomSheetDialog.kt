@@ -1,4 +1,4 @@
-package com.application.fasrecon.ui.myclothes
+package com.application.fasrecon.ui.profilesettings
 
 import android.app.Activity.RESULT_OK
 import android.app.Dialog
@@ -21,9 +21,10 @@ import com.yalantis.ucrop.UCrop
 import java.io.File
 
 @Suppress("DEPRECATION")
-class AddClothesBottomSheetDialog: BottomSheetDialogFragment() {
+class PhotoGalleryBottomSheetDialog: BottomSheetDialogFragment() {
     private lateinit var binding: BottomSheetDialogPhotoCameraBinding
     private var imageUri: Uri? = null
+    private var imageByUser: ImageByUser? = null
 
     private val openGalleryPhoto = registerForActivityResult(ActivityResultContracts.PickVisualMedia()){ uri: Uri? ->
         if (uri != null){
@@ -36,7 +37,6 @@ class AddClothesBottomSheetDialog: BottomSheetDialogFragment() {
     private val openAccessCamera =
         registerForActivityResult(ActivityResultContracts.TakePicture()) { isSuccess ->
             if (isSuccess) {
-//                showImage()
                 startCrop(imageUri)
 
             } else {
@@ -99,10 +99,8 @@ class AddClothesBottomSheetDialog: BottomSheetDialogFragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == UCrop.REQUEST_CROP && resultCode == RESULT_OK) {
-//            homeViewModel.curImg = UCrop.getOutput(data!!)
-//            homeViewModel.curImg?.let { uri ->
-//                showImage(uri)
-//            }
+            imageUri = UCrop.getOutput(data!!)
+            imageUri?.let { imageByUser?.imageUriByUser(it) }
         } else if (resultCode == UCrop.RESULT_ERROR) {
             val cropError = UCrop.getError(data!!)
             showToast(cropError?.message ?: "Crop image failed")
@@ -113,7 +111,15 @@ class AddClothesBottomSheetDialog: BottomSheetDialogFragment() {
         Toast.makeText(requireActivity(), message, Toast.LENGTH_SHORT).show()
     }
 
+    fun setImageByUser(imageByUser: ImageByUser) {
+        this.imageByUser = imageByUser
+    }
+
+    interface ImageByUser {
+        fun imageUriByUser(imageUri: Uri)
+    }
+
     companion object {
-        const val ADD_CLOTHES_BOTTOM_SHEET_DIALOG = "ADD_CLOTHES_BOTTOM_SHEET_DIALOG"
+        const val PHOTO_CAMERA_BOTTOM_SHEET_DIALOG = "PHOTO_CAMERA_BOTTOM_SHEET_DIALOG"
     }
 }

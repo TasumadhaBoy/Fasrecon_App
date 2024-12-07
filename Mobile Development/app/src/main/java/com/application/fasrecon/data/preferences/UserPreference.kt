@@ -20,6 +20,7 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
             preferences[IS_LOGIN] = isLogin
             user.name?.let { preferences[NAME] = it }
             user.email?.let { preferences[EMAIL] = it }
+            user.password?.let { preferences[PASSWORD] = it }
             user.photoUrl?.let { preferences[PHOTO] = it }
         }
     }
@@ -29,6 +30,7 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
             UserModel(
                 preferences[NAME] ?: "",
                 preferences[EMAIL] ?: "",
+                preferences[PASSWORD] ?: "",
                 preferences[PHOTO] ?: ""
             )
         }
@@ -37,6 +39,13 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
     fun getSession(): Flow<Boolean> {
         return dataStore.data.map { preferences ->
             preferences[IS_LOGIN] ?: false
+        }
+    }
+
+    suspend fun updateDataLocal(name: String, photo: String){
+        dataStore.edit { preferences ->
+            preferences[NAME] = name
+            preferences[PHOTO] = photo
         }
     }
 
@@ -52,6 +61,7 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
         private val IS_LOGIN = booleanPreferencesKey("isLogin")
         private val NAME = stringPreferencesKey("userName")
         private val EMAIL = stringPreferencesKey("userEmail")
+        private val PASSWORD = stringPreferencesKey("userPassword")
         private val PHOTO = stringPreferencesKey("userPhoto")
 
         fun getInstance(dataStore: DataStore<Preferences>): UserPreference {

@@ -72,7 +72,7 @@
                 style="@style/input_layout_enabled"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/email_register_label"
-                app:startIconDrawable="@drawable/emal_icon">
+                app:startIconDrawable="@drawable/email_icon">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/text_input_email"

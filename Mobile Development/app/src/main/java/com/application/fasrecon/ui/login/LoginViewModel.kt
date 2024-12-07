@@ -29,7 +29,6 @@ class LoginViewModel(private val authRepository: AuthRepository): ViewModel() {
                         loadData.value = false
                         logMessage.value = result.data
                     }
-
                     is Result.Error -> {
                         loadData.value = false
                         error.value = result.errorMessage
@@ -39,9 +38,9 @@ class LoginViewModel(private val authRepository: AuthRepository): ViewModel() {
         }
     }
 
-    fun saveSession(isLogin: Boolean) {
+    fun saveSession(isLogin: Boolean, password: String) {
         viewModelScope.launch {
-            authRepository.saveSession(isLogin)
+            authRepository.saveSession(isLogin, password)
         }
     }
 }

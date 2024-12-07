@@ -63,11 +63,12 @@ class AuthRepository private constructor(
         }
     }
 
-    suspend fun saveSession(isLogin: Boolean) {
+    suspend fun saveSession(isLogin: Boolean, password: String) {
         val curUser = authUser.currentUser
         val userData = UserModel(
             curUser?.displayName,
             curUser?.email,
+            password,
             curUser?.photoUrl.toString()
         )
         userPreference.saveSession(userData, isLogin)
