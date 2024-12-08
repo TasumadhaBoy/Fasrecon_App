@@ -1,6 +1,5 @@
 package com.application.fasrecon.data.repository
 
-import android.content.Context
 import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
@@ -15,12 +14,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthRecentLoginRequiredException
 import com.google.firebase.auth.userProfileChangeRequest
-import com.google.gson.Gson
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import okhttp3.MultipartBody
-import okhttp3.RequestBody
 
 class UserRepository(
     private val user: FirebaseAuth,
@@ -45,7 +40,7 @@ class UserRepository(
                     is FirebaseNetworkException -> "NO_INTERNET"
                     is FirebaseTooManyRequestsException -> "TOO_MANY_REQUEST"
                     is FirebaseAuthRecentLoginRequiredException -> "LOGIN_AGAIN"
-                    else -> "UNKNOWN_ERROR"
+                    else -> "Error : $e"
                 }
                 emit(Result.Error(WrapMessage(errorMessage)))
             }

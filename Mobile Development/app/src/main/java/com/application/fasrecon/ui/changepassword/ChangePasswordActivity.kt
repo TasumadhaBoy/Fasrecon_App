@@ -44,7 +44,7 @@ class ChangePasswordActivity : BaseActivity(), View.OnClickListener {
                     "TOO_MANY_REQUEST" -> getString(R.string.too_many_request)
                     "LOGIN_AGAIN" -> getString(R.string.failed_update_login_again)
                     "INCORRECT_PASSWORD" -> getString(R.string.current_password_incorrect)
-                    else -> it.getDataIfNotDisplayed()
+                    else -> msg
                 }
 
                 SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)

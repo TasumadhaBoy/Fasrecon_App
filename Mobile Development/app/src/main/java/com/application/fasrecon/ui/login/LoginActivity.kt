@@ -32,19 +32,21 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
         }
 
         loginViewModel.errorHandling.observe(this) {
-            val message = when(it) {
-                WrapMessage("NO_INTERNET") -> getString(R.string.no_internet)
-                WrapMessage("WRONG_EMAIL_PASSWORD") -> getString(R.string.wrong_email_password)
-                WrapMessage("INVALID_USER") -> getString(R.string.invalid_user)
-                WrapMessage("TOO_MANY_REQUEST") -> getString(R.string.too_many_request)
-                else -> getString(R.string.unknown_error)
-            }
+            it.getDataIfNotDisplayed()?.let { msg ->
+                val message = when(msg) {
+                    "NO_INTERNET" -> getString(R.string.no_internet)
+                    "WRONG_EMAIL_PASSWORD" -> getString(R.string.wrong_email_password)
+                    "INVALID_USER" -> getString(R.string.invalid_user)
+                    "TOO_MANY_REQUEST" -> getString(R.string.too_many_request)
+                    else -> msg
+                }
 
-            SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
-                .setTitleText("Login Failed")
-                .setConfirmText("Try Again")
-                .setContentText(message)
-                .show()
+                SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                    .setTitleText("Login Failed")
+                    .setConfirmText("Try Again")
+                    .setContentText(message)
+                    .show()
+            }
         }
 
         loginViewModel.loginMessage.observe(this) {

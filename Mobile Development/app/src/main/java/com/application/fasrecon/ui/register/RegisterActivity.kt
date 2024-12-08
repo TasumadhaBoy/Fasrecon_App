@@ -32,18 +32,20 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
         }
 
         registerViewModel.errorHandling.observe(this) {
-            val message = when(it) {
-                WrapMessage("NO_INTERNET") -> getString(R.string.no_internet)
-                WrapMessage("WRONG_EMAIL_FORMAT") -> getString(R.string.format_email)
-                WrapMessage("EMAIL_REGISTERED") -> getString(R.string.email_registered)
-                else -> getString(R.string.unknown_error)
-            }
+            it.getDataIfNotDisplayed()?.let { msg ->
+                val message = when(msg) {
+                    "NO_INTERNET" -> getString(R.string.no_internet)
+                    "WRONG_EMAIL_FORMAT" -> getString(R.string.format_email)
+                    "EMAIL_REGISTERED" -> getString(R.string.email_registered)
+                    else -> msg
+                }
 
-            SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
-                .setTitleText("Register Failed")
-                .setConfirmText("Try Again")
-                .setContentText("Create Account Failed\n${message}")
-                .show()
+                SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                    .setTitleText("Register Failed")
+                    .setConfirmText("Try Again")
+                    .setContentText("Create Account Failed\n${message}")
+                    .show()
+            }
         }
 
         registerViewModel.registerMessage.observe(this) {

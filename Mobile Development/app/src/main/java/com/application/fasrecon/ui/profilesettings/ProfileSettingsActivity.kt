@@ -127,18 +127,20 @@ class ProfileSettingsActivity : BaseActivity() {
         }
 
         profileSettingsViewModel.errorUpdateHandling.observe(this) {
-            val message = when(it) {
-                WrapMessage("NO_INTERNET") -> getString(R.string.no_internet)
-                WrapMessage("TOO_MANY_REQUEST") -> getString(R.string.too_many_request)
-                WrapMessage("LOGIN_AGAIN") -> getString(R.string.failed_update_login_again)
-                else -> getString(R.string.unknown_error)
-            }
+            it.getDataIfNotDisplayed()?.let { msg ->
+                val message = when(msg) {
+                    "NO_INTERNET" -> getString(R.string.no_internet)
+                    "TOO_MANY_REQUEST" -> getString(R.string.too_many_request)
+                    "LOGIN_AGAIN" -> getString(R.string.failed_update_login_again)
+                    else -> msg
+                }
 
-            SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
-                .setTitleText("Update Profile Failed")
-                .setConfirmText("Try Again")
-                .setContentText(message)
-                .show()
+                SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                    .setTitleText("Update Profile Failed")
+                    .setConfirmText("Try Again")
+                    .setContentText(message)
+                    .show()
+            }
         }
 
         profileSettingsViewModel.updateDataMessage.observe(this) {

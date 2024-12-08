@@ -41,7 +41,7 @@ class AuthRepository private constructor(
                     is FirebaseNetworkException -> "NO_INTERNET"
                     is FirebaseAuthInvalidCredentialsException -> "WRONG_EMAIL_FORMAT"
                     is FirebaseAuthUserCollisionException -> "EMAIL_REGISTERED"
-                    else -> "UNKNOWN_ERROR"
+                    else -> "Error : $e"
                 }
                 emit(Result.Error(WrapMessage(errorMessage)))
             }
@@ -60,7 +60,7 @@ class AuthRepository private constructor(
                 is FirebaseAuthInvalidCredentialsException -> "WRONG_EMAIL_PASSWORD"
                 is FirebaseAuthInvalidUserException -> "INVALID_USER"
                 is FirebaseTooManyRequestsException -> "TOO_MANY_REQUEST"
-                else -> "UNKNOWN_ERROR"
+                else -> "Error : $e"
             }
             emit(Result.Error(WrapMessage(errorMessage)))
         }

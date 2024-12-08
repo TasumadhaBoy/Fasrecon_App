@@ -38,7 +38,6 @@ class ProfileFragment : Fragment() {
             requireActivity()
         )
     }
-    private val auth = FirebaseAuth.getInstance()
 
     override fun onCreateView(
         inflater: LayoutInflater,
