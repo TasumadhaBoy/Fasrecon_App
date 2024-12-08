@@ -13,6 +13,7 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.application.fasrecon.R
 import com.application.fasrecon.data.local.entity.UserEntity
@@ -24,6 +25,9 @@ import com.application.fasrecon.ui.viewmodelfactory.ViewModelFactoryUser
 import com.application.fasrecon.util.WrapMessage
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 
 class ProfileFragment : Fragment() {
 
@@ -106,7 +110,10 @@ class ProfileFragment : Fragment() {
         }
 
         dialog.findViewById<Button>(R.id.btn_logout).setOnClickListener {
-            profileViewModel.logout()
+
+            lifecycleScope.launch {
+                profileViewModel.logout()
+            }
             val intent = Intent(requireContext(), LoginActivity::class.java)
             startActivity(intent)
         }

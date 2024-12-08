@@ -1,5 +1,6 @@
 package com.application.fasrecon.data.repository
 
+import android.content.Context
 import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
@@ -9,11 +10,17 @@ import com.application.fasrecon.data.local.entity.UserEntity
 import com.application.fasrecon.util.WrapMessage
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.FirebaseTooManyRequestsException
+import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthRecentLoginRequiredException
 import com.google.firebase.auth.userProfileChangeRequest
+import com.google.gson.Gson
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 
 class UserRepository(
     private val user: FirebaseAuth,
@@ -44,21 +51,22 @@ class UserRepository(
             }
         }
 
-    fun changePassword(newPassword: String): LiveData<Result<String?>> = liveData {
+    fun changePassword(currentPassword: String, newPassword: String): LiveData<Result<String?>> = liveData {
         emit(Result.Loading)
         try {
-            val userPassword = user.currentUser
-            userPassword?.updatePassword(newPassword)
-            val id = userDao.getDataUser().value?.id
-            userDao.changeUserPassword(newPassword, id)
+            val email = user.currentUser?.email
+            val currentUser = user.currentUser
+            val credential = EmailAuthProvider.getCredential(email ?: "", currentPassword)
+            currentUser?.reauthenticate(credential)?.await()
+            currentUser?.updatePassword(newPassword)?.await()
             emit(Result.Success("SUCCESS"))
         } catch (e: Exception) {
             val errorMessage = when (e) {
                 is FirebaseNetworkException -> "NO_INTERNET"
                 is FirebaseTooManyRequestsException -> "TOO_MANY_REQUEST"
-                is FirebaseAuthInvalidCredentialsException -> "TOO_SHORT"
+                is FirebaseAuthInvalidCredentialsException -> "INCORRECT_PASSWORD"
                 is FirebaseAuthRecentLoginRequiredException -> "LOGIN_AGAIN"
-                else -> "UNKNOWN_ERROR"
+                else -> "Error : $e"
             }
             emit(Result.Error(WrapMessage(errorMessage)))
         }
@@ -67,6 +75,22 @@ class UserRepository(
     suspend fun updateUserDataLocal(name: String, photo: String?) {
         val id = userDao.getDataUser().value?.id
         userDao.updateProfileUser(name, photo, id)
+    }
+
+    fun classifyImage(multipartBody: MultipartBody.Part)
+//    : LiveData<kotlin.Result<UploadStoryResponse>> = liveData
+    {
+//        emit(Result.Loading)
+//        try {
+//            val response = apiService
+//            emit(kotlin.Result.Success(response))
+//        } catch (e: Exception) {
+//            val errorMessage = when (e) {
+//                is java.net.UnknownHostException -> "No internet connection"
+//                else -> "Unknown Error"
+//            }
+//            emit(kotlin.Result.Error(WrapMessage(errorMessage)))
+//        }
     }
 
     suspend fun logout() {

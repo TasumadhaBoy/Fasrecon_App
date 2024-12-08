@@ -38,28 +38,33 @@ class ChangePasswordActivity : BaseActivity(), View.OnClickListener {
         }
 
         changePasswordViewModel.errorHandling.observe(this) {
-            val message = when(it) {
-                WrapMessage("NO_INTERNET") -> getString(R.string.no_internet)
-                WrapMessage("TOO_MANY_REQUEST") -> getString(R.string.too_many_request)
-                WrapMessage("LOGIN_AGAIN") -> getString(R.string.failed_update_login_again)
-                else -> getString(R.string.unknown_error)
+            it.getDataIfNotDisplayed()?.let { msg ->
+                val message = when (msg) {
+                    "NO_INTERNET" -> getString(R.string.no_internet)
+                    "TOO_MANY_REQUEST" -> getString(R.string.too_many_request)
+                    "LOGIN_AGAIN" -> getString(R.string.failed_update_login_again)
+                    "INCORRECT_PASSWORD" -> getString(R.string.current_password_incorrect)
+                    else -> it.getDataIfNotDisplayed()
+                }
+
+                SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                    .setTitleText("Update Profile Failed")
+                    .setConfirmText("Try Again")
+                    .setContentText(message)
+                    .show()
             }
 
-            SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
-                .setTitleText("Update Profile Failed")
-                .setConfirmText("Try Again")
-                .setContentText(message)
-                .show()
         }
 
         changePasswordViewModel.changePasswordMessage.observe(this) {
 
             SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
                 .setTitleText("Change Password Success")
-//                .setConfirmClickListener { sDialog ->
-//                    sDialog.dismissWithAnimation()
-//                    finish()
-//                }
+                .setConfirmText("Ok")
+                .setConfirmClickListener { sDialog ->
+                    sDialog.dismissWithAnimation()
+                    finish()
+                }
                 .show()
         }
     }
@@ -104,20 +109,8 @@ class ChangePasswordActivity : BaseActivity(), View.OnClickListener {
                     return
                 }
 
-                changePasswordViewModel.getUserData().observe(this) {
-                    if (it.password != currentPassword) {
-                        SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Change Failed")
-                            .setConfirmText("Try Again")
-                            .setContentText(getString(R.string.current_password_incorrect))
-                            .show()
-                    } else {
-                        changePasswordViewModel.changePassword(newPassword)
-                    }
-                }
-                finish()
+                changePasswordViewModel.changePassword(currentPassword, newPassword)
             }
-
         }
     }
 

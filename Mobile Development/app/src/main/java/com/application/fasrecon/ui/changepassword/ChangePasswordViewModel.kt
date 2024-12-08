@@ -17,10 +17,8 @@ class ChangePasswordViewModel (private val userRepository: UserRepository): View
     private val error = MutableLiveData<WrapMessage<String?>>()
     val errorHandling: LiveData<WrapMessage<String?>> = error
 
-    fun getUserData() = userRepository.getUserData()
-
-    fun changePassword(newPassword: String) {
-        userRepository.changePassword(newPassword).observeForever { result ->
+    fun changePassword(currentPassword: String, newPassword: String) {
+        userRepository.changePassword(currentPassword, newPassword).observeForever { result ->
             if (result != null) {
                 when (result) {
                     is Result.Loading -> loadData.value = true
