@@ -6,7 +6,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.application.fasrecon.data.Result
 import com.application.fasrecon.data.local.dao.UserDao
+import com.application.fasrecon.data.local.entity.ClothesEntity
 import com.application.fasrecon.data.local.entity.UserEntity
+import com.application.fasrecon.data.remote.response.Label
+import com.application.fasrecon.data.remote.retrofit.ApiService
 import com.application.fasrecon.util.WrapMessage
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.FirebaseTooManyRequestsException
@@ -20,7 +23,8 @@ import okhttp3.MultipartBody
 
 class UserRepository(
     private val user: FirebaseAuth,
-    private val userDao: UserDao
+    private val userDao: UserDao,
+    private val apiService: ApiService
 ) {
 
     fun getUserData(): LiveData<UserEntity> = userDao.getDataUser()
@@ -71,24 +75,49 @@ class UserRepository(
 
     suspend fun updateUserDataLocal(name: String, photo: String?) {
         val id: String = user.currentUser?.uid.toString()
-        Log.d("Test2", "${id}, ${photo.toString()}")
         userDao.updateProfileUser(name, photo, id)
     }
 
-    fun classifyImage(multipartBody: MultipartBody.Part)
-//    : LiveData<kotlin.Result<UploadStoryResponse>> = liveData
-    {
-//        emit(Result.Loading)
-//        try {
-//            val response = apiService
-//            emit(kotlin.Result.Success(response))
-//        } catch (e: Exception) {
-//            val errorMessage = when (e) {
-//                is java.net.UnknownHostException -> "No internet connection"
-//                else -> "Unknown Error"
-//            }
-//            emit(kotlin.Result.Error(WrapMessage(errorMessage)))
-//        }
+    fun classifyImage(multipartBody: MultipartBody.Part): LiveData<Result<Label>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.classifyImage(multipartBody)
+            val newLabel = Label(
+                response[0][0],
+                response[0][1]
+            )
+            emit(Result.Success(newLabel))
+        } catch (e: Exception) {
+            val errorMessage = when (e) {
+                is java.net.UnknownHostException -> "No internet connection"
+                is retrofit2.HttpException -> "Request Failed With Error ${e.code()}"
+                else -> "Unknown Error ${e.message}"
+            }
+            emit(Result.Error(WrapMessage(errorMessage)))
+        }
+    }
+
+    suspend fun insertClothesData(clothes: String, type: String?, color: String?) {
+        val idUser: String = user.currentUser?.uid.toString()
+        val size = userDao.getClothesCount(idUser)
+        val newClothesData = ClothesEntity(
+            id = idUser + size,
+            clothesImage = clothes,
+            clothesName = type + size,
+            type = type,
+            color = color,
+            userId = idUser
+        )
+        userDao.insertClothes(newClothesData)
+    }
+
+    fun getAllClothes(): LiveData<List<ClothesEntity>> {
+        val idUser: String = user.currentUser?.uid.toString()
+        return userDao.getAllClothes(idUser)
+    }
+
+    suspend fun deleteClothes(id: String) {
+        userDao.deleteClothes(id)
     }
 
     suspend fun logout() {
@@ -103,9 +132,9 @@ class UserRepository(
         @Volatile
         private var instance: UserRepository? = null
 
-        fun getInstance(user: FirebaseAuth, userDao: UserDao): UserRepository =
+        fun getInstance(user: FirebaseAuth, userDao: UserDao, apiService: ApiService): UserRepository =
             instance ?: synchronized(this) {
-                instance ?: UserRepository(user, userDao)
+                instance ?: UserRepository(user, userDao, apiService)
             }.also { instance = it }
     }
 }

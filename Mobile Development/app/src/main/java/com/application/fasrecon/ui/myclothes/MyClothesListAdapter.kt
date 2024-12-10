@@ -6,18 +6,36 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.application.fasrecon.data.local.entity.ClothesEntity
+import com.application.fasrecon.databinding.ItemClothesListBinding
 import com.application.fasrecon.databinding.ItemClothesTypeBinding
+import com.bumptech.glide.Glide
 
-class MyClothesListAdapter: ListAdapter<String, MyClothesListAdapter.ListViewHolder>(DIFF_CALLBACK) {
+class MyClothesListAdapter: ListAdapter<ClothesEntity, MyClothesListAdapter.ListViewHolder>(DIFF_CALLBACK) {
 
-    inner class ListViewHolder (private val binding: ItemClothesTypeBinding): ViewHolder(binding.root) {
-        fun bind(type: String, pos: Int) {
+    inner class ListViewHolder (private val binding: ItemClothesListBinding): ViewHolder(binding.root) {
+        fun bind(clothesData: ClothesEntity, pos: Int) {
+            binding.clothesName.text = clothesData.clothesName
+
+            clothesData.type?.let {
+                binding.cardLabelClothes1.alpha = 1f
+                binding.label1.text = it
+            }
+
+            clothesData.color?.let {
+                binding.cardLabelClothes2.alpha = 1f
+                binding.label2.text = it
+            }
+
+            Glide.with(itemView)
+                .load(clothesData.clothesImage)
+                .into(binding.clothesImage)
+
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
-        val binding = ItemClothesTypeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemClothesListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ListViewHolder(binding)
     }
 
@@ -26,14 +44,14 @@ class MyClothesListAdapter: ListAdapter<String, MyClothesListAdapter.ListViewHol
     }
 
     companion object {
-        val DIFF_CALLBACK: DiffUtil.ItemCallback<String> =
-            object : DiffUtil.ItemCallback<String>(){
-                override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
-                    return oldItem == newItem
+        val DIFF_CALLBACK: DiffUtil.ItemCallback<ClothesEntity> =
+            object : DiffUtil.ItemCallback<ClothesEntity>(){
+                override fun areItemsTheSame(oldItem: ClothesEntity, newItem: ClothesEntity): Boolean {
+                    return oldItem.id == newItem.id
                 }
 
                 @SuppressLint("DiffUtilEquals")
-                override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
+                override fun areContentsTheSame(oldItem: ClothesEntity, newItem: ClothesEntity): Boolean {
                     return oldItem == newItem
                 }
             }

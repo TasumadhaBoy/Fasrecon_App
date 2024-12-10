@@ -61,7 +61,10 @@ class HomeFragment : Fragment() {
         binding.tvUserHomepage.text = getString(R.string.hai_user, userData.name)
         if (userData.photoUrl != null) {
             Log.d("test5", user.currentUser?.photoUrl.toString())
-            binding.imageProfileHomepage.setImageURI(user.currentUser?.photoUrl)
+            Glide.with(this)
+                .load(userData.photoUrl)
+                .error(R.drawable.no_profile)
+                .into(binding.imageProfileHomepage)
         }
     }
 

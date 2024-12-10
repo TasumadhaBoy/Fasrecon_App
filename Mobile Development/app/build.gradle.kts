@@ -15,8 +15,8 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "BASE_URL", "\"https://api-model-flask-660807228942.asia-southeast2.run.app/\"")
     }
 
     buildTypes {
@@ -26,6 +26,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("String", "BASE_URL", "\"https://api-model-flask-660807228942.asia-southeast2.run.app/\"")
         }
     }
     compileOptions {
