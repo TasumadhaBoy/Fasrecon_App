@@ -35,12 +35,12 @@
         <com.google.android.material.card.MaterialCardView
             style="@style/item_clothes_label_container"
             android:id="@+id/card_label_clothes1"
-            android:layout_marginBottom="16dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintStart_toStartOf="@id/clothes_name"
-            app:layout_constraintEnd_toEndOf="@id/clothes_name"
-            app:layout_constraintTop_toBottomOf="@id/clothes_name"
-            android:alpha="0">
+            android:layout_marginBottom="48dp"
+            android:layout_marginStart="20dp"
+            app:layout_constraintStart_toEndOf="@id/clothes_image"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:alpha="0"
+            tools:alpha="1">
 
             <TextView
                 android:id="@+id/label1"
@@ -53,9 +53,9 @@
             android:id="@+id/card_label_clothes2"
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="@id/card_label_clothes1"
-            app:layout_constraintEnd_toEndOf="@id/card_label_clothes1"
             app:layout_constraintTop_toBottomOf="@id/card_label_clothes1"
-            android:alpha="0">
+            android:alpha="0"
+            tools:alpha="1">
 
             <TextView
                 android:id="@+id/label2"
