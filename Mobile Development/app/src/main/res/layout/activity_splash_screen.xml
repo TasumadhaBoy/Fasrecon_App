@@ -5,7 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.splashscreen.SplashScreenActivity">
+    tools:context=".ui.splashscreen.SplashScreenActivity"
+    style="@style/background_style">
 
     <FrameLayout
         android:id="@+id/logo_container"

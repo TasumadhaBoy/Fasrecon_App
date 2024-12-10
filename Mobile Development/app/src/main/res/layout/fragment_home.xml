@@ -7,16 +7,17 @@
     tools:context=".ui.home.HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        style="@style/background_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="24dp"
         tools:context=".ui.home.HomeFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/background_style2"
             android:id="@+id/header_container"
             android:layout_width="0dp"
             android:layout_height="150dp"
-            android:background="@color/primary_color"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
@@ -44,29 +45,20 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.cardview.widget.CardView
+            style="@style/card_info_clothes"
             android:id="@+id/card_container_clothes_info"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:background="@color/white"
-            android:elevation="8dp"
-            android:layout_marginStart="18dp"
-            android:layout_marginEnd="18dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/header_container"
-            app:layout_constraintBottom_toBottomOf="@id/header_container"
-            app:cardCornerRadius="15dp">
+            app:layout_constraintBottom_toBottomOf="@id/header_container">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <TextView
+                    style="@style/label_clothes"
                     android:id="@+id/label_clothes_collection"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
                     android:text="@string/clothes_collection"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>

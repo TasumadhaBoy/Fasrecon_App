@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.MotionEvent
 import android.view.View
@@ -115,7 +116,7 @@ class ProfileSettingsActivity : BaseActivity() {
     private fun updateUser() {
         val newName = binding.nameEditInput.text.toString().trim()
         if ((newName != name && imageUriSelected != null) || (newName == name && imageUriSelected != null)) {
-            profileSettingsViewModel.updateData(newName, imageUriSelected.toString())
+            profileSettingsViewModel.updateData(newName, imageUriSelected)
         } else if (newName != name && imageUriSelected == null) {
             profileSettingsViewModel.updateData(newName)
         }  else {
@@ -144,6 +145,7 @@ class ProfileSettingsActivity : BaseActivity() {
         }
 
         profileSettingsViewModel.updateDataMessage.observe(this) {
+            Log.d("Test", imageUriSelected.toString())
             profileSettingsViewModel.updateUserDataLocal(newName, imageUriSelected.toString())
             SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
                 .setTitleText("Update Profile Success")

@@ -1,6 +1,7 @@
 package com.application.fasrecon.data.repository
 
 import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.application.fasrecon.data.Result
@@ -13,7 +14,7 @@ import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthRecentLoginRequiredException
-import com.google.firebase.auth.userProfileChangeRequest
+import com.google.firebase.auth.UserProfileChangeRequest
 import kotlinx.coroutines.tasks.await
 import okhttp3.MultipartBody
 
@@ -24,15 +25,16 @@ class UserRepository(
 
     fun getUserData(): LiveData<UserEntity> = userDao.getDataUser()
 
-    fun updateUserData(name: String, photo: String?): LiveData<Result<String?>> =
+    fun updateUserData(name: String, photo: Uri?): LiveData<Result<String?>> =
         liveData {
             emit(Result.Loading)
             try {
                 val userData = user.currentUser
-                val profileUpdates = userProfileChangeRequest {
+                val profileUpdates = UserProfileChangeRequest.Builder().apply {
                     displayName = name
-                    photoUri = Uri.parse(photo)
-                }
+                    photoUri = photo
+                }.build()
+
                 userData?.updateProfile(profileUpdates)?.await()
                 emit(Result.Success("SUCCESS"))
             } catch (e: Exception) {
@@ -68,7 +70,8 @@ class UserRepository(
     }
 
     suspend fun updateUserDataLocal(name: String, photo: String?) {
-        val id = userDao.getDataUser().value?.id
+        val id: String = user.currentUser?.uid.toString()
+        Log.d("Test2", "${id}, ${photo.toString()}")
         userDao.updateProfileUser(name, photo, id)
     }
 
@@ -90,7 +93,10 @@ class UserRepository(
 
     suspend fun logout() {
         user.signOut()
-        userDao.getDataUser().value?.let { userDao.deleteUser(it.id) }
+        userDao.getDataUser().value?.let {
+            userDao.deleteUser(it.id)
+            Log.d("Test2", it.id)
+        }
     }
 
     companion object {

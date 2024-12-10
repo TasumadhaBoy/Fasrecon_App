@@ -5,8 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary_color"
     android:orientation="vertical"
+    style="@style/background_style2"
     tools:context=".ui.login.LoginActivity">
 
     <TextView
@@ -17,15 +17,12 @@
         app:layout_constraintBottom_toTopOf="@id/card_login"/>
 
     <androidx.cardview.widget.CardView
+        style="@style/card_login_register"
         android:id="@+id/card_login"
-        android:layout_width="match_parent"
         android:layout_height="550dp"
-        android:layout_marginTop="100dp"
         android:layout_alignParentBottom="true"
+        android:layout_marginTop="100dp"
         android:layout_marginBottom="-15dp"
-        android:padding="16dp"
-        app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
@@ -52,6 +49,7 @@
                 app:startIconDrawable="@drawable/email_icon">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    style="@style/input_text"
                     android:id="@+id/email_login_input"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -69,13 +67,13 @@
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/input_layout_enabled"
                 android:id="@+id/text_password_layout_login"
-                app:boxStrokeColor="@color/primary_color"
                 app:endIconMode="password_toggle"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/password_login"
                 app:startIconDrawable="@drawable/password_icon">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    style="@style/input_text"
                     android:id="@+id/password_login_input"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -84,20 +82,13 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                style="@style/tv_forgot_loginpage"
-                android:id="@+id/forgot_password"
-                android:text="@string/forgot_password"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_password_layout_login" />
-
             <Button
                 style="@style/button_login_loginpage"
                 android:id="@+id/btn_login"
                 android:text="@string/login"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/forgot_password" />
+                app:layout_constraintTop_toBottomOf="@id/text_password_layout_login" />
 
             <LinearLayout
                 android:layout_width="wrap_content"

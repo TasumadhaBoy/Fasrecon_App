@@ -8,7 +8,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/primary_color"
+        style="@style/background_style2"
         tools:context=".ui.register.RegisterActivity">
 
         <TextView
@@ -22,15 +22,12 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.cardview.widget.CardView
+            style="@style/card_login_register"
             android:id="@+id/card_register"
-            android:layout_width="match_parent"
             android:layout_height="550dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="-15dp"
-            android:padding="16dp"
             android:paddingBottom="0dp"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -57,10 +54,8 @@
                     app:startIconDrawable="@drawable/user_icon">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/textInput_username"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:textSize="14sp" />
+                        style="@style/input_text"
+                        android:id="@+id/textInput_username" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
@@ -80,10 +75,8 @@
                     app:startIconDrawable="@drawable/email_icon">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/text_input_email"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:textSize="14sp" />
+                        style="@style/input_text"
+                        android:id="@+id/text_input_email" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
@@ -104,11 +97,9 @@
                     app:startIconDrawable="@drawable/password_icon">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        style="@style/input_text"
                         android:id="@+id/text_input_password"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:inputType="textPassword"
-                        android:textSize="14sp" />
+                        android:inputType="textPassword" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 

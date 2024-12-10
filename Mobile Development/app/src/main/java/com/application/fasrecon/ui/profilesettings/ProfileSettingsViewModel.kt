@@ -1,5 +1,6 @@
 package com.application.fasrecon.ui.profilesettings
 
+import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -23,7 +24,7 @@ class ProfileSettingsViewModel (private val userRepository: UserRepository): Vie
 
     fun getUserData() = userRepository.getUserData()
 
-    fun updateData(name: String, photo: String? = null) {
+    fun updateData(name: String, photo: Uri? = null) {
         userRepository.updateUserData(name, photo).observeForever { result ->
             if (result != null) {
                 when (result) {

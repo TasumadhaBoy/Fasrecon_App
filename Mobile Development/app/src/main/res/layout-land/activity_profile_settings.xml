@@ -7,21 +7,19 @@
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        style="@style/background_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/background_fragment_activity"
         android:orientation="vertical"
         tools:context=".ui.profilesettings.ProfileSettingsActivity">
 
         <com.google.android.material.appbar.AppBarLayout
+            style="@style/custom_toolbar_layout"
             android:id="@+id/appbar_layout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:background="@color/white">
+            app:layout_constraintEnd_toEndOf="parent">
 
             <com.google.android.material.appbar.MaterialToolbar
                 style="@style/custom_toolbar"
@@ -42,14 +40,10 @@
             tools:src="@drawable/no_profile"/>
 
         <Button
+            style="@style/change_photo_profil"
             android:id="@+id/container_change_image"
-            android:layout_width="32dp"
-            android:layout_height="40dp"
-            android:elevation="0dp"
-            android:gravity="center"
-            android:paddingStart="7dp"
-            android:paddingEnd="0dp"
             app:icon="@drawable/edit_icon_24"
+            app:iconTint="@color/white"
             app:iconSize="18dp"
             app:layout_constraintEnd_toEndOf="@id/image_profile_settings"
             app:layout_constraintBottom_toBottomOf="@id/image_profile_settings">

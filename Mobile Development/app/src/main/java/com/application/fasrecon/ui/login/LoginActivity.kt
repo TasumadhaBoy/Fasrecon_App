@@ -25,7 +25,6 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
 
         binding.btnLogin.setOnClickListener(this)
         binding.registerNavigation.setOnClickListener(this)
-        binding.forgotPassword.setOnClickListener(this)
 
         loginViewModel.loadingData.observe(this) {
             displayLoading(it)

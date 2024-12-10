@@ -8,21 +8,20 @@
     android:layout_gravity="center"
     android:padding="8dp"
     card_view:cardCornerRadius="16dp"
-    android:theme="@style/Theme.Fasrecon_primary">
+    android:theme="@style/Theme.Fasrecon_primary"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        style="@style/background_style"
         android:layout_width="match_parent"
         android:layout_height="175dp"
         android:layout_gravity="center"
         android:padding="16dp">
 
         <TextView
+            style="@style/logout_title"
             android:id="@+id/loguout_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="@string/logout_alert"
-            android:textSize="20sp"
-            android:textStyle="bold"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent" />

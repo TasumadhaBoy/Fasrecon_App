@@ -2,6 +2,7 @@ package com.application.fasrecon.ui.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,8 @@ import com.application.fasrecon.ui.chatbot.ChatbotActivity
 import com.application.fasrecon.ui.viewmodelfactory.ViewModelFactoryUser
 import com.application.fasrecon.util.WrapMessage
 import com.bumptech.glide.Glide
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
 
 class HomeFragment : Fragment() {
 
@@ -26,6 +29,7 @@ class HomeFragment : Fragment() {
             requireActivity()
         )
     }
+    private var user = FirebaseAuth.getInstance()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -56,10 +60,8 @@ class HomeFragment : Fragment() {
     private fun setUserData(userData: UserEntity) {
         binding.tvUserHomepage.text = getString(R.string.hai_user, userData.name)
         if (userData.photoUrl != null) {
-            Glide.with(requireActivity())
-                .load(userData.photoUrl.toUri())
-                .error(R.drawable.no_profile)
-                .into(binding.imageProfileHomepage)
+            Log.d("test5", user.currentUser?.photoUrl.toString())
+            binding.imageProfileHomepage.setImageURI(user.currentUser?.photoUrl)
         }
     }
 

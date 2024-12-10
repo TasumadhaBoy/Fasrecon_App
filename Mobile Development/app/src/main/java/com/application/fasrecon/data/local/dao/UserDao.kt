@@ -13,14 +13,11 @@ interface UserDao {
     suspend fun insertDataUser(user: UserEntity)
 
     @Query("UPDATE user SET name = :name, photoUrl = :photo WHERE id = :id")
-    suspend fun updateProfileUser(name: String, photo: String?, id: Long?)
-
-    @Query("UPDATE user SET password = :newPassword WHERE id = :id")
-    suspend fun changeUserPassword(newPassword: String, id: Long?)
+    suspend fun updateProfileUser(name: String, photo: String?, id: String)
 
     @Query("SELECT * FROM user")
     fun getDataUser(): LiveData<UserEntity>
 
     @Query("DELETE FROM user WHERE id = :id")
-    suspend fun deleteUser(id: Long)
+    suspend fun deleteUser(id: String)
 }

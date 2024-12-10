@@ -77,6 +77,7 @@ class AuthRepository private constructor(
 
         val newDataUser =
             UserEntity(
+                id = user?.uid.toString(),
                 name = user?.displayName,
                 email = user?.email,
                 password = password,
