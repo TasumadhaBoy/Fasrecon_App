@@ -1,57 +1,95 @@
 package com.application.fasrecon.ui.myclothes
 
 import android.app.Dialog
+import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
-import android.view.WindowInsetsController
 import android.widget.Button
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import cn.pedant.SweetAlert.SweetAlertDialog
 import com.application.fasrecon.R
+import com.application.fasrecon.data.local.entity.ClothesEntity
+import com.application.fasrecon.data.remote.response.Label
 import com.application.fasrecon.databinding.FragmentMyclothesBinding
-import com.application.fasrecon.ui.profilesettings.PhotoGalleryBottomSheetDialog
+import com.application.fasrecon.ui.viewmodelfactory.ViewModelFactoryUser
+import com.application.fasrecon.util.reduceFileImage
+import com.application.fasrecon.util.uriToFile
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
 
 class MyClothesFragment : Fragment() {
 
     private var _binding: FragmentMyclothesBinding? = null
-    private val binding get() = _binding!!
+    private val binding get() = _binding
+    private var imageUriUpload: Uri? = null
+    private val myClothesViewModel: MyClothesViewModel by viewModels { ViewModelFactoryUser.getInstance(requireActivity()) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         _binding = FragmentMyclothesBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-        return root
+        return  binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setActionBar()
 
-        binding.filterClothes.setOnClickListener {
+        myClothesViewModel.loadingData.observe(requireActivity()) {
+            displayLoading(it)
+        }
+
+        myClothesViewModel.errorHandling.observe(requireActivity()) {
+            it.getDataIfNotDisplayed()?.let { msg ->
+                SweetAlertDialog(requireActivity(), SweetAlertDialog.ERROR_TYPE)
+                    .setTitleText("Classify Image Failed")
+                    .setConfirmText("Try Again")
+                    .setContentText(msg)
+                    .show()
+            }
+        }
+
+        myClothesViewModel.getAllClothes().observe(requireActivity()) {
+            setListClothes(it, binding?.listClothes)
+            val orientation = resources.configuration.orientation
+            if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+                val layoutManager = LinearLayoutManager(requireActivity())
+                binding?.listClothes?.layoutManager = layoutManager
+            } else {
+                val layoutManager = GridLayoutManager(requireActivity(), 2)
+                binding?.listClothes?.layoutManager = layoutManager
+            }
+        }
+
+        binding?.filterClothes?.setOnClickListener {
             showFilterDialog()
         }
 
-        binding.addClothesButton.setOnClickListener {
+        binding?.addClothesButton?.setOnClickListener {
             showBottomSheetDialog()
+        }
+
+        myClothesViewModel.classifyResult.observe(requireActivity()) { label ->
+            imageUriUpload?.let { insertClothes(imageUriUpload, label) }
         }
     }
 
     private fun setActionBar() {
-        (requireActivity() as AppCompatActivity).setSupportActionBar(binding.topAppBar)
+        (requireActivity() as AppCompatActivity).setSupportActionBar(binding?.topAppBar)
         (requireActivity() as AppCompatActivity).supportActionBar?.title =
             getString(R.string.my_clothes)
     }
@@ -92,7 +130,8 @@ class MyClothesFragment : Fragment() {
         val bottomSheetDialog = AddClothesBottomSheetDialog()
         bottomSheetDialog.setImageByUser(object: AddClothesBottomSheetDialog.ImageByUser {
             override fun imageUriByUser(imageUri: Uri) {
-//              Klasifikasi Gambar
+                classifyImage(imageUri)
+                imageUriUpload = imageUri
             }
         })
         bottomSheetDialog.show(
@@ -101,26 +140,43 @@ class MyClothesFragment : Fragment() {
         )
     }
 
+    private fun classifyImage(imageUri: Uri) {
+        val imgFile = uriToFile(imageUri, requireActivity()).reduceFileImage()
+        val reqImageFile = imgFile.asRequestBody("image/jpeg".toMediaType())
+        val multipartBody = MultipartBody.Part.createFormData("images", imgFile.name, reqImageFile)
+        myClothesViewModel.classifyImage(multipartBody)
+    }
+
+    private fun insertClothes(imageUriUpload: Uri?, label: Label){
+        myClothesViewModel.insertClothes(imageUriUpload.toString(), label.type, label.color)
+    }
+
     private fun setAllClothesType(
         list: List<String>,
-        recyclerView: RecyclerView
+        recyclerView: RecyclerView?
     ): MyClothesTypeAdapter {
         val adapter = MyClothesTypeAdapter()
         adapter.submitList(list)
-        recyclerView.adapter = adapter
+        recyclerView?.adapter = adapter
         return adapter
     }
 
     private fun setListClothes(
-        list: List<String>,
-        recyclerView: RecyclerView
-    ): MyClothesTypeAdapter {
-        val adapter = MyClothesTypeAdapter()
+        list: List<ClothesEntity>,
+        recyclerView: RecyclerView?
+    ) {
+        val adapter = MyClothesListAdapter()
         adapter.submitList(list)
-        recyclerView.adapter = adapter
-        return adapter
+        recyclerView?.adapter = adapter
     }
 
+    private fun displayLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding?.loadingClassifyImage?.visibility = View.VISIBLE
+        } else {
+            binding?.loadingClassifyImage?.visibility = View.GONE
+        }
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
