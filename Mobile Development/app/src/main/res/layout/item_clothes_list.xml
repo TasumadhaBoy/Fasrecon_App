@@ -12,7 +12,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        style="@style/clothes_item_container">
 
         <ImageView
             android:id="@+id/clothes_image"
@@ -25,12 +26,8 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
+            style="@style/clothes_name"
             android:id="@+id/clothes_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
-            android:textStyle="bold"
             tools:text="clothes Name"
             app:layout_constraintStart_toEndOf="@+id/clothes_image"
             app:layout_constraintTop_toTopOf="@+id/clothes_image" />

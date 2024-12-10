@@ -5,11 +5,12 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_fragment_activity"
+    style="@style/background_style"
     app:layoutDescription="@xml/activity_onboarding_page_scene_portrait"
     tools:context="ui.onboardingpage.OnboardingPageActivity">
 
     <TextView
+        style="@style/title_menu_onboarding"
         android:id="@+id/skip_menu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -17,9 +18,6 @@
         android:layout_marginEnd="16dp"
         android:letterSpacing="0.05"
         android:text="@string/skip"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,20 +33,19 @@
         app:layout_constraintVertical_bias="0.2" />
 
     <TextView
+        style="@style/title_menu_onboarding"
         android:id="@+id/title_menu_page1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:gravity="center_horizontal"
         android:text="@string/title_menu_1"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@id/image_menu_page1"
         app:layout_constraintStart_toStartOf="@id/image_menu_page1"
         app:layout_constraintTop_toBottomOf="@id/image_menu_page1" />
 
     <TextView
+        style="@style/desc_menu_onboarding"
         android:id="@+id/desc_menu_page1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -57,8 +54,6 @@
         android:gravity="center_horizontal"
         android:text="@string/description_menu_1"
         android:textAlignment="center"
-        android:textColor="@color/text_gray"
-        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@id/title_menu_page1"
         app:layout_constraintStart_toStartOf="@id/title_menu_page1"
         app:layout_constraintTop_toBottomOf="@id/title_menu_page1" />
@@ -75,20 +70,19 @@
         app:layout_constraintVertical_bias="0.2" />
 
     <TextView
+        style="@style/title_menu_onboarding"
         android:id="@+id/title_menu_page2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:gravity="center_horizontal"
         android:text="@string/title_menu_2"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@id/image_menu_page2"
         app:layout_constraintStart_toStartOf="@id/image_menu_page2"
         app:layout_constraintTop_toBottomOf="@id/image_menu_page2" />
 
     <TextView
+        style="@style/desc_menu_onboarding"
         android:id="@+id/desc_menu_page2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -96,8 +90,6 @@
         android:layout_marginTop="12dp"
         android:gravity="center_horizontal"
         android:text="@string/description_menu_2"
-        android:textColor="@color/text_gray"
-        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@id/title_menu_page2"
         app:layout_constraintStart_toStartOf="@id/title_menu_page2"
         app:layout_constraintTop_toBottomOf="@id/title_menu_page2" />
@@ -114,20 +106,19 @@
         app:layout_constraintVertical_bias="0.2" />
 
     <TextView
+        style="@style/title_menu_onboarding"
         android:id="@+id/title_menu_page3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:gravity="center_horizontal"
         android:text="@string/title_menu_3"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@id/image_menu_page3"
         app:layout_constraintStart_toStartOf="@id/image_menu_page3"
         app:layout_constraintTop_toBottomOf="@id/image_menu_page3" />
 
     <TextView
+        style="@style/desc_menu_onboarding"
         android:id="@+id/desc_menu_page3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -135,44 +126,39 @@
         android:layout_marginTop="12dp"
         android:gravity="center_horizontal"
         android:text="@string/description_menu_3"
-        android:textColor="@color/text_gray"
-        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@id/title_menu_page3"
         app:layout_constraintStart_toStartOf="@id/title_menu_page3"
         app:layout_constraintTop_toBottomOf="@id/title_menu_page3" />
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
+        style="@style/icon_menu_onboarding"
         android:id="@+id/menu1"
         android:layout_width="10dp"
         android:layout_height="10dp"
         android:layout_marginEnd="16dp"
-        app:altSrc="@drawable/ic_circle_full_1"
         app:layout_constraintBottom_toBottomOf="@id/menu2"
         app:layout_constraintEnd_toStartOf="@id/menu2"
-        app:layout_constraintTop_toTopOf="@id/menu2"
-        app:srcCompat="@drawable/ic_circle_full_2" />
+        app:layout_constraintTop_toTopOf="@id/menu2" />
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
+        style="@style/icon_menu_onboarding"
         android:id="@+id/menu2"
         android:layout_width="10dp"
         android:layout_height="10dp"
         android:layout_marginTop="30dp"
-        app:altSrc="@drawable/ic_circle_full_1"
         app:layout_constraintEnd_toEndOf="@id/guideline_vertical"
         app:layout_constraintStart_toStartOf="@id/guideline_vertical"
-        app:layout_constraintTop_toBottomOf="@id/desc_menu_page1"
-        app:srcCompat="@drawable/ic_circle_full_2" />
+        app:layout_constraintTop_toBottomOf="@id/desc_menu_page1" />
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
+        style="@style/icon_menu_onboarding"
         android:id="@+id/menu3"
         android:layout_width="10dp"
         android:layout_height="10dp"
         android:layout_marginStart="16dp"
-        app:altSrc="@drawable/ic_circle_full_1"
         app:layout_constraintBottom_toBottomOf="@id/menu2"
         app:layout_constraintStart_toEndOf="@id/menu2"
-        app:layout_constraintTop_toTopOf="@id/menu2"
-        app:srcCompat="@drawable/ic_circle_full_2" />
+        app:layout_constraintTop_toTopOf="@id/menu2" />
 
     <Button
         android:id="@+id/btn_signup_onboarding_page"
@@ -183,8 +169,6 @@
         android:layout_marginEnd="24dp"
         android:letterSpacing="0.05"
         android:text="@string/signup"
-        android:textSize="18sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@id/guideline_vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="parent" />
@@ -198,8 +182,6 @@
         android:layout_marginEnd="24dp"
         android:letterSpacing="0.05"
         android:text="@string/login"
-        android:textSize="18sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/guideline_vertical"
         app:layout_constraintTop_toBottomOf="parent" />

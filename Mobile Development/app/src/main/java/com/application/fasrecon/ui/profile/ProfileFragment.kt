@@ -13,9 +13,10 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.application.fasrecon.R
-import com.application.fasrecon.data.model.UserModel
+import com.application.fasrecon.data.local.entity.UserEntity
 import com.application.fasrecon.databinding.FragmentProfileBinding
 import com.application.fasrecon.ui.languagesettings.LanguageSettingsActivity
 import com.application.fasrecon.ui.login.LoginActivity
@@ -24,6 +25,9 @@ import com.application.fasrecon.ui.viewmodelfactory.ViewModelFactoryUser
 import com.application.fasrecon.util.WrapMessage
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 
 class ProfileFragment : Fragment() {
 
@@ -34,7 +38,6 @@ class ProfileFragment : Fragment() {
             requireActivity()
         )
     }
-    private val auth = FirebaseAuth.getInstance()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,14 +52,8 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setActionBar()
-        profileViewModel.getUserData()
-
-        profileViewModel.userData.observe(requireActivity()) {
+        profileViewModel.getUserData().observe(requireActivity()) {
             setUserData(it)
-        }
-
-        profileViewModel.errorHandling.observe(requireActivity()) {
-            handleError(it)
         }
 
         binding.profileSettings.setOnClickListener {
@@ -84,7 +81,7 @@ class ProfileFragment : Fragment() {
             getString(R.string.profile)
     }
 
-    private fun setUserData(userData: UserModel) {
+    private fun setUserData(userData: UserEntity) {
         binding.UserName.text = userData.name
         binding.userEmail.text = userData.email
         if (userData.photoUrl != null) {
@@ -92,24 +89,7 @@ class ProfileFragment : Fragment() {
                 .load(userData.photoUrl)
                 .error(R.drawable.no_profile)
                 .into(binding.userProfile)
-        } 
-    }
-
-    private fun handleError(msg: WrapMessage<String?>) {
-        val message = when (msg) {
-            WrapMessage("NO_INTERNET") -> getString(R.string.no_internet)
-            else -> getString(R.string.unknown_error)
         }
-
-        SweetAlertDialog(requireActivity(), SweetAlertDialog.ERROR_TYPE)
-            .setTitleText("Failed")
-            .setConfirmText("Try Again")
-            .setContentText(message)
-            .setConfirmClickListener { sDialog ->
-                sDialog.dismissWithAnimation()
-                profileViewModel.getUserData()
-            }
-            .show()
     }
 
     private fun showAlertDialog() {
@@ -129,8 +109,12 @@ class ProfileFragment : Fragment() {
         }
 
         dialog.findViewById<Button>(R.id.btn_logout).setOnClickListener {
-            auth.signOut()
+
+            lifecycleScope.launch {
+                profileViewModel.logout()
+            }
             val intent = Intent(requireContext(), LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
         }
 

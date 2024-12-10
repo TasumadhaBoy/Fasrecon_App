@@ -1,4 +1,4 @@
-package com.application.fasrecon.ui.myclothes
+package com.application.fasrecon.ui.profilesettings
 
 import android.app.Activity.RESULT_OK
 import android.app.Dialog
@@ -21,11 +21,10 @@ import com.yalantis.ucrop.UCrop
 import java.io.File
 
 @Suppress("DEPRECATION")
-class AddClothesBottomSheetDialog: BottomSheetDialogFragment() {
+class PhotoGalleryBottomSheetDialog: BottomSheetDialogFragment() {
     private lateinit var binding: BottomSheetDialogPhotoCameraBinding
-    private var imageByUser: ImageByUser? = null
     private var imageUri: Uri? = null
-
+    private var imageByUser: ImageByUser? = null
 
     private val openGalleryPhoto = registerForActivityResult(ActivityResultContracts.PickVisualMedia()){ uri: Uri? ->
         if (uri != null){
@@ -121,6 +120,6 @@ class AddClothesBottomSheetDialog: BottomSheetDialogFragment() {
     }
 
     companion object {
-        const val ADD_CLOTHES_BOTTOM_SHEET_DIALOG = "ADD_CLOTHES_BOTTOM_SHEET_DIALOG"
+        const val PHOTO_CAMERA_BOTTOM_SHEET_DIALOG = "PHOTO_CAMERA_BOTTOM_SHEET_DIALOG"
     }
 }

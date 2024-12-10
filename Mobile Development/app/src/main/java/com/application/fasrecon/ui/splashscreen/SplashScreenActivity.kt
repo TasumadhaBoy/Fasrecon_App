@@ -18,28 +18,31 @@ import com.application.fasrecon.ui.BaseActivity
 import com.application.fasrecon.ui.MainActivity
 import com.application.fasrecon.ui.onboardingpage.OnboardingPageActivity
 import com.application.fasrecon.ui.viewmodelfactory.ViewModelFactoryAuth
+import com.google.firebase.auth.FirebaseAuth
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : BaseActivity() {
 
     private lateinit var binding: ActivitySplashScreenBinding
-    private val splashScreenViewModel: SplashScreenViewModel by viewModels { ViewModelFactoryAuth.getInstance(this) }
+    private val splashScreenViewModel: SplashScreenViewModel by viewModels {
+        ViewModelFactoryAuth.getInstance(
+            this
+        )
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivitySplashScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         showAnimation()
 
         Handler(Looper.getMainLooper()).postDelayed({
-            splashScreenViewModel.getSession().observe(this) {
-                if (it) {
-                    startActivity(Intent(this, MainActivity::class.java))
-                } else {
-                    startActivity(Intent(this, OnboardingPageActivity::class.java))
-                }
+            val userSession = splashScreenViewModel.getSession()
+            if (userSession) {
+                startActivity(Intent(this, MainActivity::class.java))
+            } else {
+                startActivity(Intent(this, OnboardingPageActivity::class.java))
             }
             finish()
         }, 2200)
@@ -55,7 +58,7 @@ class SplashScreenActivity : BaseActivity() {
 
     private fun showAnimation() {
         val background1ScaleX = animationScale(binding.logoBackground1, "SCALE_X", 200)
-        val background1ScaleY = animationScale(binding.logoBackground1, "SCALE_Y",200)
+        val background1ScaleY = animationScale(binding.logoBackground1, "SCALE_Y", 200)
 
         val background2ScaleX = animationScale(binding.logoBackground2, "SCALE_X")
         val background2ScaleY = animationScale(binding.logoBackground2, "SCALE_Y")

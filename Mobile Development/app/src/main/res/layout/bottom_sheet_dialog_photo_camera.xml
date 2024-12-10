@@ -5,7 +5,8 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:background="@drawable/custom_bottom_sheet_dialog"
-    android:paddingBottom="16dp">
+    android:paddingBottom="16dp"
+    style="@style/backround_bottom_sheet_dialog">
 
     <View
         android:id="@+id/mini_path"

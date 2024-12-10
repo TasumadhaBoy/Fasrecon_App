@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background_fragment_activity">
+        style="@style/background_style">
 
         <com.google.android.material.appbar.AppBarLayout
             style="@style/custom_toolbar_layout"
@@ -26,15 +26,9 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <TextView
+            style="@style/label_your_clothes"
             android:id="@+id/label_your_clothes_collection"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
             android:text="@string/your_clothes_collection"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/appbar_layout" />
 
@@ -61,6 +55,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/label_your_clothes_collection"
             tools:listitem="@layout/item_clothes_list" />
+
+        <ProgressBar
+            android:id="@+id/loading_classify_image"
+            style="?attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5"
+            tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

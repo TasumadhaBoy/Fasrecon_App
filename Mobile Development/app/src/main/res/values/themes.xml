@@ -1,5 +1,4 @@
 <resources>
-    <!-- Base application theme. -->
     <style name="Theme.Fasrecon_primary" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:statusBarColor">@color/primary_color</item>
         <item name="android:windowLightStatusBar">false</item>
@@ -16,10 +15,36 @@
         <item name="colorPrimary">@color/primary_color</item>
     </style>
 
+    <style name="background_style">
+        <item name="android:background">@color/background_fragment_activity</item>
+    </style>
+
+    <style name="background_style2">
+        <item name="android:background">@color/primary_color</item>
+    </style>
+
     <style name="button_login_onboarding_page" parent="ThemeOverlay.Material3.Button">
         <item name="android:backgroundTint">@color/primary_color</item>
         <item name="android:textColor">@color/white</item>
         <item name="cornerRadius">12dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="title_menu_onboarding">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="desc_menu_onboarding">
+        <item name="android:textColor">@color/text_gray</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="icon_menu_onboarding">
+        <item name="altSrc">@drawable/ic_circle_full_1</item>
+        <item name="srcCompat">@drawable/ic_circle_full_2</item>
     </style>
 
     <style name="clothes_list" parent="ThemeOverlay.Material3.Button">
@@ -38,17 +63,25 @@
         <item name="strokeColor">@color/primary_color</item>
         <item name="strokeWidth">2dp</item>
         <item name="cornerRadius">12dp</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="button_login_loginpage" parent="ThemeOverlay.Material3.Button">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">60dp</item>
-        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginTop">40dp</item>
         <item name="android:backgroundTint">@color/primary_color</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
         <item name="cornerRadius">50dp</item>
+    </style>
+
+    <style name="card_login_register">
+        <item name="android:layout_width">match_parent</item>
+        <item name="cardBackgroundColor">@color/white</item>
+        <item name="android:padding">16dp</item>
+        <item name="cardCornerRadius">20dp</item>
     </style>
 
     <style name="button_register_registerpage" parent="ThemeOverlay.Material3.Button">
@@ -75,6 +108,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="tv_common_loginpage">
@@ -97,14 +131,8 @@
         <item name="boxCornerRadiusTopEnd">12dp</item>
         <item name="boxCornerRadiusBottomEnd">12dp</item>
         <item name="boxStrokeColor">@color/primary_color</item>
-    </style>
-
-    <style name="tv_forgot_loginpage" parent="tv_common_loginpage">
-        <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/primary_color</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:layout_marginTop">12dp</item>
-        <item name="android:layout_marginStart">4dp</item>
+        <item name="startIconTint">@color/gray</item>
+        <item name="endIconTint">@color/gray</item>
     </style>
 
     <style name="bold_tv_nav">
@@ -150,7 +178,6 @@
         <item name="itemActiveIndicatorStyle">@style/App.Custom.Indicator</item>
     </style>
 
-    <!-- Home Fragment -->
     <style name="title_homepage">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -189,6 +216,16 @@
         <item name="android:textColor">@color/primary_color</item>
     </style>
 
+    <style name="card_info_clothes">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:elevation">8dp</item>
+        <item name="android:layout_marginStart">18dp</item>
+        <item name="android:layout_marginEnd">18dp</item>
+        <item name="cardCornerRadius">15dp</item>
+        <item name="android:backgroundTint">@color/white</item>
+    </style>
+
     <style name="card_service">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">80dp</item>
@@ -203,12 +240,30 @@
         <item name="android:layout_marginStart">8dp</item>
     </style>
 
+    <style name="label_clothes">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">20dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:textColor">@color/text_gray</item>
+    </style>
+
     <style name="label_service_item">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginStart">6dp</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="label_your_clothes">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginTop">24dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
@@ -229,6 +284,7 @@
         <item name="android:paddingEnd">25dp</item>
         <item name="android:textColor">@color/primary_color</item>
     </style>
+
     <style name="button_active_type_clothes" parent="ThemeOverlay.Material3.Button">
         <item name="android:padding">0dp</item>
         <item name="android:layout_width">wrap_content</item>
@@ -288,6 +344,7 @@
         <item name="android:layout_marginStart">24dp</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="arrow_item_settings">
@@ -333,6 +390,19 @@
         <item name="tint">@color/white</item>
     </style>
 
+    <style name="clothes_item_container">
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="clothes_name">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">20dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
     <style name="add_clothes_options">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">50dp</item>
@@ -355,6 +425,7 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">16sp</item>
         <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/text_gray</item>
     </style>
 
     <style name="input_layout_disabled">
@@ -370,6 +441,16 @@
         <item name="boxStrokeColor">@color/primary_color</item>
         <item name="android:layout_marginStart">16dp</item>
         <item name="android:layout_marginEnd">16dp</item>
+    </style>
+
+    <style name="change_photo_profil">
+        <item name="android:layout_width">32dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:paddingStart">7dp</item>
+        <item name="android:paddingEnd">7dp</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:backgroundTint">@color/primary_color</item>
     </style>
 
     <style name="text_input_disabled">
@@ -457,6 +538,72 @@
         <item name="android:backgroundTint">@color/primary_color</item>
         <item name="cornerRadius">100dp</item>
         <item name="android:layout_marginEnd">10dp</item>
+        <item name="iconTint">@color/white</item>
+
     </style>
-    
+
+    <style name="backround_bottom_sheet_dialog">
+        <item name="android:backgroundTint">@color/white</item>
+    </style>
+
+    <style name="time_information">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="chat_title_history">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_container">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:paddingStart">20dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:paddingTop">12dp</item>
+    </style>
+
+    <style name="chatbot_text" parent="text_container">
+        <item name="android:backgroundTint">@color/chatbot_container</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginStart">8dp</item>
+    </style>
+
+    <style name="user_text" parent="text_container">
+        <item name="android:backgroundTint">@color/primary_color</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_marginEnd">8dp</item>
+    </style>
+
+    <style name="logout_title">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="input_text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="text_new_password_format">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:layout_marginStart">24dp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
 </resources>

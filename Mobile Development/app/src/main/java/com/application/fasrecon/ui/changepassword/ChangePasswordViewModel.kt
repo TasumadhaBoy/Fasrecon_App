@@ -1,18 +1,15 @@
-package com.application.fasrecon.ui.login
+package com.application.fasrecon.ui.changepassword
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.application.fasrecon.data.Result
-import com.application.fasrecon.data.repository.AuthRepository
+import com.application.fasrecon.data.repository.UserRepository
 import com.application.fasrecon.util.WrapMessage
-import kotlinx.coroutines.launch
 
-class LoginViewModel(private val authRepository: AuthRepository): ViewModel() {
-
-    private val logMessage = MutableLiveData<String?>()
-    val loginMessage: LiveData<String?> = logMessage
+class ChangePasswordViewModel (private val userRepository: UserRepository): ViewModel() {
+    private val changeMessage = MutableLiveData<String?>()
+    val changePasswordMessage: LiveData<String?> = changeMessage
 
     private val loadData = MutableLiveData<Boolean>()
     val loadingData: LiveData<Boolean> = loadData
@@ -20,14 +17,14 @@ class LoginViewModel(private val authRepository: AuthRepository): ViewModel() {
     private val error = MutableLiveData<WrapMessage<String?>>()
     val errorHandling: LiveData<WrapMessage<String?>> = error
 
-    fun loginAccount(email: String, password: String) {
-        authRepository.loginAccount(email, password).observeForever { result ->
+    fun changePassword(currentPassword: String, newPassword: String) {
+        userRepository.changePassword(currentPassword, newPassword).observeForever { result ->
             if (result != null) {
                 when (result) {
                     is Result.Loading -> loadData.value = true
                     is Result.Success -> {
                         loadData.value = false
-                        logMessage.value = result.data
+                       changeMessage.value = result.data
                     }
                     is Result.Error -> {
                         loadData.value = false
@@ -35,12 +32,6 @@ class LoginViewModel(private val authRepository: AuthRepository): ViewModel() {
                     }
                 }
             }
-        }
-    }
-
-    fun saveSession(password: String) {
-        viewModelScope.launch {
-            authRepository.saveSession(password)
         }
     }
 }

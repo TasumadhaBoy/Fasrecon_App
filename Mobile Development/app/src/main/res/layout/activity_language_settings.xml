@@ -5,8 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_fragment_activity"
-    tools:context=".ui.languagesettings.LanguageSettingsActivity">
+    tools:context=".ui.languagesettings.LanguageSettingsActivity"
+    style="@style/background_style">
 
     <com.google.android.material.appbar.AppBarLayout
         style="@style/custom_toolbar_layout"

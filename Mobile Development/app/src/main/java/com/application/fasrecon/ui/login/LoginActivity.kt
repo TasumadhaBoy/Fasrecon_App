@@ -25,30 +25,32 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
 
         binding.btnLogin.setOnClickListener(this)
         binding.registerNavigation.setOnClickListener(this)
-        binding.forgotPassword.setOnClickListener(this)
 
         loginViewModel.loadingData.observe(this) {
             displayLoading(it)
         }
 
         loginViewModel.errorHandling.observe(this) {
-            val message = when(it) {
-                WrapMessage("NO_INTERNET") -> getString(R.string.no_internet)
-                WrapMessage("WRONG_EMAIL_PASSWORD") -> getString(R.string.wrong_email_password)
-                WrapMessage("INVALID_USER") -> getString(R.string.invalid_user)
-                WrapMessage("TOO_MANY_REQUEST") -> getString(R.string.too_many_request)
-                else -> getString(R.string.unknown_error)
-            }
+            it.getDataIfNotDisplayed()?.let { msg ->
+                val message = when(msg) {
+                    "NO_INTERNET" -> getString(R.string.no_internet)
+                    "WRONG_EMAIL_PASSWORD" -> getString(R.string.wrong_email_password)
+                    "INVALID_USER" -> getString(R.string.invalid_user)
+                    "TOO_MANY_REQUEST" -> getString(R.string.too_many_request)
+                    else -> msg
+                }
 
-            SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
-                .setTitleText("Login Failed")
-                .setConfirmText("Try Again")
-                .setContentText(message)
-                .show()
+                SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                    .setTitleText("Login Failed")
+                    .setConfirmText("Try Again")
+                    .setContentText(message)
+                    .show()
+            }
         }
 
         loginViewModel.loginMessage.observe(this) {
-            loginViewModel.saveSession(true)
+            val password = binding.passwordLoginInput.text.toString().trim()
+            loginViewModel.saveSession(password)
             SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
                 .setTitleText("Login Success")
                 .setContentText("Welcome $it")
@@ -120,9 +122,9 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
 
     private fun displayLoading(isLoading: Boolean) {
         if (isLoading) {
-            binding.loadingLogin?.visibility = View.VISIBLE
+            binding.loadingLogin.visibility = View.VISIBLE
         } else {
-            binding.loadingLogin?.visibility = View.GONE
+            binding.loadingLogin.visibility = View.GONE
         }
     }
 }

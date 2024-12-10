@@ -3,6 +3,7 @@ package com.application.fasrecon.ui.myclothes
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -19,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.application.fasrecon.R
 import com.application.fasrecon.databinding.FragmentMyclothesBinding
+import com.application.fasrecon.ui.profilesettings.PhotoGalleryBottomSheetDialog
 
 class MyClothesFragment : Fragment() {
 
@@ -88,6 +90,11 @@ class MyClothesFragment : Fragment() {
 
     private fun showBottomSheetDialog() {
         val bottomSheetDialog = AddClothesBottomSheetDialog()
+        bottomSheetDialog.setImageByUser(object: AddClothesBottomSheetDialog.ImageByUser {
+            override fun imageUriByUser(imageUri: Uri) {
+//              Klasifikasi Gambar
+            }
+        })
         bottomSheetDialog.show(
             parentFragmentManager,
             AddClothesBottomSheetDialog.ADD_CLOTHES_BOTTOM_SHEET_DIALOG

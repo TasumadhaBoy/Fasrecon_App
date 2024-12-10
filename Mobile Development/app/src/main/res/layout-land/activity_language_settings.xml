@@ -7,10 +7,10 @@
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        style="@style/background_style"
         android:id="@+id/language_settings_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/background_fragment_activity"
         tools:context=".ui.languagesettings.LanguageSettingsActivity">
 
         <com.google.android.material.appbar.AppBarLayout

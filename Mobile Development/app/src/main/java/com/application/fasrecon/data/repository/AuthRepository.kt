@@ -2,9 +2,9 @@ package com.application.fasrecon.data.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
-import com.application.fasrecon.data.preferences.UserPreference
 import com.application.fasrecon.data.Result
-import com.application.fasrecon.data.model.UserModel
+import com.application.fasrecon.data.local.dao.UserDao
+import com.application.fasrecon.data.local.entity.UserEntity
 import com.application.fasrecon.util.WrapMessage
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.FirebaseTooManyRequestsException
@@ -13,14 +13,18 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.userProfileChangeRequest
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.tasks.await
 
 class AuthRepository private constructor(
-    private val authUser: FirebaseAuth, private val userPreference: UserPreference
+    private val authUser: FirebaseAuth,
+    private val userDao: UserDao
 ) {
 
-    fun registerAccount(username: String, email: String, password: String): LiveData<Result<String?>> =
+    fun registerAccount(
+        username: String,
+        email: String,
+        password: String
+    ): LiveData<Result<String?>> =
         liveData {
             emit(Result.Loading)
             try {
@@ -31,14 +35,13 @@ class AuthRepository private constructor(
                     displayName = username
                 }
                 user?.updateProfile(userProfileUpdate)?.await()
-
                 emit(Result.Success("Success"))
             } catch (e: Exception) {
                 val errorMessage = when (e) {
                     is FirebaseNetworkException -> "NO_INTERNET"
                     is FirebaseAuthInvalidCredentialsException -> "WRONG_EMAIL_FORMAT"
                     is FirebaseAuthUserCollisionException -> "EMAIL_REGISTERED"
-                    else -> "UNKNOWN_ERROR"
+                    else -> "Error : $e"
                 }
                 emit(Result.Error(WrapMessage(errorMessage)))
             }
@@ -57,33 +60,45 @@ class AuthRepository private constructor(
                 is FirebaseAuthInvalidCredentialsException -> "WRONG_EMAIL_PASSWORD"
                 is FirebaseAuthInvalidUserException -> "INVALID_USER"
                 is FirebaseTooManyRequestsException -> "TOO_MANY_REQUEST"
-                else -> "UNKNOWN_ERROR"
+                else -> "Error : $e"
             }
             emit(Result.Error(WrapMessage(errorMessage)))
         }
     }
 
-    suspend fun saveSession(isLogin: Boolean) {
-        val curUser = authUser.currentUser
-        val userData = UserModel(
-            curUser?.displayName,
-            curUser?.email,
-            curUser?.photoUrl.toString()
-        )
-        userPreference.saveSession(userData, isLogin)
+    suspend fun saveSession(password: String) {
+        val user = authUser.currentUser
+
+        user?.let {
+            for (profile in it.providerData) {
+                profile.photoUrl
+            }
+        }
+
+        val newDataUser =
+            UserEntity(
+                id = user?.uid.toString(),
+                name = user?.displayName,
+                email = user?.email,
+                password = password,
+                photoUrl = user?.photoUrl.toString()
+            )
+
+        userDao.insertDataUser(newDataUser)
     }
 
-    fun getSession(): Flow<Boolean> {
-        return userPreference.getSession()
-    }
+    fun getSession(): Boolean = authUser.currentUser != null
 
     companion object {
         @Volatile
         private var instance: AuthRepository? = null
 
-        fun getInstance(authUser: FirebaseAuth, userPreference: UserPreference): AuthRepository =
+        fun getInstance(
+            authUser: FirebaseAuth,
+            userDao: UserDao
+        ): AuthRepository =
             instance ?: synchronized(this) {
-                instance ?: AuthRepository(authUser, userPreference)
+                instance ?: AuthRepository(authUser, userDao)
             }.also { instance = it }
     }
 }

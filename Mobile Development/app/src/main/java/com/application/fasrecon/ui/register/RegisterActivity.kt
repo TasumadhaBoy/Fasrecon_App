@@ -11,11 +11,7 @@ import com.application.fasrecon.ui.BaseActivity
 import com.application.fasrecon.ui.login.LoginActivity
 import com.application.fasrecon.ui.viewmodelfactory.ViewModelFactoryAuth
 import com.application.fasrecon.util.WrapMessage
-import com.google.firebase.FirebaseNetworkException
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
-import com.google.firebase.auth.FirebaseAuthUserCollisionException
-import com.google.firebase.auth.userProfileChangeRequest
+
 
 class RegisterActivity : BaseActivity(), View.OnClickListener {
 
@@ -36,18 +32,20 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
         }
 
         registerViewModel.errorHandling.observe(this) {
-            val message = when(it) {
-                WrapMessage("NO_INTERNET") -> getString(R.string.no_internet)
-                WrapMessage("WRONG_EMAIL_FORMAT") -> getString(R.string.format_email)
-                WrapMessage("EMAIL_REGISTERED") -> getString(R.string.email_registered)
-                else -> getString(R.string.unknown_error)
-            }
+            it.getDataIfNotDisplayed()?.let { msg ->
+                val message = when(msg) {
+                    "NO_INTERNET" -> getString(R.string.no_internet)
+                    "WRONG_EMAIL_FORMAT" -> getString(R.string.format_email)
+                    "EMAIL_REGISTERED" -> getString(R.string.email_registered)
+                    else -> msg
+                }
 
-            SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
-                .setTitleText("Register Failed")
-                .setConfirmText("Try Again")
-                .setContentText("Create Account Failed\n${message}")
-                .show()
+                SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                    .setTitleText("Register Failed")
+                    .setConfirmText("Try Again")
+                    .setContentText("Create Account Failed\n${message}")
+                    .show()
+            }
         }
 
         registerViewModel.registerMessage.observe(this) {
@@ -128,9 +126,9 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
 
     private fun displayLoading(isLoading: Boolean) {
         if (isLoading) {
-            binding.loadingRegister?.visibility = View.VISIBLE
+            binding.loadingRegister.visibility = View.VISIBLE
         } else {
-            binding.loadingRegister?.visibility = View.GONE
+            binding.loadingRegister.visibility = View.GONE
         }
     }
 }
