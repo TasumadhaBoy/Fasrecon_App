@@ -6,6 +6,7 @@ import com.application.fasrecon.data.Result
 import com.application.fasrecon.data.local.dao.UserDao
 import com.application.fasrecon.data.local.entity.UserEntity
 import com.application.fasrecon.util.WrapMessage
+import com.application.fasrecon.util.wrapEspressoIdlingResource
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.FirebaseAuth
@@ -49,20 +50,22 @@ class AuthRepository private constructor(
 
     fun loginAccount(email: String, password: String): LiveData<Result<String?>> = liveData {
         emit(Result.Loading)
-        try {
-            val authResult = authUser.signInWithEmailAndPassword(email, password).await()
-            val user = authResult.user
+        wrapEspressoIdlingResource {
+            try {
+                val authResult = authUser.signInWithEmailAndPassword(email, password).await()
+                val user = authResult.user
 
-            emit(Result.Success(user?.displayName.toString()))
-        } catch (e: Exception) {
-            val errorMessage = when (e) {
-                is FirebaseNetworkException -> "NO_INTERNET"
-                is FirebaseAuthInvalidCredentialsException -> "WRONG_EMAIL_PASSWORD"
-                is FirebaseAuthInvalidUserException -> "INVALID_USER"
-                is FirebaseTooManyRequestsException -> "TOO_MANY_REQUEST"
-                else -> "Error : $e"
+                emit(Result.Success(user?.displayName.toString()))
+            } catch (e: Exception) {
+                val errorMessage = when (e) {
+                    is FirebaseNetworkException -> "NO_INTERNET"
+                    is FirebaseAuthInvalidCredentialsException -> "WRONG_EMAIL_PASSWORD"
+                    is FirebaseAuthInvalidUserException -> "INVALID_USER"
+                    is FirebaseTooManyRequestsException -> "TOO_MANY_REQUEST"
+                    else -> "Error : $e"
+                }
+                emit(Result.Error(WrapMessage(errorMessage)))
             }
-            emit(Result.Error(WrapMessage(errorMessage)))
         }
     }
 
