@@ -8,6 +8,7 @@ plugins {
 android {
     namespace = "com.application.fasrecon"
     compileSdk = 35
+    testOptions.animationsDisabled = true
 
     defaultConfig {
         applicationId = "com.application.fasrecon"
@@ -35,6 +36,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = "17"
+        freeCompilerArgs += listOf("-opt-in=kotlin.RequiresOptIn")
     }
     buildFeatures {
         viewBinding = true
@@ -43,7 +45,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -66,6 +67,9 @@ dependencies {
     implementation(libs.androidx.legacy.support.v4)
     implementation(libs.androidx.fragment.ktx)
     implementation (libs.ucrop)
+    implementation(libs.androidx.espresso.idling.resource)
+    testImplementation(libs.junit.junit)
+    testImplementation(libs.junit.junit)
     ksp(libs.room.compiler)
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
@@ -74,4 +78,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.espresso.intents)
+    debugImplementation (libs.androidx.monitor)
 }
