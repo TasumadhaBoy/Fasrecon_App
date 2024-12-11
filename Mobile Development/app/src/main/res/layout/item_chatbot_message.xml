@@ -13,25 +13,26 @@
         android:backgroundTint="@color/icon_container"
         app:cardCornerRadius="50dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="@+id/chatbot_message">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:contentDescription="@string/chatbot_image"
-            android:src="@drawable/chatbot_menu_icon"/>
+            android:src="@drawable/chatbot_menu_icon" />
     </androidx.cardview.widget.CardView>
 
     <TextView
-        style="@style/chatbot_text"
         android:id="@+id/chatbot_message"
+        style="@style/chatbot_text"
+        android:layout_marginTop="16dp"
         android:background="@drawable/custom_chat_bot"
-        tools:text="Lorem ipsum dolor sit amet"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@id/chatbot_image"
         app:layout_constraintEnd_toEndOf="@id/guideline_vertical2"
-        app:layout_constraintHorizontal_bias="0"/>
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@id/chatbot_image"
+        app:layout_constraintTop_toBottomOf="@+id/user_message"
+        tools:text="Lorem ipsum dolor sit amet" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_vertical2"
@@ -63,8 +64,14 @@
         style="@style/user_text"
         android:id="@+id/user_message"
         android:background="@drawable/custom_chat_user"
+        android:layout_width="180dp"
+        android:textSize="18sp"
+        android:fontFamily="@font/poppinsregular"
+        android:shadowColor="@color/black"
+        android:layout_height="wrap_content"
         android:textAlignment="textEnd"
-        tools:text="Lorem ipsum dolor sit amet"
+        android:lineSpacingExtra="5dp"
+        tools:text="Lorem ipsdwadawdawdadawdawdawdadmet"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="@id/guideline_vertical1"
         app:layout_constraintEnd_toStartOf="@id/user_image"

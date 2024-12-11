@@ -8,18 +8,18 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.application.fasrecon.data.model.ChatMessage
-import com.application.fasrecon.data.model.LanguageModel
 import com.application.fasrecon.databinding.ItemChatbotMessageBinding
+    var messages = mutableListOf<ChatMessage>()
 
 class ChatbotMessageAdapter: ListAdapter<ChatMessage, ChatbotMessageAdapter.ChatbotViewHolder>(DIFF_CALLBACK) {
 
-    var messages = mutableListOf<ChatMessage>()
 
     inner class ChatbotViewHolder(val binding: ItemChatbotMessageBinding): ViewHolder(binding.root) {
         init {
             itemView.setOnClickListener {
-                messages.removeAt(adapterPosition)
-                notifyItemRemoved(adapterPosition)
+                val currentList = currentList.toMutableList()
+                currentList.removeAt(adapterPosition)
+                submitList(currentList)
             }
         }
     }
@@ -34,14 +34,14 @@ class ChatbotMessageAdapter: ListAdapter<ChatMessage, ChatbotMessageAdapter.Chat
         when (item.id) {
             "SEND" -> {
                 holder.binding.userMessage.apply {
-                    text = item.messages
+                    text = "${item.messages}\n${item.time}"
                     visibility = View.VISIBLE
                 }
                 holder.binding.chatbotMessage.visibility = View.GONE
             }
             "GET" -> {
                 holder.binding.chatbotMessage.apply {
-                    text = item.messages
+                    text = "${item.messages}\n${item.time}"
                     visibility = View.VISIBLE
                 }
                 holder.binding.userMessage.visibility = View.GONE
@@ -49,12 +49,6 @@ class ChatbotMessageAdapter: ListAdapter<ChatMessage, ChatbotMessageAdapter.Chat
         }
     }
 
-    @SuppressLint("NotifyDataSetChanged")
-    fun sendMessage(message: ChatMessage) {
-        this.messages.add(message)
-        notifyItemInserted(messages.size)
-        notifyDataSetChanged()
-    }
 
     companion object {
         val DIFF_CALLBACK: DiffUtil.ItemCallback<ChatMessage> =

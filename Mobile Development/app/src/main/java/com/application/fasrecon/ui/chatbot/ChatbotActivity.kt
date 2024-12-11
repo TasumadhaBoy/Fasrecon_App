@@ -1,20 +1,22 @@
 package com.application.fasrecon.ui.chatbot
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.application.fasrecon.R
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.application.fasrecon.data.model.ChatMessage
 import com.application.fasrecon.databinding.ActivityChatbotBinding
-import com.application.fasrecon.util.setKeyboardMargin
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class ChatbotActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityChatbotBinding
-    var messagesList = mutableListOf<ChatMessage>()
+    private lateinit var adapter: ChatbotMessageAdapter
+    private val messagesList = mutableListOf<ChatMessage>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,15 +25,42 @@ class ChatbotActivity : AppCompatActivity() {
         setContentView(binding.root)
         setActionBar()
 
-        binding.root.viewTreeObserver.addOnGlobalLayoutListener {
-            setKeyboardMargin(binding.root, binding.typeMessageContainer)
-        }
+        adapter = ChatbotMessageAdapter()
+        binding.listMessage.layoutManager = LinearLayoutManager(this)
+        binding.listMessage.adapter = adapter
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        binding.sendMessageButton.setOnClickListener {
+            val messageText = binding.messageInput.text.toString().trim()
+            if (messageText.isNotEmpty()) {
+                sendMessage(messageText)
+                binding.messageInput.text?.clear()
+            }
         }
+    }
+
+    private fun sendMessage(text: String) {
+        val userMessage = ChatMessage(id = "SEND", messages = text, time = getCurrentTime())
+        messagesList.add(userMessage)
+
+        adapter.submitList(messagesList.toList())
+        binding.listMessage.scrollToPosition(messagesList.size - 1)
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    private fun getCurrentTime(): String {
+        val sdf = SimpleDateFormat("hh:mm a", Locale.getDefault())
+        return sdf.format(Date())
+    }
+
+    private fun receiveMessage(text: String) {
+        val currentTime = SimpleDateFormat("hh:mm a", Locale.getDefault()).format(Date())
+        binding.listMessage.postDelayed({
+            val botMessage = ChatMessage(id = "GET", messages = text, time = currentTime)
+            messagesList.add(botMessage)
+
+            adapter.submitList(messagesList.toList())
+            binding.listMessage.scrollToPosition(messagesList.size - 1)
+        }, 1000)
     }
 
     private fun setActionBar() {
@@ -40,9 +69,14 @@ class ChatbotActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) {
-            finish()
+        return when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
         }
-        return super.onOptionsItemSelected(item)
     }
 }
+
