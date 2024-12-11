@@ -8,10 +8,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.application.fasrecon.data.local.entity.ClothesEntity
 import com.application.fasrecon.databinding.ItemClothesListBinding
-import com.application.fasrecon.databinding.ItemClothesTypeBinding
 import com.bumptech.glide.Glide
 
-class MyClothesListAdapter: ListAdapter<ClothesEntity, MyClothesListAdapter.ListViewHolder>(DIFF_CALLBACK) {
+class MyClothesListAdapter (private val deleteClothes: (ClothesEntity) -> Unit): ListAdapter<ClothesEntity, MyClothesListAdapter.ListViewHolder>(DIFF_CALLBACK) {
 
     inner class ListViewHolder (private val binding: ItemClothesListBinding): ViewHolder(binding.root) {
         fun bind(clothesData: ClothesEntity, pos: Int) {
@@ -31,6 +30,9 @@ class MyClothesListAdapter: ListAdapter<ClothesEntity, MyClothesListAdapter.List
                 .load(clothesData.clothesImage)
                 .into(binding.clothesImage)
 
+            binding.deleteClothes.setOnClickListener {
+                deleteClothes(clothesData)
+            }
         }
     }
 

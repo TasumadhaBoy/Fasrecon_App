@@ -63,5 +63,19 @@
                 style="@style/item_clothes_label_text"
                 tools:text="label2" />
         </com.google.android.material.card.MaterialCardView>
+
+        <ImageButton
+            android:id="@+id/delete_clothes"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/rounded_shape2"
+            android:contentDescription="@string/delete_clothes"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/delete_icon"
+            app:iconSize="16dp"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

@@ -170,9 +170,25 @@ class MyClothesFragment : Fragment() {
         list: List<ClothesEntity>,
         recyclerView: RecyclerView?
     ) {
-        val adapter = MyClothesListAdapter()
+        val adapter = MyClothesListAdapter { deleteClothes ->
+            deleteDialog(deleteClothes)
+        }
+
         adapter.submitList(list)
         recyclerView?.adapter = adapter
+    }
+
+    private fun deleteDialog(clothes: ClothesEntity) {
+        SweetAlertDialog(requireActivity(), SweetAlertDialog.WARNING_TYPE)
+            .setTitleText("Delete Clothes")
+            .setContentText("Are you sure want to delete this clothes ?")
+            .setConfirmText("Yes")
+            .setCancelText("No")
+            .setConfirmClickListener { sDialog ->
+                myClothesViewModel.deleteClothes(clothes.id)
+                sDialog.dismissWithAnimation()
+            }
+            .show()
     }
 
     private fun displayLoading(isLoading: Boolean) {

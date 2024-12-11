@@ -106,6 +106,7 @@
     <string name="change_image">change image</string>
     <string name="failed_update_login_again">Failed to update your profile, please login again</string>
     <string name="current_password_incorrect">Your current password is incorrect</string>
+    <string name="delete_clothes">Delete Clothes</string>
     <string-array name="gender_array">
         <item>Man</item>
         <item>Woman</item>
