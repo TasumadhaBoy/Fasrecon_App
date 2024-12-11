@@ -9,6 +9,7 @@ import com.application.fasrecon.data.local.entity.ClothesEntity
 import com.application.fasrecon.data.remote.response.Label
 import com.application.fasrecon.data.repository.UserRepository
 import com.application.fasrecon.util.WrapMessage
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import okhttp3.MultipartBody
 
@@ -43,12 +44,16 @@ class MyClothesViewModel(private val userRepository: UserRepository) : ViewModel
     }
 
     fun insertClothes(clothes: String, type: String?, color: String?){
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             userRepository.insertClothesData(clothes, type, color)
         }
     }
 
     fun getAllClothes(): LiveData<List<ClothesEntity>> = userRepository.getAllClothes()
+
+    fun getClothesType(): LiveData<List<String>> = userRepository.getClothesType()
+
+    fun getAllClothesByType(type: String): LiveData<List<ClothesEntity>> = userRepository.getAllClothesByType(type)
 
     fun deleteClothes(id: String) {
         viewModelScope.launch {

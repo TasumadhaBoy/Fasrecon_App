@@ -5,7 +5,6 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import androidx.room.Transaction
 import com.application.fasrecon.data.local.entity.ClothesEntity
 import com.application.fasrecon.data.local.entity.UserEntity
 
@@ -23,12 +22,17 @@ interface UserDao {
     @Query("SELECT * FROM user")
     fun getDataUser(): LiveData<UserEntity>
 
-    @Query("SELECT COUNT(*) FROM clothes WHERE userId = :id")
-    suspend fun getClothesCount(id: String): Int
-
-    @Transaction
     @Query("SELECT * FROM clothes where userId = :id")
     fun getAllClothes(id: String): LiveData<List<ClothesEntity>>
+
+    @Query("SELECT COUNT(*) FROM clothes WHERE userId = :id")
+    fun getClothesCount(id: String): Int
+
+    @Query("SELECT DISTINCT type FROM clothes WHERE userId = :id")
+    fun getClothesType(id: String): LiveData<List<String>>
+
+    @Query("SELECT * FROM clothes WHERE userId = :id and type = :type")
+    fun getAllClothesByType(id: String, type: String): LiveData<List<ClothesEntity>>
 
     @Query("DELETE FROM user WHERE id = :id")
     suspend fun deleteUser(id: String)

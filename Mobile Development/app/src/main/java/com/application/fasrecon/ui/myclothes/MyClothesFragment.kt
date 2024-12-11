@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,11 +50,11 @@ class MyClothesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setActionBar()
 
-        myClothesViewModel.loadingData.observe(requireActivity()) {
+        myClothesViewModel.loadingData.observe(viewLifecycleOwner) {
             displayLoading(it)
         }
 
-        myClothesViewModel.errorHandling.observe(requireActivity()) {
+        myClothesViewModel.errorHandling.observe(viewLifecycleOwner) {
             it.getDataIfNotDisplayed()?.let { msg ->
                 SweetAlertDialog(requireActivity(), SweetAlertDialog.ERROR_TYPE)
                     .setTitleText("Classify Image Failed")
@@ -63,7 +64,7 @@ class MyClothesFragment : Fragment() {
             }
         }
 
-        myClothesViewModel.getAllClothes().observe(requireActivity()) {
+        myClothesViewModel.getAllClothes().observe(viewLifecycleOwner) {
             setListClothes(it, binding?.listClothes)
             val orientation = resources.configuration.orientation
             if (orientation == Configuration.ORIENTATION_PORTRAIT) {
@@ -83,7 +84,7 @@ class MyClothesFragment : Fragment() {
             showBottomSheetDialog()
         }
 
-        myClothesViewModel.classifyResult.observe(requireActivity()) { label ->
+        myClothesViewModel.classifyResult.observe(viewLifecycleOwner) { label ->
             imageUriUpload?.let { insertClothes(imageUriUpload, label) }
         }
     }
@@ -106,20 +107,24 @@ class MyClothesFragment : Fragment() {
             ViewGroup.LayoutParams.WRAP_CONTENT
         )
 
-        val list = listOf("T-shirt", "Shirt", "jacket", "Hoodie", "Polo Shirt", "Trucker")
-        val clothesList = dialog.findViewById<RecyclerView>(R.id.list_clothes_type)
-        val adapter = setAllClothesType(list, clothesList)
-        val layoutManager = LinearLayoutManager(requireActivity())
-        clothesList.layoutManager = layoutManager
+        myClothesViewModel.getClothesType().observe(viewLifecycleOwner) {
+            val clothesList = dialog.findViewById<RecyclerView>(R.id.list_clothes_type)
+            val adapter = setAllClothesType(it, clothesList)
+            val layoutManager = LinearLayoutManager(requireContext())
+            clothesList.layoutManager = layoutManager
 
-        dialog.findViewById<Button>(R.id.btn_cancel_filter).setOnClickListener {
-            dialog.dismiss()
-        }
-
-        dialog.findViewById<Button>(R.id.btn_apply_filter).setOnClickListener {
-            val selectedItem = adapter.getSelectedItem()
-            if (selectedItem != null) {
+            dialog.findViewById<Button>(R.id.btn_cancel_filter).setOnClickListener {
                 dialog.dismiss()
+            }
+
+            dialog.findViewById<Button>(R.id.btn_apply_filter).setOnClickListener {
+                val selectedItem = adapter.getSelectedItem()
+                if (selectedItem != null) {
+                    myClothesViewModel.getAllClothesByType(selectedItem).observe(viewLifecycleOwner) { list ->
+                        setListClothes(list, binding?.listClothes)
+                    }
+                    dialog.dismiss()
+                }
             }
         }
 
@@ -141,7 +146,7 @@ class MyClothesFragment : Fragment() {
     }
 
     private fun classifyImage(imageUri: Uri) {
-        val imgFile = uriToFile(imageUri, requireActivity()).reduceFileImage()
+        val imgFile = uriToFile(imageUri, requireContext()).reduceFileImage()
         val reqImageFile = imgFile.asRequestBody("image/jpeg".toMediaType())
         val multipartBody = MultipartBody.Part.createFormData("images", imgFile.name, reqImageFile)
         myClothesViewModel.classifyImage(multipartBody)
