@@ -13,7 +13,7 @@ import com.bumptech.glide.Glide
 class MyClothesListAdapter (private val deleteClothes: (ClothesEntity) -> Unit): ListAdapter<ClothesEntity, MyClothesListAdapter.ListViewHolder>(DIFF_CALLBACK) {
 
     inner class ListViewHolder (private val binding: ItemClothesListBinding): ViewHolder(binding.root) {
-        fun bind(clothesData: ClothesEntity, pos: Int) {
+        fun bind(clothesData: ClothesEntity) {
             binding.clothesName.text = clothesData.clothesName
 
             clothesData.type?.let {
@@ -42,7 +42,7 @@ class MyClothesListAdapter (private val deleteClothes: (ClothesEntity) -> Unit):
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        holder.bind(getItem(position), position)
+        holder.bind(getItem(position))
     }
 
     companion object {

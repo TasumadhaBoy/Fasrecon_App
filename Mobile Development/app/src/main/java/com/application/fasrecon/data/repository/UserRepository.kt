@@ -6,8 +6,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.application.fasrecon.data.Result
 import com.application.fasrecon.data.local.dao.UserDao
+import com.application.fasrecon.data.local.entity.ChatEntity
 import com.application.fasrecon.data.local.entity.ClothesEntity
+import com.application.fasrecon.data.local.entity.MessageEntity
 import com.application.fasrecon.data.local.entity.UserEntity
+import com.application.fasrecon.data.model.ChatMessage
 import com.application.fasrecon.data.remote.response.Label
 import com.application.fasrecon.data.remote.retrofit.ApiService
 import com.application.fasrecon.util.WrapMessage
@@ -27,7 +30,10 @@ class UserRepository(
     private val apiService: ApiService
 ) {
 
-    fun getUserData(): LiveData<UserEntity> = userDao.getDataUser()
+    fun getUserData(): LiveData<UserEntity> {
+        val id: String = user.currentUser?.uid.toString()
+        return userDao.getDataUser(id)
+    }
 
     fun updateUserData(name: String, photo: Uri?): LiveData<Result<String?>> =
         liveData {
@@ -111,6 +117,32 @@ class UserRepository(
         userDao.insertClothes(newClothesData)
     }
 
+    suspend fun insertChat(time: String, firstMessage: String) {
+        val idUser: String = user.currentUser?.uid.toString()
+        val size = userDao.getChatTotal(idUser)
+        val newChat = ChatEntity(
+            id = idUser + "chathistory" + size,
+            chatTitle = "chat$size",
+            firstMessage = firstMessage,
+            chatTime = time,
+            userId = idUser
+        )
+        userDao.insertChat(newChat)
+    }
+
+    suspend fun insertMessage(type: String, msg: String) {
+        val idUser: String = user.currentUser?.uid.toString()
+        val sizeChat = userDao.getChatTotal(idUser)
+        val sizeMessage = userDao.getMessageTotal(idUser)
+        val newMessage = MessageEntity(
+            id = idUser + "message" + sizeMessage,
+            messageType = type,
+            message = msg,
+            chatId = idUser + "chathistory" + sizeChat
+        )
+        userDao.insertMessage(newMessage)
+    }
+
     fun getAllClothes(): LiveData<List<ClothesEntity>> {
         val idUser: String = user.currentUser?.uid.toString()
         return userDao.getAllClothes(idUser)
@@ -131,16 +163,33 @@ class UserRepository(
         return userDao.getTotalUserClothes(idUser)
     }
 
+    fun getAllHistoryChat(): LiveData<List<ChatEntity>> {
+        val idUser: String = user.currentUser?.uid.toString()
+        return userDao.getAllHistoryChat(idUser)
+    }
+
+    fun getAllHistoryMessage(): LiveData<List<MessageEntity>> {
+        val idUser: String = user.currentUser?.uid.toString()
+        val sizeChat = userDao.getChatTotal(idUser)
+
+        return userDao.getAllHistoryMessage(idUser + "chathistory" + sizeChat)
+    }
+
     suspend fun deleteClothes(id: String) {
         userDao.deleteClothes(id)
     }
 
+    suspend fun deleteChat(id: String) {
+        val idUser: String = user.currentUser?.uid.toString()
+        val sizeChat = userDao.getChatTotal(idUser)
+        userDao.deleteHistoryMessage(idUser + "chathistory" + sizeChat)
+        userDao.deleteHistoryChat(id)
+    }
+
     suspend fun logout() {
         user.signOut()
-        userDao.getDataUser().value?.let {
-            userDao.deleteUser(it.id)
-            Log.d("Test2", it.id)
-        }
+        val id: String = user.currentUser?.uid.toString()
+        userDao.deleteUser(id)
     }
 
     companion object {

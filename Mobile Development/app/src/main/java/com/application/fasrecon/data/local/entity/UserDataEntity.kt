@@ -1,8 +1,10 @@
 package com.application.fasrecon.data.local.entity
 
 import androidx.room.ColumnInfo
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.Relation
 
 @Entity(tableName = "user")
 data class UserEntity (
@@ -46,14 +48,51 @@ data class ClothesEntity(
     val userId: String
 )
 
-//data class ClothesUser(
+@Entity(tableName = "ChatEntity")
+data class ChatEntity(
+    @ColumnInfo("id")
+    @PrimaryKey
+    val id: String,
+
+    @ColumnInfo("ChatTitle")
+    val chatTitle: String?,
+
+    @ColumnInfo("firstMessage")
+    val firstMessage: String,
+
+    @ColumnInfo("chatTime")
+    val chatTime: String,
+
+    @ColumnInfo("userId")
+    val userId: String
+)
+
+@Entity(tableName = "messageEntity")
+data class MessageEntity(
+    @ColumnInfo("id")
+    @PrimaryKey
+    val id: String,
+
+    @ColumnInfo("messageType")
+    val messageType: String,
+
+    @ColumnInfo("firstMessage")
+    val message: String,
+
+    @ColumnInfo("chatId")
+    val chatId: String
+)
+
+//data class HistoryMessage(
 //    @Embedded
-//    val clothes: ClothesEntity,
+//    val chat: ChatEntity,
+//
 //
 //    @Relation(
-//        parentColumn = "userId",
-//        entityColumn = "id"
+//        parentColumn = "id",
+//        entityColumn = "chatId"
 //    )
 //
-//    val user: UserEntity
+//    val message: MessageEntity
+//
 //)

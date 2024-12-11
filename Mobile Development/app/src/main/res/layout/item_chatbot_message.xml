@@ -65,17 +65,17 @@
         android:id="@+id/user_message"
         android:background="@drawable/custom_chat_user"
         android:layout_width="180dp"
-        android:textSize="18sp"
-        android:fontFamily="@font/poppinsregular"
-        android:shadowColor="@color/black"
         android:layout_height="wrap_content"
+        android:textSize="18sp"
         android:textAlignment="textEnd"
+        android:paddingStart="0dp"
+        android:paddingEnd="16dp"
         android:lineSpacingExtra="5dp"
-        tools:text="Lorem ipsdwadawdawdadawdawdawdadmet"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="@id/guideline_vertical1"
         app:layout_constraintEnd_toStartOf="@id/user_image"
-        app:layout_constraintHorizontal_bias="1"/>
+        app:layout_constraintHorizontal_bias="1"
+        tools:text="Lorem ipsum dolor sit amet" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_vertical1"
