@@ -5,10 +5,12 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.application.fasrecon.data.local.dao.UserDao
+import com.application.fasrecon.data.local.entity.ChatEntity
 import com.application.fasrecon.data.local.entity.ClothesEntity
+import com.application.fasrecon.data.local.entity.MessageEntity
 import com.application.fasrecon.data.local.entity.UserEntity
 
-@Database(entities = [UserEntity::class, ClothesEntity::class], version = 1, exportSchema = false)
+@Database(entities = [UserEntity::class, ClothesEntity::class, ChatEntity::class, MessageEntity::class], version = 1, exportSchema = false)
 
 abstract class FasreconDatabase: RoomDatabase() {
 

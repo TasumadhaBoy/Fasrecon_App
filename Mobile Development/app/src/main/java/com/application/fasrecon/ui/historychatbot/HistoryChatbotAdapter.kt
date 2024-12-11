@@ -7,19 +7,21 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.application.fasrecon.data.local.entity.ChatEntity
-import com.application.fasrecon.databinding.ItemClothesListBinding
+import com.application.fasrecon.databinding.ItemChatbotHistoryBinding
 
 class HistoryChatbotAdapter: ListAdapter<ChatEntity, HistoryChatbotAdapter.ListViewHolder>(
     DIFF_CALLBACK) {
 
-    inner class ListViewHolder (private val binding: ItemClothesListBinding): ViewHolder(binding.root) {
+    inner class ListViewHolder (private val binding: ItemChatbotHistoryBinding): ViewHolder(binding.root) {
         fun bind(chatData: ChatEntity) {
-
+            binding.chatTitle.text = chatData.chatTitle
+            binding.chatTime.text = chatData.chatTime
+            binding.chatMessage.text = chatData.firstMessage
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
-        val binding = ItemClothesListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemChatbotHistoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ListViewHolder(binding)
     }
 

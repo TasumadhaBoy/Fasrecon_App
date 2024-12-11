@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.application.fasrecon.data.repository.UserRepository
 import com.application.fasrecon.di.InjectionUser
 import com.application.fasrecon.ui.changepassword.ChangePasswordViewModel
+import com.application.fasrecon.ui.chatbot.ChatbotViewModel
 import com.application.fasrecon.ui.historychatbot.HistoryChatbotViewModel
 import com.application.fasrecon.ui.home.HomeViewModel
 import com.application.fasrecon.ui.myclothes.MyClothesViewModel
@@ -29,6 +30,8 @@ class ViewModelFactoryUser private constructor(private val userRepository: UserR
             return MyClothesViewModel(userRepository) as T
         } else if (modelClass.isAssignableFrom(HistoryChatbotViewModel::class.java)) {
             return HistoryChatbotViewModel(userRepository) as T
+        } else if (modelClass.isAssignableFrom(ChatbotViewModel::class.java)) {
+            return ChatbotViewModel(userRepository) as T
         }
 
         throw IllegalArgumentException("Unknown ViewModel Class: " + modelClass.name)

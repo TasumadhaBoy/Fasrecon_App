@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="20dp"
+    android:layout_marginHorizontal="4dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
@@ -11,7 +12,7 @@
         android:id="@+id/chat_title"
         tools:text="Chat1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/chat_message"
@@ -29,18 +30,18 @@
         android:id="@+id/chat_time"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
         tools:text="July 10, 05.22 PM"
-        app:layout_constraintStart_toStartOf="@id/guideline_vertical"
         app:layout_constraintTop_toBottomOf="@id/chat_title"
-        app:layout_constraintBottom_toTopOf="@id/chat_message"/>
+        app:layout_constraintBottom_toTopOf="@id/chat_message"
+        app:layout_constraintEnd_toStartOf="@id/arrow_to_chat"/>
 
     <ImageView
+        android:id="@+id/arrow_to_chat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/open_the_chat"
         android:src="@drawable/right_icon_24"
-        app:layout_constraintStart_toEndOf="@id/chat_time"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/chat_time"
         app:layout_constraintBottom_toBottomOf="@id/chat_time" />
@@ -53,5 +54,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintGuide_percent="0.6"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/text_gray"
+        app:layout_constraintTop_toBottomOf="@id/chat_message"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
