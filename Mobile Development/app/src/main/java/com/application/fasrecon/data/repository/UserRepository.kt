@@ -116,6 +116,16 @@ class UserRepository(
         return userDao.getAllClothes(idUser)
     }
 
+    fun getClothesType(): LiveData<List<String>> {
+        val idUser: String = user.currentUser?.uid.toString()
+        return userDao.getClothesType(idUser)
+    }
+
+    fun getAllClothesByType(type: String): LiveData<List<ClothesEntity>> {
+        val idUser: String = user.currentUser?.uid.toString()
+        return userDao.getAllClothesByType(idUser, type)
+    }
+
     suspend fun deleteClothes(id: String) {
         userDao.deleteClothes(id)
     }
