@@ -126,9 +126,9 @@ class UserRepository(
         return userDao.getAllClothesByType(idUser, type)
     }
 
-    fun getClothesTotal(): Int {
+    fun getClothesTotal(): LiveData<Int> {
         val idUser: String = user.currentUser?.uid.toString()
-        return userDao.getClothesTotal(idUser)
+        return userDao.getTotalUserClothes(idUser)
     }
 
     suspend fun deleteClothes(id: String) {
