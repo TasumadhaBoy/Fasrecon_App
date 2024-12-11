@@ -57,8 +57,8 @@ class MyClothesFragment : Fragment() {
         myClothesViewModel.errorHandling.observe(viewLifecycleOwner) {
             it.getDataIfNotDisplayed()?.let { msg ->
                 SweetAlertDialog(requireActivity(), SweetAlertDialog.ERROR_TYPE)
-                    .setTitleText("Classify Image Failed")
-                    .setConfirmText("Try Again")
+                    .setTitleText(getString(R.string.classify_image_failed))
+                    .setConfirmText(getString(R.string.try_again))
                     .setContentText(msg)
                     .show()
             }
@@ -180,10 +180,10 @@ class MyClothesFragment : Fragment() {
 
     private fun deleteDialog(clothes: ClothesEntity) {
         SweetAlertDialog(requireActivity(), SweetAlertDialog.WARNING_TYPE)
-            .setTitleText("Delete Clothes")
-            .setContentText("Are you sure want to delete this clothes ?")
-            .setConfirmText("Yes")
-            .setCancelText("No")
+            .setTitleText(getString(R.string.delete_clothes))
+            .setContentText(getString(R.string.confirmation_delete))
+            .setConfirmText(getString(R.string.yes))
+            .setCancelText(getString(R.string.no))
             .setConfirmClickListener { sDialog ->
                 myClothesViewModel.deleteClothes(clothes.id)
                 sDialog.dismissWithAnimation()

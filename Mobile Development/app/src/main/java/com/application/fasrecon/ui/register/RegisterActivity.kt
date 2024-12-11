@@ -41,16 +41,16 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
                 }
 
                 SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
-                    .setTitleText("Register Failed")
-                    .setConfirmText("Try Again")
-                    .setContentText("Create Account Failed\n${message}")
+                    .setTitleText(getString(R.string.register_failed))
+                    .setConfirmText(getString(R.string.try_again))
+                    .setContentText(getString(R.string.create_account_failed, message))
                     .show()
             }
         }
 
         registerViewModel.registerMessage.observe(this) {
             SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
-                .setTitleText("Success Create Account")
+                .setTitleText(getString(R.string.success_register))
                 .setConfirmClickListener { sDialog ->
                     sDialog.dismissWithAnimation()
                     val intent = Intent(this, LoginActivity::class.java)

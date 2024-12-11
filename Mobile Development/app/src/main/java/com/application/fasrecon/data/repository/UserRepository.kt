@@ -99,7 +99,7 @@ class UserRepository(
 
     suspend fun insertClothesData(clothes: String, type: String?, color: String?) {
         val idUser: String = user.currentUser?.uid.toString()
-        val size = userDao.getClothesCount(idUser)
+        val size = userDao.getClothesTotal(idUser)
         val newClothesData = ClothesEntity(
             id = idUser + size,
             clothesImage = clothes,
@@ -124,6 +124,11 @@ class UserRepository(
     fun getAllClothesByType(type: String): LiveData<List<ClothesEntity>> {
         val idUser: String = user.currentUser?.uid.toString()
         return userDao.getAllClothesByType(idUser, type)
+    }
+
+    fun getClothesTotal(): Int {
+        val idUser: String = user.currentUser?.uid.toString()
+        return userDao.getClothesTotal(idUser)
     }
 
     suspend fun deleteClothes(id: String) {

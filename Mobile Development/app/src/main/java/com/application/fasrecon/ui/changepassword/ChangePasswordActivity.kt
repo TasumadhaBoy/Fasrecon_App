@@ -48,8 +48,8 @@ class ChangePasswordActivity : BaseActivity(), View.OnClickListener {
                 }
 
                 SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
-                    .setTitleText("Update Profile Failed")
-                    .setConfirmText("Try Again")
+                    .setTitleText(getString(R.string.change_password))
+                    .setConfirmText(getString(R.string.try_again))
                     .setContentText(message)
                     .show()
             }
@@ -59,7 +59,7 @@ class ChangePasswordActivity : BaseActivity(), View.OnClickListener {
         changePasswordViewModel.changePasswordMessage.observe(this) {
 
             SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
-                .setTitleText("Change Password Success")
+                .setTitleText(getString(R.string.change_password))
                 .setConfirmText("Ok")
                 .setConfirmClickListener { sDialog ->
                     sDialog.dismissWithAnimation()

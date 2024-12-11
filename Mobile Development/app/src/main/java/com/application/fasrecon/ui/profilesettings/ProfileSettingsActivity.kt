@@ -137,7 +137,7 @@ class ProfileSettingsActivity : BaseActivity() {
                 }
 
                 SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
-                    .setTitleText("Update Profile Failed")
+                    .setTitleText(getString(R.string.update_profil_failed))
                     .setConfirmText("Try Again")
                     .setContentText(message)
                     .show()

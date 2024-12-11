@@ -26,7 +26,7 @@ interface UserDao {
     fun getAllClothes(id: String): LiveData<List<ClothesEntity>>
 
     @Query("SELECT COUNT(*) FROM clothes WHERE userId = :id")
-    fun getClothesCount(id: String): Int
+    fun getClothesTotal(id: String): Int
 
     @Query("SELECT DISTINCT type FROM clothes WHERE userId = :id")
     fun getClothesType(id: String): LiveData<List<String>>

@@ -29,7 +29,6 @@ class HomeFragment : Fragment() {
             requireActivity()
         )
     }
-    private var user = FirebaseAuth.getInstance()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -60,7 +59,6 @@ class HomeFragment : Fragment() {
     private fun setUserData(userData: UserEntity) {
         binding.tvUserHomepage.text = getString(R.string.hai_user, userData.name)
         if (userData.photoUrl != null) {
-            Log.d("test5", user.currentUser?.photoUrl.toString())
             Glide.with(this)
                 .load(userData.photoUrl)
                 .error(R.drawable.no_profile)

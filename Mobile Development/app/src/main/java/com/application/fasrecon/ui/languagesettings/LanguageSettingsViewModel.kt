@@ -10,9 +10,9 @@ import kotlinx.coroutines.launch
 class LanguageSettingsViewModel(private val pref: SettingsPreference): ViewModel() {
 
     fun getLanguageSetting(): LiveData<String> = pref.getLanguage().asLiveData()
-    fun saveLanguageSettings(languange: String) {
+    fun saveLanguageSettings(language: String) {
         viewModelScope.launch {
-            pref.saveLanguageSettings(languange)
+            pref.saveLanguageSettings(language)
         }
     }
 }
