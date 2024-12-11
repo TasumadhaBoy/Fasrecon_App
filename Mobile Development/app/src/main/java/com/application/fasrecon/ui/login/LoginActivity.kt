@@ -11,7 +11,6 @@ import com.application.fasrecon.databinding.ActivityLoginBinding
 import com.application.fasrecon.ui.BaseActivity
 import com.application.fasrecon.ui.register.RegisterActivity
 import com.application.fasrecon.ui.viewmodelfactory.ViewModelFactoryAuth
-import com.application.fasrecon.util.WrapMessage
 
 class LoginActivity : BaseActivity(), View.OnClickListener {
 
@@ -41,8 +40,8 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
                 }
 
                 SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
-                    .setTitleText("Login Failed")
-                    .setConfirmText("Try Again")
+                    .setTitleText(getString(R.string.login_failed))
+                    .setConfirmText(getString(R.string.try_again))
                     .setContentText(message)
                     .show()
             }
@@ -52,7 +51,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
             val password = binding.passwordLoginInput.text.toString().trim()
             loginViewModel.saveSession(password)
             SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
-                .setTitleText("Login Success")
+                .setTitleText(getString(R.string.fasrecon))
                 .setContentText("Welcome $it")
                 .setConfirmClickListener { sDialog ->
                     sDialog.dismissWithAnimation()

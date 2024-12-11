@@ -32,7 +32,7 @@ import kotlinx.coroutines.launch
 class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
-    private val binding get() = _binding!!
+    private val binding get() = _binding
     private val profileViewModel: ProfileViewModel by viewModels {
         ViewModelFactoryUser.getInstance(
             requireActivity()
@@ -43,10 +43,9 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-        return root
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -56,39 +55,41 @@ class ProfileFragment : Fragment() {
             setUserData(it)
         }
 
-        binding.profileSettings.setOnClickListener {
+        binding?.profileSettings?.setOnClickListener {
             val intent = Intent(requireContext(), ProfileSettingsActivity::class.java)
             startActivity(intent)
         }
 
-        binding.languageSettings.setOnClickListener {
+        binding?.languageSettings?.setOnClickListener {
             val intent = Intent(requireContext(), LanguageSettingsActivity::class.java)
             startActivity(intent)
         }
 
-        binding.LogoutMenu.setOnClickListener {
+        binding?.LogoutMenu?.setOnClickListener {
             showAlertDialog()
         }
 
-        binding.logoutIcon.setOnClickListener {
+        binding?.logoutIcon?.setOnClickListener {
             showAlertDialog()
         }
     }
 
     private fun setActionBar() {
-        (requireActivity() as AppCompatActivity).setSupportActionBar(binding.topAppBar)
+        (requireActivity() as AppCompatActivity).setSupportActionBar(binding?.topAppBar)
         (requireActivity() as AppCompatActivity).supportActionBar?.title =
             getString(R.string.profile)
     }
 
     private fun setUserData(userData: UserEntity) {
-        binding.UserName.text = userData.name
-        binding.userEmail.text = userData.email
+        binding?.UserName?.text = userData.name
+        binding?.userEmail?.text = userData.email
         if (userData.photoUrl != null) {
-            Glide.with(requireActivity())
-                .load(userData.photoUrl)
-                .error(R.drawable.no_profile)
-                .into(binding.userProfile)
+            binding?.userProfile?.let {
+                Glide.with(requireActivity())
+                    .load(userData.photoUrl)
+                    .error(R.drawable.no_profile)
+                    .into(it)
+            }
         }
     }
 

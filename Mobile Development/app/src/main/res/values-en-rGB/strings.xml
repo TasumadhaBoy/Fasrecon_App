@@ -39,7 +39,6 @@
     <string name="new_password">New Password</string>
     <string name="change">change</string>
     <string name="date">Date</string>
-    <string name="gender">gender</string>
     <string name="forgot_password">Forgot Password</string>
     <string name="logout_message">Are you sure you want to logout?</string>
     <string name="submit">Submit</string>
@@ -93,8 +92,31 @@
     <string name="new_chat">New Chat</string>
     <string name="open_the_chat">Open the chat</string>
     <string name="history_chatbot">History Chatbot</string>
-    <string-array name="gender_array">
-        <item>Man</item>
-        <item>Woman</item>
-    </string-array>
+    <string name="user_image">User Image</string>
+    <string name="type_here">Type Here</string>
+    <string name="success_register">Success Create Account</string>
+    <string name="no_internet">No Internet Connection</string>
+    <string name="email_registered">Email has been registered</string>
+    <string name="unknown_error">Unknown Error</string>
+    <string name="wrong_email_password">Email or password is incorrect</string>
+    <string name="invalid_user">Account not registered yet</string>
+    <string name="too_many_request">Too many login requests, please try again later.</string>
+    <string name="session_expired">Session Expired, please login again !</string>
+    <string name="change_image">Change Image</string>
+    <string name="failed_update_login_again">Failed to update your profile, please login again</string>
+    <string name="current_password_incorrect">Your current password is incorrect</string>
+    <string name="delete_clothes">Delete Clothes</string>
+    <string name="update_profil_failed">Update Profil Failed</string>
+    <string name="change_password_failed">Change Password Failed</string>
+    <string name="try_again">Try Again</string>
+    <string name="change_password_success">Change Password Success</string>
+    <string name="login_failed">Login Failed</string>
+    <string name="login_success">Login Success</string>
+    <string name="classify_image_failed">Classify Image Failed</string>
+    <string name="confirmation_delete">Are you sure want to delete this clothes ?</string>
+    <string name="crop_image_failed">Crop Image Failed</string>
+    <string name="register_failed">Register Failed</string>
+    <string name="create_account_failed">Create Account Failed\n %1$s</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>

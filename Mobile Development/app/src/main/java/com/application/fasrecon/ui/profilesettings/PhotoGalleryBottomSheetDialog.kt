@@ -103,7 +103,7 @@ class PhotoGalleryBottomSheetDialog: BottomSheetDialogFragment() {
             imageUri?.let { imageByUser?.imageUriByUser(it) }
         } else if (resultCode == UCrop.RESULT_ERROR) {
             val cropError = UCrop.getError(data!!)
-            showToast(cropError?.message ?: "Crop image failed")
+            showToast(cropError?.message ?: getString(R.string.crop_image_failed))
         }
     }
 

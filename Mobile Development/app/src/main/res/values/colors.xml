@@ -28,4 +28,5 @@
     <color name="button_dark">#626B77</color>
     <color name="chatbot_container">#F2F4F5</color>
     <color name="input_disabled_layout">#C3D3E9</color>
+    <color name="delete_color">#FC565A</color>
 </resources>

@@ -39,7 +39,6 @@
     <string name="new_password">Password Baru</string>
     <string name="change">Ubah</string>
     <string name="date">Tanggal</string>
-    <string name="gender">Jenis Kelamin</string>
     <string name="forgot_password">Lupa Password</string>
     <string name="logout_message">Apakah anda yakin ingin keluar ?</string>
     <string name="submit">kirim</string>
@@ -93,9 +92,31 @@
     <string name="new_chat">Obrolan Baru</string>
     <string name="open_the_chat">Buka Obrolan</string>
     <string name="history_chatbot">History Chatbot</string>
-    <string-array name="gender_array">
-        <item>Laki-laki</item>
-        <item>Perempuan</item>
-    </string-array>
-
+    <string name="user_image">Gambar pengguna</string>
+    <string name="type_here">Ketik di sini</string>
+    <string name="success_register">Berhasil membuat akun</string>
+    <string name="no_internet">Tidak ada koneksi internet</string>
+    <string name="email_registered">Email sudah didaftarkan</string>
+    <string name="unknown_error">Error tidak diketahui</string>
+    <string name="wrong_email_password">Email atau kata sandi salah</string>
+    <string name="invalid_user">Akun belum terdaftar</string>
+    <string name="too_many_request">Terlalu banyak permintaan login, silahkan coba lagi nanti</string>
+    <string name="session_expired">Sesi Berakhir, silakan login lagi !</string>
+    <string name="change_image">Ubah gambar</string>
+    <string name="failed_update_login_again">Gagal memperbarui profil, silahkan login lagi</string>
+    <string name="current_password_incorrect">Kata sandi saat ini salah</string>
+    <string name="delete_clothes">Hapus Pakaian</string>
+    <string name="update_profil_failed">Gagal memperbarui foto profil</string>
+    <string name="change_password_failed">Gagal memperbarui kata sandi</string>
+    <string name="try_again">Coba lagi</string>
+    <string name="change_password_success">Berhasil memperbarui kata sandi</string>
+    <string name="login_failed">Gagal login</string>
+    <string name="login_success">Berhasil login</string>
+    <string name="classify_image_failed">Gagal klasifikasi gambar</string>
+    <string name="confirmation_delete">Apakah kamu yakin ingin menghapus pakaian ini ?</string>
+    <string name="crop_image_failed">Gagal memangkas gambar</string>
+    <string name="register_failed">Pendaftaran Gagal</string>
+    <string name="create_account_failed">Gagal Membuat Akun\n %1$s</string>
+    <string name="yes">Ya</string>
+    <string name="no">Tidak</string>
 </resources>

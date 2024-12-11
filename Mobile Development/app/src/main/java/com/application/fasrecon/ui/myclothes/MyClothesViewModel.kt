@@ -56,7 +56,7 @@ class MyClothesViewModel(private val userRepository: UserRepository) : ViewModel
     fun getAllClothesByType(type: String): LiveData<List<ClothesEntity>> = userRepository.getAllClothesByType(type)
 
     fun deleteClothes(id: String) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             userRepository.deleteClothes(id)
         }
     }

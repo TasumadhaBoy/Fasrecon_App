@@ -14,30 +14,29 @@ import com.application.fasrecon.ui.chatbot.ChatbotActivity
 class HistoryChatbotFragment : Fragment() {
 
     private var _binding: FragmentHistoryChatbotBinding? = null
-    private val binding get() = _binding!!
+    private val binding get() = _binding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         _binding = FragmentHistoryChatbotBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-        return root
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setActionBar()
 
-        binding.newChatbot.setOnClickListener {
+        binding?.newChatbot?.setOnClickListener {
             val intent = Intent(requireActivity(), ChatbotActivity::class.java)
             startActivity(intent)
         }
     }
 
     private fun setActionBar() {
-        (requireActivity() as AppCompatActivity).setSupportActionBar(binding.topAppBar)
+        (requireActivity() as AppCompatActivity).setSupportActionBar(binding?.topAppBar)
         (requireActivity() as AppCompatActivity).supportActionBar?.title =
             getString(R.string.history_chatbot)
     }
