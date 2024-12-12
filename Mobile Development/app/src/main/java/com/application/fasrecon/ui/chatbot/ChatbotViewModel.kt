@@ -5,14 +5,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.application.fasrecon.data.local.entity.MessageEntity
+import com.application.fasrecon.data.remote.response.RecommendationResponse
 import com.application.fasrecon.data.repository.UserRepository
 import com.application.fasrecon.util.WrapMessage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import com.application.fasrecon.data.Result
 
 class ChatbotViewModel (private val userRepository: UserRepository): ViewModel() {
-    private val response = MutableLiveData<String>()
-    val chatbotResponse: LiveData<String> = response
+    private val response = MutableLiveData<RecommendationResponse>()
+    val chatbotResponse: LiveData<RecommendationResponse> = response
 
     private val loadData = MutableLiveData<Boolean>()
     val loadingData: LiveData<Boolean> = loadData
@@ -20,36 +22,42 @@ class ChatbotViewModel (private val userRepository: UserRepository): ViewModel()
     private val error = MutableLiveData<WrapMessage<String?>>()
     val errorHandling: LiveData<WrapMessage<String?>> = error
 
-//    fun chatbot(message: String) {
-//        userRepository.(message).observeForever { result ->
-//            if (result != null) {
-//                when (result) {
-//                    is Result.Loading -> loadData.value = true
-//                    is Result.Success -> {
-//                        loadData.value = false
-//                        result.value = result.data
-//                    }
-//
-//                    is Result.Error -> {
-//                        loadData.value = false
-//                        error.value = result.errorMessage
-//                    }
-//                }
-//            }
-//        }
-//    }
+    fun chatbot(text: String) {
+        userRepository.generateText(text).observeForever { result ->
+            if (result != null) {
+                when (result) {
+                    is Result.Loading -> loadData.value = true
+                    is Result.Success -> {
+                        loadData.value = false
+                        response.value = result.data
+                    }
 
-    fun insertChat(time: String, firstMessage: String){
-        viewModelScope.launch(Dispatchers.IO) {
-            userRepository.insertChat(time, firstMessage)
+                    is Result.Error -> {
+                        loadData.value = false
+                        error.value = result.errorMessage
+                    }
+                }
+            }
         }
     }
 
-    fun insertMessage(type: String, message: String){
+
+    fun insertMessageFirst(id:String, type: String, photo: String, time: String, firstMessage: String){
         viewModelScope.launch(Dispatchers.IO) {
-            userRepository.insertMessage(type, message)
+            userRepository.insertMessageFirst(id, type, photo, time, firstMessage)
         }
     }
 
-    fun getAllHistoryMessage(): LiveData<List<MessageEntity>> = userRepository.getAllHistoryMessage()
+    fun insertMessage(id:String, type: String, message: String, photo: String, first: Boolean){
+        viewModelScope.launch(Dispatchers.IO) {
+            userRepository.insertMessage(id, type, message, photo, first)
+        }
+    }
+
+    fun getAllHistoryMessage(id: String): LiveData<List<MessageEntity>> {
+        return userRepository.getAllHistoryMessage(id)
+    }
+
+    fun getUserData() = userRepository.getUserData()
+
 }

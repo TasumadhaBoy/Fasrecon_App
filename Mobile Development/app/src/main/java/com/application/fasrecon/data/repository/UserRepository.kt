@@ -12,6 +12,7 @@ import com.application.fasrecon.data.local.entity.MessageEntity
 import com.application.fasrecon.data.local.entity.UserEntity
 import com.application.fasrecon.data.model.ChatMessage
 import com.application.fasrecon.data.remote.response.Label
+import com.application.fasrecon.data.remote.response.RecommendationResponse
 import com.application.fasrecon.data.remote.retrofit.ApiService
 import com.application.fasrecon.util.WrapMessage
 import com.google.firebase.FirebaseNetworkException
@@ -103,6 +104,21 @@ class UserRepository(
         }
     }
 
+    fun generateText(text: String): LiveData<Result<RecommendationResponse>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.getRecommendation(text)
+            emit(Result.Success(response))
+        } catch (e: Exception) {
+            val errorMessage = when (e) {
+                is java.net.UnknownHostException -> "No internet connection"
+                is retrofit2.HttpException -> "Request Failed With Error ${e.code()}"
+                else -> "Unknown Error ${e.message}"
+            }
+            emit(Result.Error(WrapMessage(errorMessage)))
+        }
+    }
+
     suspend fun insertClothesData(clothes: String, type: String?, color: String?) {
         val idUser: String = user.currentUser?.uid.toString()
         val size = userDao.getClothesTotal(idUser)
@@ -117,9 +133,10 @@ class UserRepository(
         userDao.insertClothes(newClothesData)
     }
 
-    suspend fun insertChat(time: String, firstMessage: String) {
+    suspend fun insertMessageFirst(id: String, type: String, photo: String, time:String, firstMessage: String) {
         val idUser: String = user.currentUser?.uid.toString()
         val size = userDao.getChatTotal(idUser)
+
         val newChat = ChatEntity(
             id = idUser + "chathistory" + size,
             chatTitle = "chat$size",
@@ -127,18 +144,27 @@ class UserRepository(
             chatTime = time,
             userId = idUser
         )
+
+        val newMessage = MessageEntity(
+            messageType = type,
+            message = firstMessage,
+            chatId = id + size,
+            photoProfile = photo
+        )
+
         userDao.insertChat(newChat)
+        userDao.insertMessage(newMessage)
     }
 
-    suspend fun insertMessage(type: String, msg: String) {
+    suspend fun insertMessage(id: String, type: String, msg: String, photo: String, first: Boolean) {
         val idUser: String = user.currentUser?.uid.toString()
-        val sizeChat = userDao.getChatTotal(idUser)
-        val sizeMessage = userDao.getMessageTotal(idUser)
+        val size = userDao.getChatTotal(idUser) - 1
+        val newId = if (first) id + size else id
         val newMessage = MessageEntity(
-            id = idUser + "message" + sizeMessage,
             messageType = type,
             message = msg,
-            chatId = idUser + "chathistory" + sizeChat
+            chatId = newId,
+            photoProfile = photo
         )
         userDao.insertMessage(newMessage)
     }
@@ -168,11 +194,8 @@ class UserRepository(
         return userDao.getAllHistoryChat(idUser)
     }
 
-    fun getAllHistoryMessage(): LiveData<List<MessageEntity>> {
-        val idUser: String = user.currentUser?.uid.toString()
-        val sizeChat = userDao.getChatTotal(idUser)
-
-        return userDao.getAllHistoryMessage(idUser + "chathistory" + sizeChat)
+    fun getAllHistoryMessage(id: String): LiveData<List<MessageEntity>> {
+        return userDao.getAllHistoryMessage(id)
     }
 
     suspend fun deleteClothes(id: String) {

@@ -34,22 +34,28 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_message"
         android:layout_width="0dp"
-        android:layout_height="400dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="90dp"
+        android:layout_marginBottom="66dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/time_info"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/item_chatbot_message"
-        tools:itemCount="5"/>
+        app:layout_constraintVertical_bias="0"
+        tools:itemCount="25"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        style="@style/background_style"
         android:id="@+id/type_message_container"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="1">
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/type_message"
@@ -73,6 +79,15 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_percent="0.922"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

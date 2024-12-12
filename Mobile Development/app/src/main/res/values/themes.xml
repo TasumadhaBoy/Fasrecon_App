@@ -272,7 +272,7 @@
         <item name="android:layout_height">25dp</item>
         <item name="android:backgroundTint">@color/white</item>
         <item name="cornerRadius">50dp</item>
-        <item name="strokeWidth">2dp</item>
+        <item name="strokeWidth">1dp</item>
         <item name="strokeColor">@color/primary_color</item>
     </style>
 
@@ -550,8 +550,8 @@
     <style name="time_information">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">12dp</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="chat_title_history">
@@ -562,23 +562,13 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="text_container">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:paddingStart">20dp</item>
-        <item name="android:paddingEnd">16dp</item>
-        <item name="android:paddingBottom">16dp</item>
-        <item name="android:paddingTop">12dp</item>
-    </style>
-
-    <style name="chatbot_text" parent="text_container">
+    <style name="chatbot_text">
         <item name="android:backgroundTint">@color/chatbot_container</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:layout_marginStart">8dp</item>
     </style>
 
-    <style name="user_text" parent="text_container">
+    <style name="user_text">
         <item name="android:backgroundTint">@color/primary_color</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:layout_marginEnd">8dp</item>

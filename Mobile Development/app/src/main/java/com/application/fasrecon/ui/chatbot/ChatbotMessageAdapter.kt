@@ -37,6 +37,7 @@ class ChatbotMessageAdapter: ListAdapter<ChatMessage, ChatbotMessageAdapter.Chat
                     visibility = View.VISIBLE
                 }
                 holder.binding.chatbotMessage.visibility = View.GONE
+                holder.binding.chatbotImage.visibility = View.GONE
             }
             "GET" -> {
                 holder.binding.chatbotMessage.apply {
@@ -44,6 +45,7 @@ class ChatbotMessageAdapter: ListAdapter<ChatMessage, ChatbotMessageAdapter.Chat
                     visibility = View.VISIBLE
                 }
                 holder.binding.userMessage.visibility = View.GONE
+                holder.binding.userImage.visibility = View.GONE
             }
         }
     }

@@ -70,14 +70,17 @@ data class ChatEntity(
 @Entity(tableName = "messageEntity")
 data class MessageEntity(
     @ColumnInfo("id")
-    @PrimaryKey
-    val id: String,
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0,
 
     @ColumnInfo("messageType")
     val messageType: String,
 
     @ColumnInfo("firstMessage")
     val message: String,
+
+    @ColumnInfo("photoProfile")
+    val photoProfile: String,
 
     @ColumnInfo("chatId")
     val chatId: String

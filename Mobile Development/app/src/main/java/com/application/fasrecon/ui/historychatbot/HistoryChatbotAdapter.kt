@@ -1,6 +1,7 @@
 package com.application.fasrecon.ui.historychatbot
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.application.fasrecon.data.local.entity.ChatEntity
 import com.application.fasrecon.databinding.ItemChatbotHistoryBinding
+import com.application.fasrecon.ui.chatbot.ChatbotActivity
 
 class HistoryChatbotAdapter: ListAdapter<ChatEntity, HistoryChatbotAdapter.ListViewHolder>(
     DIFF_CALLBACK) {
@@ -17,7 +19,14 @@ class HistoryChatbotAdapter: ListAdapter<ChatEntity, HistoryChatbotAdapter.ListV
             binding.chatTitle.text = chatData.chatTitle
             binding.chatTime.text = chatData.chatTime
             binding.chatMessage.text = chatData.firstMessage
+
+            itemView.setOnClickListener {
+                val intent = Intent(itemView.context, ChatbotActivity::class.java)
+                intent.putExtra(ChatbotActivity.CHAT, chatData.id)
+                itemView.context.startActivity(intent)
+            }
         }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
