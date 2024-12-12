@@ -17,7 +17,6 @@ class HomeViewModel(private val userRepository: UserRepository) : ViewModel() {
 
     fun getClothesTotal(): LiveData<Int> = userRepository.getClothesTotal()
 
-
     private val classify = MutableLiveData<Label>()
     val classifyResult: LiveData<Label> = classify
 

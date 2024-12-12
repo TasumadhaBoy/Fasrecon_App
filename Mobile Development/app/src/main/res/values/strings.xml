@@ -3,11 +3,11 @@
     <string name="title_home">Home</string>
     <string name="title_menu_1">Clothes Recommendation</string>
     <string name="onboarding_page_image">Onboarding Page Image</string>
-    <string name="description_menu_1">description menu 1</string>
+    <string name="description_menu_1">Get clothes Recommendation based on chatbat</string>
     <string name="title_menu_2">Integrated Machine Learning</string>
-    <string name="description_menu_2">description menu 2</string>
+    <string name="description_menu_2">Integrated machine learning with high accuration</string>
     <string name="title_menu_3">Manage Clothes Easily</string>
-    <string name="description_menu_3">description menu 3</string>
+    <string name="description_menu_3">Classify and manage your clothes easily using machine learning</string>
     <string name="skip">Skip</string>
     <string name="login">Login</string>
     <string name="signup">Signup</string>
@@ -119,4 +119,8 @@
     <string name="create_account_failed">Create Account Failed\n %1$s</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+
+    <string name="confirmation_delete_chat">Are you sure want to delete this chat ?</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="delete_chat">Delete Chat</string>
 </resources>

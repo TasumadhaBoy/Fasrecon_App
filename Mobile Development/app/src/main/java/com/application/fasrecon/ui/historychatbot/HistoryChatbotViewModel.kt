@@ -3,11 +3,13 @@ package com.application.fasrecon.ui.historychatbot
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.application.fasrecon.data.local.entity.ChatEntity
+import com.application.fasrecon.data.repository.UserRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class HistoryChatbotViewModel : ViewModel() {
+class HistoryChatbotViewModel (private val userRepository: UserRepository) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is notifications Fragment"
-    }
-    val text: LiveData<String> = _text
+    fun getAllHistoryChat(): LiveData<List<ChatEntity>> = userRepository.getAllHistoryChat()
 }
