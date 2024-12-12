@@ -5,12 +5,14 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import cn.pedant.SweetAlert.SweetAlertDialog
 import com.application.fasrecon.R
 import com.application.fasrecon.data.local.entity.MessageEntity
 import com.application.fasrecon.data.model.ChatMessage
@@ -46,9 +48,36 @@ class ChatbotActivity : AppCompatActivity() {
             setKeyboardMargin(binding.root, binding.listMessage)
         }
 
+        chatbotViewModel.errorHandling.observe(this) {
+            it.getDataIfNotDisplayed()?.let { msg ->
+                SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                    .setTitleText("Chatbot can't provide recommendation")
+                    .setConfirmText(getString(R.string.try_again))
+                    .setContentText(msg)
+                    .show()
+            }
+        }
+
         adapter = ChatbotMessageAdapter()
         binding.listMessage.layoutManager = LinearLayoutManager(this)
         binding.listMessage.adapter = adapter
+
+        chatbotViewModel.loadingData.observe(this) {
+            displayLoading(it)
+        }
+
+        val chat = if (Build.VERSION.SDK_INT >= 33) {
+            intent.getStringExtra(CHAT)
+        } else {
+            intent.getStringExtra(CHAT)
+        }
+
+        chatbotViewModel.getUserData().observe(this) {
+            chatbotViewModel.chatbotResponse.observe(this) { recommendationResponse ->
+                recommendationResponse.recommendationText?.let { recomText -> receiveMessage(recomText, chat, it.id) }
+            }
+        }
+
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -111,8 +140,7 @@ class ChatbotActivity : AppCompatActivity() {
             }
 
             binding.listMessage.scrollToPosition(messagesList.size - 1)
-
-            receiveMessage(text + "Mantap", idChat, it.id)
+            chatbotViewModel.chatbot(text)
         }
     }
 
@@ -155,6 +183,14 @@ class ChatbotActivity : AppCompatActivity() {
         adapter.submitList(messagesList.toList())
     }
 
+    private fun displayLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.loadingChatbot.visibility = View.VISIBLE
+        } else {
+            binding.loadingChatbot.visibility = View.GONE
+        }
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
@@ -168,7 +204,6 @@ class ChatbotActivity : AppCompatActivity() {
 
     companion object {
         const val CHAT = "chat"
-        const val FIRST = "first"
     }
 }
 

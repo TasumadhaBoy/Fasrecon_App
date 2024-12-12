@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    android:layout_marginBottom="16dp"
+    android:layout_marginHorizontal="8dp"
+    android:padding="16dp"
+    android:elevation="8dp"
+    app:cardCornerRadius="12dp"
+    android:layout_gravity="center">
+
+    <ImageView
+        android:id="@+id/clothes_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:contentDescription="@string/clothes_image"
+        tools:srcCompat="@tools:sample/avatars" />
+</androidx.cardview.widget.CardView>

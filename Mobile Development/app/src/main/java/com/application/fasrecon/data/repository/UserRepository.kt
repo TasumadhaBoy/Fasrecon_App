@@ -1,7 +1,6 @@
 package com.application.fasrecon.data.repository
 
 import android.net.Uri
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.application.fasrecon.data.Result
@@ -10,10 +9,11 @@ import com.application.fasrecon.data.local.entity.ChatEntity
 import com.application.fasrecon.data.local.entity.ClothesEntity
 import com.application.fasrecon.data.local.entity.MessageEntity
 import com.application.fasrecon.data.local.entity.UserEntity
-import com.application.fasrecon.data.model.ChatMessage
+import com.application.fasrecon.data.model.MsgToChatbot
 import com.application.fasrecon.data.remote.response.Label
 import com.application.fasrecon.data.remote.response.RecommendationResponse
-import com.application.fasrecon.data.remote.retrofit.ApiService
+import com.application.fasrecon.data.remote.retrofit.service.ApiService
+import com.application.fasrecon.data.remote.retrofit.service.ApiServiceChatbot
 import com.application.fasrecon.util.WrapMessage
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.FirebaseTooManyRequestsException
@@ -28,7 +28,8 @@ import okhttp3.MultipartBody
 class UserRepository(
     private val user: FirebaseAuth,
     private val userDao: UserDao,
-    private val apiService: ApiService
+    private val apiService: ApiService,
+    private val apiServiceChatbot: ApiServiceChatbot
 ) {
 
     fun getUserData(): LiveData<UserEntity> {
@@ -107,7 +108,7 @@ class UserRepository(
     fun generateText(text: String): LiveData<Result<RecommendationResponse>> = liveData {
         emit(Result.Loading)
         try {
-            val response = apiService.getRecommendation(text)
+            val response = apiServiceChatbot.getRecommendation(MsgToChatbot(text))
             emit(Result.Success(response))
         } catch (e: Exception) {
             val errorMessage = when (e) {
@@ -219,9 +220,9 @@ class UserRepository(
         @Volatile
         private var instance: UserRepository? = null
 
-        fun getInstance(user: FirebaseAuth, userDao: UserDao, apiService: ApiService): UserRepository =
+        fun getInstance(user: FirebaseAuth, userDao: UserDao, apiService: ApiService, apiServiceChatbot: ApiServiceChatbot): UserRepository =
             instance ?: synchronized(this) {
-                instance ?: UserRepository(user, userDao, apiService)
+                instance ?: UserRepository(user, userDao, apiService, apiServiceChatbot)
             }.also { instance = it }
     }
 }
