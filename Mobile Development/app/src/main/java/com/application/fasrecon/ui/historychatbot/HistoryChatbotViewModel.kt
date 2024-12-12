@@ -12,9 +12,4 @@ import kotlinx.coroutines.launch
 class HistoryChatbotViewModel (private val userRepository: UserRepository) : ViewModel() {
 
     fun getAllHistoryChat(): LiveData<List<ChatEntity>> = userRepository.getAllHistoryChat()
-    fun deleteChat(id: String) {
-        viewModelScope.launch(Dispatchers.IO) {
-            userRepository.deleteChat(id)
-        }
-    }
 }

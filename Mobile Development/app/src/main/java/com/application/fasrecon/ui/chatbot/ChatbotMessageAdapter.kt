@@ -2,14 +2,18 @@ package com.application.fasrecon.ui.chatbot
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.application.fasrecon.R
 import com.application.fasrecon.data.model.ChatMessage
 import com.application.fasrecon.databinding.ItemChatbotMessageBinding
 

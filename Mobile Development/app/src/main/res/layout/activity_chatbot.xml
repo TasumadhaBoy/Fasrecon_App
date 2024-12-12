@@ -18,7 +18,7 @@
         <com.google.android.material.appbar.MaterialToolbar
             style="@style/custom_toolbar"
             android:id="@+id/topAppBar"
-            app:menu="@menu/appbar_menu" />
+            app:menu="@menu/appbar_menu_chatbot" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

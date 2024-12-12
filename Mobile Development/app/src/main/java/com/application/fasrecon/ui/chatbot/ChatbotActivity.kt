@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.activity.enableEdgeToEdge
@@ -216,16 +217,41 @@ class ChatbotActivity : AppCompatActivity() {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.appbar_menu_chatbot, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
                 finish()
                 true
             }
+            R.id.delete_chat -> {
+                val chat = if (Build.VERSION.SDK_INT >= 33) {
+                    intent.getStringExtra(CHAT)
+                } else {
+                    intent.getStringExtra(CHAT)
+                }
 
+                SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+                    .setTitleText(getString(R.string.delete_chat))
+                    .setContentText(getString(R.string.confirmation_delete))
+                    .setConfirmText(getString(R.string.yes))
+                    .setCancelText(getString(R.string.no))
+                    .setConfirmClickListener { sDialog ->
+                        chat?.let { chatbotViewModel.deleteChat(chat) }
+                        finish()
+                        sDialog.dismissWithAnimation()
+                    }
+                    .show()
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
+
 
     companion object {
         const val CHAT = "chat"

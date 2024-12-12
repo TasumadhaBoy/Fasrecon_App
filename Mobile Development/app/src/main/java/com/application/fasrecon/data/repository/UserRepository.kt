@@ -208,9 +208,7 @@ class UserRepository(
     }
 
     suspend fun deleteChat(id: String) {
-        val idUser: String = user.currentUser?.uid.toString()
-        val sizeChat = userDao.getChatTotal(idUser)
-        userDao.deleteHistoryMessage(idUser + "chathistory" + sizeChat)
+        userDao.deleteHistoryMessage(id)
         userDao.deleteHistoryChat(id)
     }
 

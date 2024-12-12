@@ -59,6 +59,12 @@ class ChatbotViewModel (private val userRepository: UserRepository): ViewModel()
         return userRepository.getAllHistoryMessage(id)
     }
 
+    fun deleteChat(id: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            userRepository.deleteChat(id)
+        }
+    }
+
     fun getUserData() = userRepository.getUserData()
     fun getAllClothesByType(type: String): LiveData<List<ClothesEntity>> = userRepository.getAllClothesByType(type)
 
