@@ -1,10 +1,13 @@
 package com.application.fasrecon.ui.chatbot
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.application.fasrecon.data.model.ChatMessage
@@ -37,7 +40,6 @@ class ChatbotMessageAdapter: ListAdapter<ChatMessage, ChatbotMessageAdapter.Chat
                     visibility = View.VISIBLE
                 }
                 holder.binding.chatbotMessage.visibility = View.GONE
-                holder.binding.chatbotImage.visibility = View.GONE
                 holder.binding.clothesImageRecommendation.visibility = View.GONE
             }
             "GET" -> {
@@ -46,7 +48,20 @@ class ChatbotMessageAdapter: ListAdapter<ChatMessage, ChatbotMessageAdapter.Chat
                     visibility = View.VISIBLE
                 }
                 holder.binding.userMessage.visibility = View.GONE
-                holder.binding.userImage.visibility = View.GONE
+                holder.binding.clothesImageRecommendation.visibility = View.GONE
+            }
+            "GET_PHOTO" -> {
+                holder.binding.chatbotMessage.visibility = View.GONE
+                holder.binding.userMessage.visibility = View.GONE
+                if (item.listPhoto.isEmpty()) {
+                    Log.d("list photo", item.listPhoto.toString())
+                    holder.binding.clothesImageRecommendation.visibility = View.GONE
+                } else {
+                    holder.binding.listImage.layoutManager = LinearLayoutManager(holder.itemView.context, LinearLayoutManager.HORIZONTAL, false)
+                    val adapter = ClothesRecommendationAdapter()
+                    adapter.submitList(item.listPhoto)
+                    holder.binding.listImage.adapter = adapter
+                }
             }
         }
     }

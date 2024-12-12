@@ -72,12 +72,36 @@ class ChatbotActivity : AppCompatActivity() {
             intent.getStringExtra(CHAT)
         }
 
-        chatbotViewModel.getUserData().observe(this) {
-            chatbotViewModel.chatbotResponse.observe(this) { recommendationResponse ->
-                recommendationResponse.recommendationText?.let { recomText -> receiveMessage(recomText, chat, it.id) }
-            }
+        if (chat != null) {
+            binding.typeMessageContainer.visibility = View.GONE
         }
 
+        chatbotViewModel.getUserData().observe(this) { user ->
+            chatbotViewModel.chatbotResponse.observe(this) { recommendationResponse ->
+                recommendationResponse.recommendationText?.let { recomText ->
+                    receiveMessage(
+                        recomText,
+                        user.id
+                    )
+                }
+                recommendationResponse.outfitRecommendations?.recommendedOutfits?.let { types ->
+                    types.forEach { itemTypes ->
+                        val newClothes = mutableListOf<String>()
+                        itemTypes?.let {
+                            chatbotViewModel.getAllClothesByType(it).observe(this) { listClothes ->
+                                listClothes.forEach { clothes ->
+                                    newClothes.add(clothes.clothesImage)
+                                }
+                                Log.d("Mantap", newClothes.toString())
+                                if (newClothes.isNotEmpty()) {
+                                    getMessageWithPhoto("", user.id, newClothes)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -103,13 +127,13 @@ class ChatbotActivity : AppCompatActivity() {
         binding.sendMessageButton.setOnClickListener {
             val messageText = binding.messageInput.text.toString().trim()
             if (messageText.isNotEmpty()) {
-                sendMessage(messageText, chat)
+                sendMessage(messageText)
                 binding.messageInput.text?.clear()
             }
         }
     }
 
-    private fun sendMessage(text: String, idChat: String?) {
+    private fun sendMessage(text: String) {
         val currentTime = getCurrentTime()
         chatbotViewModel.getUserData().observe(this) {
             val userMessage = ChatMessage(id = "SEND", messages = text, it.photoUrl.toString())
@@ -117,7 +141,7 @@ class ChatbotActivity : AppCompatActivity() {
 
             adapter.submitList(messagesList.toList())
 
-            if (!check && idChat == null) {
+            if (!check) {
                 check = true
                 binding.timeInfo.text = currentTime
                 chatbotViewModel.insertMessageFirst(
@@ -127,16 +151,15 @@ class ChatbotActivity : AppCompatActivity() {
                     currentTime,
                     text
                 )
-            } else if (check && idChat == null) {
+            } else {
                 chatbotViewModel.insertMessage(
                     it.id + "chathistory",
                     "SEND",
                     text,
                     it.photoUrl.toString(),
-                    true
+                    true,
+                    emptyList()
                 )
-            } else if (idChat != null) {
-                chatbotViewModel.insertMessage(idChat, "SEND", text, it.photoUrl.toString(), false)
             }
 
             binding.listMessage.scrollToPosition(messagesList.size - 1)
@@ -148,21 +171,22 @@ class ChatbotActivity : AppCompatActivity() {
     private fun getCurrentTime(): String =
         SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(Date())
 
-    private fun receiveMessage(text: String, idChat: String?, idUser: String) {
-        binding.listMessage.postDelayed({
+    private fun receiveMessage(text: String, idUser: String) {
+        val botMessage = ChatMessage(id = "GET", messages = text, "")
+        messagesList.add(botMessage)
+        adapter.submitList(messagesList.toList())
+        chatbotViewModel.insertMessage(idUser + "chathistory", "GET", text, "", true, emptyList())
+        binding.listMessage.scrollToPosition(messagesList.size - 1)
+    }
 
-            val botMessage = ChatMessage(id = "GET", messages = text, "")
-            messagesList.add(botMessage)
+    private fun getMessageWithPhoto(text: String, idUser: String, listPhotos: List<String>) {
+        val botMessage = ChatMessage(id = "GET_PHOTO", messages = text, "", listPhotos)
+        messagesList.add(botMessage)
 
-            adapter.submitList(messagesList.toList())
-            if (idChat == null) {
-                chatbotViewModel.insertMessage(idUser + "chathistory", "GET", text, "", true)
-            } else {
-                chatbotViewModel.insertMessage(idChat, "GET", text, "", false)
-            }
-            binding.listMessage.scrollToPosition(messagesList.size - 1)
+        adapter.submitList(messagesList.toList())
+        chatbotViewModel.insertMessage(idUser + "chathistory", "GET_PHOTO", text, "", true, listPhotos)
 
-        }, 1000)
+        binding.listMessage.scrollToPosition(messagesList.size - 1)
     }
 
     private fun setActionBar() {
@@ -176,7 +200,8 @@ class ChatbotActivity : AppCompatActivity() {
                 ChatMessage(
                     messageItem.messageType,
                     messageItem.message,
-                    messageItem.photoProfile
+                    messageItem.photoProfile,
+                    messageItem.listPhoto ?: emptyList()
                 )
             )
         }

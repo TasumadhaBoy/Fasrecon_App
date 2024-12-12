@@ -6,8 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.application.fasrecon.data.local.entity.ClothesEntity
-import com.application.fasrecon.databinding.ItemClothesListBinding
+
 import com.application.fasrecon.databinding.ItemClothesRecommendationBinding
 import com.bumptech.glide.Glide
 

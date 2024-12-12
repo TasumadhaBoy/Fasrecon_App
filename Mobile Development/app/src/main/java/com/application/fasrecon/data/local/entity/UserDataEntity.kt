@@ -5,6 +5,7 @@ import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.Relation
+import androidx.room.TypeConverter
 
 @Entity(tableName = "user")
 data class UserEntity (
@@ -81,6 +82,9 @@ data class MessageEntity(
 
     @ColumnInfo("photoProfile")
     val photoProfile: String,
+
+    @ColumnInfo("listPhoto")
+    val listPhoto: List<String>?,
 
     @ColumnInfo("chatId")
     val chatId: String

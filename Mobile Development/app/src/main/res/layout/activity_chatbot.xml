@@ -43,7 +43,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/item_chatbot_message"
         app:layout_constraintVertical_bias="0"
-        tools:itemCount="25"/>
+        android:paddingBottom="66dp"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         style="@style/background_style"

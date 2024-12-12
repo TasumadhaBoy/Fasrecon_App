@@ -1,6 +1,7 @@
 package com.application.fasrecon.data.repository
 
 import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.application.fasrecon.data.Result
@@ -134,7 +135,7 @@ class UserRepository(
         userDao.insertClothes(newClothesData)
     }
 
-    suspend fun insertMessageFirst(id: String, type: String, photo: String, time:String, firstMessage: String) {
+    suspend fun insertMessageFirst(id: String, type: String, photo: String, time:String, firstMessage: String, listPhotos: List<String> = emptyList()) {
         val idUser: String = user.currentUser?.uid.toString()
         val size = userDao.getChatTotal(idUser)
 
@@ -150,14 +151,16 @@ class UserRepository(
             messageType = type,
             message = firstMessage,
             chatId = id + size,
-            photoProfile = photo
+            photoProfile = photo,
+            listPhoto = listPhotos
         )
 
         userDao.insertChat(newChat)
         userDao.insertMessage(newMessage)
     }
 
-    suspend fun insertMessage(id: String, type: String, msg: String, photo: String, first: Boolean) {
+    suspend fun insertMessage(id: String, type: String, msg: String, photo: String, first: Boolean, listPhotos: List<String>?) {
+        Log.d("photo", listPhotos.toString())
         val idUser: String = user.currentUser?.uid.toString()
         val size = userDao.getChatTotal(idUser) - 1
         val newId = if (first) id + size else id
@@ -165,7 +168,8 @@ class UserRepository(
             messageType = type,
             message = msg,
             chatId = newId,
-            photoProfile = photo
+            photoProfile = photo,
+            listPhoto = listPhotos
         )
         userDao.insertMessage(newMessage)
     }

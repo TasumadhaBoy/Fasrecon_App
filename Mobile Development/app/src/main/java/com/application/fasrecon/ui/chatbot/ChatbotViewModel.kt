@@ -1,5 +1,6 @@
 package com.application.fasrecon.ui.chatbot
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,6 +12,7 @@ import com.application.fasrecon.util.WrapMessage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import com.application.fasrecon.data.Result
+import com.application.fasrecon.data.local.entity.ClothesEntity
 
 class ChatbotViewModel (private val userRepository: UserRepository): ViewModel() {
     private val response = MutableLiveData<RecommendationResponse>()
@@ -41,16 +43,15 @@ class ChatbotViewModel (private val userRepository: UserRepository): ViewModel()
         }
     }
 
-
-    fun insertMessageFirst(id:String, type: String, photo: String, time: String, firstMessage: String){
+    fun insertMessageFirst(id:String, type: String, photo: String, time: String, firstMessage: String, listPhotos: List<String> = emptyList()){
         viewModelScope.launch(Dispatchers.IO) {
-            userRepository.insertMessageFirst(id, type, photo, time, firstMessage)
+            userRepository.insertMessageFirst(id, type, photo, time, firstMessage, listPhotos)
         }
     }
 
-    fun insertMessage(id:String, type: String, message: String, photo: String, first: Boolean){
+    fun insertMessage(id:String, type: String, message: String, photo: String, first: Boolean, listPhotos: List<String>){
         viewModelScope.launch(Dispatchers.IO) {
-            userRepository.insertMessage(id, type, message, photo, first)
+            userRepository.insertMessage(id, type, message, photo, first, listPhotos)
         }
     }
 
@@ -59,5 +60,6 @@ class ChatbotViewModel (private val userRepository: UserRepository): ViewModel()
     }
 
     fun getUserData() = userRepository.getUserData()
+    fun getAllClothesByType(type: String): LiveData<List<ClothesEntity>> = userRepository.getAllClothesByType(type)
 
 }
