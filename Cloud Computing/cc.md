@@ -1,25 +1,53 @@
-### Cloud Architecture
-<img width="1800px" alt="Cloud Architecture" src="https://github.com/TirtaKY25/Fasrecon_App/blob/main/Cloud%20Computing/Cloud%20Architecture.jpg">
+# Fasrecon API
 
-### Endpoint
-- **Image Image Classification**
-    - https://model-classification-660807228942.asia-southeast2.run.app/predict
-- **Chatbot**
-    - https://nlp-model-660807228942.asia-southeast2.run.app/predict
+Backend API for the Fasrecon App.
+
+## Installation
+
+### Installing Using PIP
+
+```bash
+pip install -r requirements.txt
+```
+
+### How To Running
+
+```bash
+python3 main.py
+```
+
+## Cloud Architecture
+
+![Cloud Architecture](https://github.com/TirtaKY25/Fasrecon_App/blob/main/Cloud%20Computing/Cloud%20Architecture.jpg)
+
+## Endpoint
 
 ### Image Classification
 
-- **URL**
-  - `/predict`
+- **URL:**
+  ```
+  https://model-classification-660807228942.asia-southeast2.run.app/predict
+  ```
 
-- **Method**
-  - `POST`
+### Chatbot
 
-- **Request Body**
-  - **form-data**
-    - `images` : file (multiple files can be uploaded)
+- **URL:**
+  ```
+  https://nlp-model-660807228942.asia-southeast2.run.app/predict
+  ```
 
-- **Example Response**
+## Endpoint Details
+
+### Image Classification
+
+- **URL:** `/predict`
+- **Method:** `POST`
+- **Request Body:**
+  - **Form Data:**
+    - `images`: File (multiple files can be uploaded)
+  
+- **Example Response:**
+
   ```json
   [
       [
@@ -31,23 +59,23 @@
           "Tshirts"
       ]
   ]
+  ```
 
 ### Chatbot
 
-- **URL**
-  - `/predict`
-
-- **Method**
-  - `POST`
-
-- **Request Body**
-  - **raw**
-    - ```json
-      {
-        "text" : "I need to go on rainy day"
-      }
-
-- **Example Response**
+- **URL:** `/predict`
+- **Method:** `POST`
+- **Request Body:**
+  - **Raw (JSON):**
+  
+    ```json
+    {
+      "text": "I need to go on rainy day"
+    }
+    ```
+  
+- **Example Response:**
+  
   ```json
   {
     "outfit_recommendations": {
@@ -63,3 +91,4 @@
     "predicted_label": "rainy",
     "recommendation_text": "Based on the rainy weather, we recommend wearing: Sweatshirts, Jeans in colors like Black, Navy Blue."
   }
+  ```
