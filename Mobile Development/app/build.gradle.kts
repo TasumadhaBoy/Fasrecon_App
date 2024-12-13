@@ -18,7 +18,7 @@ android {
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String", "BASE_URL", "\"https://api-model-flask-660807228942.asia-southeast2.run.app/\"")
+        buildConfigField("String", "BASE_URL", "\"https://model-classification-660807228942.asia-southeast2.run.app/\"")
         buildConfigField("String", "BASE_URL_CHATBOT", "\"https://nlp-model-660807228942.asia-southeast2.run.app/\"")
     }
 
