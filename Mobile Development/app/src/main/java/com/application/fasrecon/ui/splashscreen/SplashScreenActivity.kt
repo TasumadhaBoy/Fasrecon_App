@@ -18,7 +18,6 @@ import com.application.fasrecon.ui.BaseActivity
 import com.application.fasrecon.ui.MainActivity
 import com.application.fasrecon.ui.onboardingpage.OnboardingPageActivity
 import com.application.fasrecon.ui.viewmodelfactory.ViewModelFactoryAuth
-import com.google.firebase.auth.FirebaseAuth
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : BaseActivity() {

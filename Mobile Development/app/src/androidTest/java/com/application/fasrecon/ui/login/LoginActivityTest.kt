@@ -133,43 +133,4 @@ class LoginActivityTest {
 
         Intents.release()
     }
-
-//    @Test
-//    fun logout() {
-//        Intents.init()
-//        ActivityScenario.launch(MainActivity::class.java)
-//
-//        openActionBarOverflowOrOptionsMenu(getInstrumentation().targetContext)
-//        onView(withText("Logout")).perform(click())
-//
-//        intended(hasComponent(WelcomeActivity::class.java.name))
-//        Intents.release()
-//    }
-//
-//    @Test
-//    fun loginThenLogout() {
-//        Intents.init()
-//
-//        onView(withId(R.id.emailLoginEditText))
-//            .perform(typeText("alexz123@gmail.com"), closeSoftKeyboard())
-//        onView(withId(R.id.passwordLoginEditText))
-//            .perform(typeText("alex1234"), closeSoftKeyboard())
-//
-//        onView(withId(R.id.loginButton)).perform(click())
-//
-//        onView(withText("Success"))
-//            .check(matches(isDisplayed()))
-//
-//        onView(withText("Ok"))
-//            .perform(click())
-//
-//        intended(hasComponent(MainActivity::class.java.name))
-//
-
-//        openActionBarOverflowOrOptionsMenu(getInstrumentation().targetContext)
-//        onView(withText("Logout")).perform(click())
-//
-//        intended(hasComponent(LoginActivity::class.java.name))
-//        Intents.release()
-//    }
 }

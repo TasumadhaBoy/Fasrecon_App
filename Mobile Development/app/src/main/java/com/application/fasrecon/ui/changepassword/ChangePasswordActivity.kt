@@ -13,7 +13,6 @@ import com.application.fasrecon.R
 import com.application.fasrecon.databinding.ActivityChangePasswordBinding
 import com.application.fasrecon.ui.BaseActivity
 import com.application.fasrecon.ui.viewmodelfactory.ViewModelFactoryUser
-import com.application.fasrecon.util.WrapMessage
 
 class ChangePasswordActivity : BaseActivity(), View.OnClickListener {
 
@@ -48,7 +47,7 @@ class ChangePasswordActivity : BaseActivity(), View.OnClickListener {
                 }
 
                 SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
-                    .setTitleText(getString(R.string.change_password))
+                    .setTitleText(getString(R.string.change_password_failed))
                     .setConfirmText(getString(R.string.try_again))
                     .setContentText(message)
                     .show()

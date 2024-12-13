@@ -1,7 +1,6 @@
 package com.application.fasrecon.data.repository
 
 import android.net.Uri
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.application.fasrecon.data.Result
@@ -25,6 +24,7 @@ import com.google.firebase.auth.FirebaseAuthRecentLoginRequiredException
 import com.google.firebase.auth.UserProfileChangeRequest
 import kotlinx.coroutines.tasks.await
 import okhttp3.MultipartBody
+import kotlin.random.Random
 
 class UserRepository(
     private val user: FirebaseAuth,
@@ -123,11 +123,11 @@ class UserRepository(
 
     suspend fun insertClothesData(clothes: String, type: String?, color: String?) {
         val idUser: String = user.currentUser?.uid.toString()
-        val size = userDao.getClothesTotal(idUser)
+        val randNumb = Random.nextInt(0, 100)
         val newClothesData = ClothesEntity(
-            id = idUser + size,
+            id = idUser + randNumb,
             clothesImage = clothes,
-            clothesName = type + size,
+            clothesName = type + randNumb,
             type = type,
             color = color,
             userId = idUser
@@ -160,7 +160,6 @@ class UserRepository(
     }
 
     suspend fun insertMessage(id: String, type: String, msg: String, photo: String, first: Boolean, listPhotos: List<String>?) {
-        Log.d("photo", listPhotos.toString())
         val idUser: String = user.currentUser?.uid.toString()
         val size = userDao.getChatTotal(idUser) - 1
         val newId = if (first) id + size else id
