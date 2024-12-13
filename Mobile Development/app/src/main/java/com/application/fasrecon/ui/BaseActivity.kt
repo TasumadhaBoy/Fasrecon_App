@@ -1,5 +1,6 @@
 package com.application.fasrecon.ui
 
+import android.annotation.SuppressLint
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import com.application.fasrecon.data.preferences.SettingsPreference
@@ -10,6 +11,7 @@ import java.util.Locale
 
 open class BaseActivity: AppCompatActivity() {
 
+    @SuppressLint("AppBundleLocaleChanges")
     override fun attachBaseContext(newBase: Context) {
         val settingsPreference = SettingsPreference.getInstance(settingsDataStore)
         val langCode = runBlocking { settingsPreference.getLanguage().first() }

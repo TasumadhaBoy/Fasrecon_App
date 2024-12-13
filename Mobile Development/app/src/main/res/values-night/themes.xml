@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <style name="Theme.Fasrecon_primary" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:statusBarColor">@color/background_dark</item>
         <item name="android:windowLightStatusBar">false</item>
@@ -7,11 +7,6 @@
     <style name="Theme.Fasrecon_secondary" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:statusBarColor">@color/background_dark</item>
         <item name="android:windowLightStatusBar">true</item>
-        <item name="colorPrimary">@color/primary_color</item>
-    </style>
-
-    <style name="Theme.Fasrecon_tertiary" parent="Theme.Material3.DayNight">
-        <item name="android:statusBarColor">@color/background_dark</item>
         <item name="colorPrimary">@color/primary_color</item>
     </style>
 
@@ -45,16 +40,6 @@
     <style name="icon_menu_onboarding">
         <item name="altSrc">@drawable/ic_circle_full_1</item>
         <item name="srcCompat">@drawable/ic_circle_full_3</item>
-    </style>
-
-    <style name="clothes_list" parent="ThemeOverlay.Material3.Button">
-        <item name="android:backgroundTint">@color/white</item>
-        <item name="android:textColor">@color/primary_color</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textSize">10sp</item>
-        <item name="strokeColor">@color/primary_color</item>
-        <item name="strokeWidth">2dp</item>
-        <item name="android:radius">24dp</item>
     </style>
 
     <style name="button_signup_onboarding_page" parent="ThemeOverlay.Material3.Button">
@@ -284,15 +269,6 @@
         <item name="android:paddingEnd">16dp</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">12sp</item>
-    </style>
-
-    <style name="button_active_type_clothes" parent="ThemeOverlay.Material3.Button">
-        <item name="android:padding">0dp</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">35dp</item>
-        <item name="android:layout_marginTop">16dp</item>
-        <item name="android:textStyle">normal</item>
-        <item name="cornerRadius">50dp</item>
     </style>
 
     <style name="button_in_dialog" parent="ThemeOverlay.Material3.Button">

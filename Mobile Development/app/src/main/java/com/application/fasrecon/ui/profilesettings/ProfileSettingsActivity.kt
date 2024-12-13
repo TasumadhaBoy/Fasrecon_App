@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.view.MotionEvent
 import android.view.View
@@ -16,12 +15,11 @@ import com.application.fasrecon.R
 import com.application.fasrecon.data.local.entity.UserEntity
 import com.application.fasrecon.databinding.ActivityProfileSettingsBinding
 import com.application.fasrecon.ui.BaseActivity
-import com.application.fasrecon.ui.MainActivity
 import com.application.fasrecon.ui.changepassword.ChangePasswordActivity
 import com.application.fasrecon.ui.viewmodelfactory.ViewModelFactoryUser
-import com.application.fasrecon.util.WrapMessage
 import com.bumptech.glide.Glide
 
+@Suppress("KotlinConstantConditions")
 class ProfileSettingsActivity : BaseActivity() {
 
     private lateinit var binding: ActivityProfileSettingsBinding
@@ -119,7 +117,7 @@ class ProfileSettingsActivity : BaseActivity() {
             profileSettingsViewModel.updateData(newName, imageUriSelected)
         } else if (newName != name && imageUriSelected == null) {
             profileSettingsViewModel.updateData(newName)
-        }  else {
+        } else {
             moveToMainActivity()
         }
 
@@ -145,7 +143,6 @@ class ProfileSettingsActivity : BaseActivity() {
         }
 
         profileSettingsViewModel.updateDataMessage.observe(this) {
-            Log.d("Test", imageUriSelected.toString())
             profileSettingsViewModel.updateUserDataLocal(newName, imageUriSelected.toString())
             SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
                 .setTitleText("Update Profile Success")
@@ -158,10 +155,7 @@ class ProfileSettingsActivity : BaseActivity() {
     }
 
     private fun moveToMainActivity() {
-        val intent = Intent(this, MainActivity::class.java)
-        intent.flags =
-            Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-        startActivity(intent)
+        finish()
         Toast.makeText(this, "Profile Updated", Toast.LENGTH_SHORT).show()
     }
 
