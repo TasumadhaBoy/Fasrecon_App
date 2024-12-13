@@ -1,9 +1,10 @@
+@file:Suppress("SameParameterValue")
+
 package com.application.fasrecon.ui.chatbot
 
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -23,6 +24,7 @@ import com.application.fasrecon.util.setKeyboardMargin
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+
 
 class ChatbotActivity : AppCompatActivity() {
 
@@ -47,6 +49,7 @@ class ChatbotActivity : AppCompatActivity() {
         binding.root.viewTreeObserver.addOnGlobalLayoutListener {
             setKeyboardMargin(binding.root, binding.typeMessageContainer)
             setKeyboardMargin(binding.root, binding.listMessage)
+            setKeyboardMargin(binding.root, binding.loadingChatbot)
         }
 
         chatbotViewModel.errorHandling.observe(this) {
@@ -93,7 +96,6 @@ class ChatbotActivity : AppCompatActivity() {
                                 listClothes.forEach { clothes ->
                                     newClothes.add(clothes.clothesImage)
                                 }
-                                Log.d("Mantap", newClothes.toString())
                                 if (newClothes.isNotEmpty()) {
                                     getMessageWithPhoto("", user.id, newClothes)
                                 }
@@ -170,7 +172,9 @@ class ChatbotActivity : AppCompatActivity() {
 
     @SuppressLint("SimpleDateFormat")
     private fun getCurrentTime(): String =
-        SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(Date())
+        SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(
+            Date()
+        )
 
     private fun receiveMessage(text: String, idUser: String) {
         val botMessage = ChatMessage(id = "GET", messages = text, "")
@@ -185,7 +189,14 @@ class ChatbotActivity : AppCompatActivity() {
         messagesList.add(botMessage)
 
         adapter.submitList(messagesList.toList())
-        chatbotViewModel.insertMessage(idUser + "chathistory", "GET_PHOTO", text, "", true, listPhotos)
+        chatbotViewModel.insertMessage(
+            idUser + "chathistory",
+            "GET_PHOTO",
+            text,
+            "",
+            true,
+            listPhotos
+        )
 
         binding.listMessage.scrollToPosition(messagesList.size - 1)
     }
@@ -228,6 +239,7 @@ class ChatbotActivity : AppCompatActivity() {
                 finish()
                 true
             }
+
             R.id.delete_chat -> {
                 val chat = if (Build.VERSION.SDK_INT >= 33) {
                     intent.getStringExtra(CHAT)
@@ -237,7 +249,7 @@ class ChatbotActivity : AppCompatActivity() {
 
                 SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
                     .setTitleText(getString(R.string.delete_chat))
-                    .setContentText(getString(R.string.confirmation_delete))
+                    .setContentText(getString(R.string.confirmation_delete_chat))
                     .setConfirmText(getString(R.string.yes))
                     .setCancelText(getString(R.string.no))
                     .setConfirmClickListener { sDialog ->
@@ -248,6 +260,7 @@ class ChatbotActivity : AppCompatActivity() {
                     .show()
                 true
             }
+
             else -> super.onOptionsItemSelected(item)
         }
     }

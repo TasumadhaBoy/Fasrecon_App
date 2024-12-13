@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="primary_color">#4FACFE</color>
-    <color name="darker_primary_color">#0F89F8</color>
     <color name="not_active_color">#515151</color>
     <color name="not_active_color_dark">#DADFE7</color>
     <color name="active_color_dark">#BAD7FF</color>
@@ -10,19 +9,13 @@
     <color name="background_fragment_activity">#F8FBFF</color>
     <color name="background_dark">#3B4857</color>
     <color name="desc_color">#E7E7E7</color>
-    <color name="icon_container">#F2F8FF</color>
     <color name="black">#FF000000</color>
-    <color name="dark_shadow">#4D000000</color>
-    <color name="transparent_shadow">#0D000000</color>
     <color name="white">#FFFFFF</color>
     <color name="text_gray">#858597</color>
     <color name="lighter_gray">#ACACC2</color>
-    <color name="container_gray">#DDDCDC</color>
     <color name="gray">#717181</color>
     <color name="path_color">#D7D7DF</color>
     <color name="circle2">#21283F</color>
-    <color name="custom_blue">#4FACFE</color>
-    <color name="transparent">#F8F9FD</color>
     <color name="field_disabled">#66BEDFFA</color>
     <color name="text_disabled">#2C5478</color>
     <color name="button_dark">#626B77</color>

@@ -10,7 +10,6 @@ import com.application.fasrecon.databinding.ActivityRegisterBinding
 import com.application.fasrecon.ui.BaseActivity
 import com.application.fasrecon.ui.login.LoginActivity
 import com.application.fasrecon.ui.viewmodelfactory.ViewModelFactoryAuth
-import com.application.fasrecon.util.WrapMessage
 
 
 class RegisterActivity : BaseActivity(), View.OnClickListener {

@@ -7,13 +7,12 @@ junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 appcompat = "1.7.0"
-loadingDots = "1.0.2"
 material = "1.12.0"
 constraintlayout = "2.2.0"
 lifecycleLivedataKtx = "2.8.7"
 lifecycleViewmodelKtx = "2.8.7"
-navigationFragmentKtx = "2.8.4"
-navigationUiKtx = "2.8.4"
+navigationFragmentKtx = "2.8.5"
+navigationUiKtx = "2.8.5"
 activity = "1.9.3"
 datastorePreferences = "1.1.1"
 glide = "4.16.0"
@@ -25,10 +24,10 @@ roomCompiler = "2.6.1"
 roomRuntime = "2.6.1"
 roomKtx = "2.6.1"
 legacySupportV4 = "1.0.0"
-fragmentKtx = "1.8.4"
+fragmentKtx = "1.8.5"
 ucrop = "2.2.8"
 circleimageview = "3.1.0"
-junitJunit = "4.12"
+junitJunit = "4.13.2"
 espressoIdlingResource = "3.6.1"
 espressoIntents = "3.6.1"
 monitor = "1.7.2"
@@ -39,11 +38,11 @@ androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = 
 firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
 firebase-auth = { module = "com.google.firebase:firebase-auth" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
+#noinspection SimilarGradleDependency
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
-loading-dots = { module = "com.eyalbira.loadingdots:loading-dots", version.ref = "loadingDots" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
@@ -66,6 +65,7 @@ androidx-legacy-support-v4 = { group = "androidx.legacy", name = "legacy-support
 androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragmentKtx" }
 ucrop = { module = "com.github.yalantis:ucrop", version.ref = "ucrop" }
 circleimageview = { module = "de.hdodenhof:circleimageview", version.ref = "circleimageview" }
+#noinspection SimilarGradleDependency
 junit-junit = { group = "junit", name = "junit", version.ref = "junitJunit" }
 androidx-monitor = { module = "androidx.test:monitor", version.ref = "monitor" }
 androidx-espresso-idling-resource = { module = "androidx.test.espresso:espresso-idling-resource", version.ref = "espressoIdlingResource" }

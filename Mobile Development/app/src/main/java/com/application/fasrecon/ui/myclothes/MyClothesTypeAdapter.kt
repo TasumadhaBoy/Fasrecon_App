@@ -10,7 +10,6 @@ import com.application.fasrecon.databinding.ItemClothesTypeBinding
 
 class MyClothesTypeAdapter: ListAdapter<String, MyClothesTypeAdapter.ListViewHolder>(DIFF_CALLBACK) {
 
-    private var clothList: List<String> = emptyList()
     private var radioChecked = -1
 
     inner class ListViewHolder (private val binding: ItemClothesTypeBinding): ViewHolder(binding.root) {
@@ -44,10 +43,6 @@ class MyClothesTypeAdapter: ListAdapter<String, MyClothesTypeAdapter.ListViewHol
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         holder.bind(getItem(position), position)
-    }
-
-    interface OnItemClickListener {
-        fun onItemClick(item: String, position: Int)
     }
 
     companion object {
